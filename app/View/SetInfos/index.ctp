@@ -8,7 +8,7 @@
 			<th><?php echo $this->Paginator->sort('subset_name');?></th>
 			<th><?php echo $this->Paginator->sort('dist_start_year');?></th>
 			<th><?php echo $this->Paginator->sort('dist_end_year');?></th>
-			<th><?php echo $this->Paginator->sort('wiki_info_id');?></th>
+			<th><?php echo $this->Paginator->sort('set_wiki_info_id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -26,7 +26,7 @@
 		<td><?php echo h($setInfo['SetInfo']['dist_start_year']); ?>&nbsp;</td>
 		<td><?php echo h($setInfo['SetInfo']['dist_end_year']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($setInfo['WikiInfo']['wiki_info_id'], array('controller' => 'wiki_infos', 'action' => 'view', $setInfo['WikiInfo']['wiki_info_id'])); ?>
+			<?php echo $this->Html->link($setInfo['SetWikiInfo']['set_wiki_info_id'], array('controller' => 'set_wiki_infos', 'action' => 'view', $setInfo['SetWikiInfo']['set_wiki_info_id'])); ?>
 		</td>
 		<td><?php echo h($setInfo['SetInfo']['created']); ?>&nbsp;</td>
 		<td class="actions">
@@ -56,8 +56,8 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Set Info'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Wiki Infos'), array('controller' => 'wiki_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Wiki Info'), array('controller' => 'wiki_infos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Set Wiki Infos'), array('controller' => 'set_wiki_infos', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Set Wiki Info'), array('controller' => 'set_wiki_infos', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Brands'), array('controller' => 'brands', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Brand'), array('controller' => 'brands', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Acc Catalogs'), array('controller' => 'acc_catalogs', 'action' => 'index')); ?> </li>

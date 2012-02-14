@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * CardVariation Model
  *
+ * @property CardVariationType $CardVariationType
  * @property Card $Card
  */
 class CardVariation extends AppModel {
@@ -19,6 +20,36 @@ class CardVariation extends AppModel {
  */
 	public $validate = array(
 		'name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'card_variation_type_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'front_img' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'rear_img' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -58,6 +89,13 @@ class CardVariation extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+		'CardVariationType' => array(
+			'className' => 'CardVariationType',
+			'foreignKey' => 'card_variation_type_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Card' => array(
 			'className' => 'Card',
 			'foreignKey' => 'card_id',
@@ -66,20 +104,4 @@ class CardVariation extends AppModel {
 			'order' => ''
 		)
 	);
-	
-	/**
- * hasMany associations
- *
- * @var array
- */
-   public $hasMany = array(
-        'UserCard' => array(
-            'className'     => 'UserCard',
-            'foreignKey'    => 'card_variation_id',
-            'conditions'    => '',
-            'order'         => '',
-            'limit'         => '',
-            'dependent'     => true
-        )
-    );
 }

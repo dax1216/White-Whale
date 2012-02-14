@@ -1,5 +1,5 @@
 <?php
-/* Franchises Test cases generated on: 2012-02-06 17:11:51 : 1328573511*/
+/* Franchises Test cases generated on: 2012-02-13 18:25:05 : 1329182705*/
 App::uses('Franchises', 'Controller');
 
 /**
@@ -31,6 +31,13 @@ class TestFranchises extends Franchises {
  *
  */
 class FranchisesTestCase extends CakeTestCase {
+/**
+ * Fixtures
+ *
+ * @var array
+ */
+	public $fixtures = array('app.comment', 'app.user');
+
 /**
  * setUp method
  *

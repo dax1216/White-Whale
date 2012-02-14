@@ -30,7 +30,7 @@ class SetInfo extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'wiki_info_id' => array(
+		'set_wiki_info_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -130,9 +130,9 @@ class SetInfo extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'WikiInfo' => array(
-			'className' => 'WikiInfo',
-			'foreignKey' => 'wiki_info_id',
+		'SetWikiInfo' => array(
+			'className' => 'SetWikiInfo',
+			'foreignKey' => 'set_wiki_info_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

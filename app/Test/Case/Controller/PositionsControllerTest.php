@@ -1,5 +1,5 @@
 <?php
-/* Positions Test cases generated on: 2012-02-04 19:11:10 : 1328407870*/
+/* Positions Test cases generated on: 2012-02-13 18:25:05 : 1329182705*/
 App::uses('PositionsController', 'Controller');
 
 /**

@@ -21,24 +21,14 @@
 			<?php echo $this->Html->link($card['SetInfo']['set_info_id'], array('controller' => 'set_infos', 'action' => 'view', $card['SetInfo']['set_info_id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Wiki Info'); ?></dt>
+		<dt><?php echo __('Card Wiki Info'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($card['WikiInfo']['wiki_info_id'], array('controller' => 'wiki_infos', 'action' => 'view', $card['WikiInfo']['wiki_info_id'])); ?>
+			<?php echo $this->Html->link($card['CardWikiInfo']['card_wiki_info_id'], array('controller' => 'card_wiki_infos', 'action' => 'view', $card['CardWikiInfo']['card_wiki_info_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Team'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($card['Team']['name'], array('controller' => 'teams', 'action' => 'view', $card['Team']['team_id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Dist Start Year'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['dist_start_year']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Dist End Year'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['dist_end_year']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Notes'); ?></dt>
@@ -67,8 +57,8 @@
 		<li><?php echo $this->Html->link(__('New Card'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Set Infos'), array('controller' => 'set_infos', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Set Info'), array('controller' => 'set_infos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Wiki Infos'), array('controller' => 'wiki_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Wiki Info'), array('controller' => 'wiki_infos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Card Wiki Infos'), array('controller' => 'card_wiki_infos', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Card Wiki Info'), array('controller' => 'card_wiki_infos', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Teams'), array('controller' => 'teams', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Team'), array('controller' => 'teams', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Card Players'), array('controller' => 'card_players', 'action' => 'index')); ?> </li>

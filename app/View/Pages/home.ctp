@@ -14,11 +14,11 @@ endif;
 
 <h3><?php echo __d('cake_dev', 'Admin Links'); ?></h3>
 <p>
-<h2>Base Input Types</h2>
+<h2>Base Input Types-Ken</h2>
 	<?php
-		echo $this->Html->link('List Cards','/cards/index', array('escape' => false))."<br/>";
+	    echo $this->Html->link('List Cards','/cards/index', array('escape' => false))."<br/>";
+		echo $this->Html->link('List Card Variations','/card_variations/index', array('escape' => false))."<br/>";
 		echo $this->Html->link('List Sets','/set_infos/index', array('escape' => false))."<br/>";
-		echo $this->Html->link('List Wiki Info','/wiki_infos/index', array('escape' => false))."<br/>";
 		echo $this->Html->link('List Card-Players','/card_players/index', array('escape' => false))."<br/>";
 		?>
  <br/>

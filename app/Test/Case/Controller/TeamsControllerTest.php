@@ -1,5 +1,5 @@
 <?php
-/* Teams Test cases generated on: 2012-02-06 17:20:54 : 1328574054*/
+/* Teams Test cases generated on: 2012-02-13 18:25:05 : 1329182705*/
 App::uses('TeamsController', 'Controller');
 
 /**
@@ -59,6 +59,51 @@ class TeamsControllerTestCase extends CakeTestCase {
 		unset($this->Teams);
 
 		parent::tearDown();
+	}
+
+/**
+ * testIndex method
+ *
+ * @return void
+ */
+	public function testIndex() {
+
+	}
+
+/**
+ * testView method
+ *
+ * @return void
+ */
+	public function testView() {
+
+	}
+
+/**
+ * testAdd method
+ *
+ * @return void
+ */
+	public function testAdd() {
+
+	}
+
+/**
+ * testEdit method
+ *
+ * @return void
+ */
+	public function testEdit() {
+
+	}
+
+/**
+ * testDelete method
+ *
+ * @return void
+ */
+	public function testDelete() {
+
 	}
 
 }

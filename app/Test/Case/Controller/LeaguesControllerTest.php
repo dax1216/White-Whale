@@ -1,5 +1,5 @@
 <?php
-/* Leagues Test cases generated on: 2012-02-06 17:13:59 : 1328573639*/
+/* Leagues Test cases generated on: 2012-02-13 18:25:05 : 1329182705*/
 App::uses('LeaguesController', 'Controller');
 
 /**
@@ -59,6 +59,51 @@ class LeaguesControllerTestCase extends CakeTestCase {
 		unset($this->Leagues);
 
 		parent::tearDown();
+	}
+
+/**
+ * testIndex method
+ *
+ * @return void
+ */
+	public function testIndex() {
+
+	}
+
+/**
+ * testView method
+ *
+ * @return void
+ */
+	public function testView() {
+
+	}
+
+/**
+ * testAdd method
+ *
+ * @return void
+ */
+	public function testAdd() {
+
+	}
+
+/**
+ * testEdit method
+ *
+ * @return void
+ */
+	public function testEdit() {
+
+	}
+
+/**
+ * testDelete method
+ *
+ * @return void
+ */
+	public function testDelete() {
+
 	}
 
 }

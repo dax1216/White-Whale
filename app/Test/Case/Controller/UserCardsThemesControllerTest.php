@@ -1,5 +1,5 @@
 <?php
-/* UserCardsThemes Test cases generated on: 2012-02-04 19:11:11 : 1328407871*/
+/* UserCardsThemes Test cases generated on: 2012-02-13 18:25:06 : 1329182706*/
 App::uses('UserCardsThemesController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class UserCardsThemesControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.user_cards_theme', 'app.theme', 'app.user', 'app.watch', 'app.user_card', 'app.card_variation', 'app.card', 'app.set', 'app.wiki_info', 'app.brand', 'app.acc_catalog', 'app.team', 'app.card_player', 'app.position', 'app.player', 'app.variation', 'app.grade_type', 'app.grade_value', 'app.offer', 'app.qualifier', 'app.user_cards_qualifier');
+	public $fixtures = array('app.user_cards_theme', 'app.theme', 'app.user', 'app.user_card', 'app.card_variation', 'app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation_type', 'app.grade_type', 'app.grade_value', 'app.watch', 'app.offer', 'app.qualifier', 'app.user_cards_qualifier');
 
 /**
  * setUp method

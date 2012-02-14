@@ -31,9 +31,9 @@
 			<?php echo h($setInfo['SetInfo']['dist_end_year']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Wiki Info'); ?></dt>
+		<dt><?php echo __('Set Wiki Info'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($setInfo['WikiInfo']['wiki_info_id'], array('controller' => 'wiki_infos', 'action' => 'view', $setInfo['WikiInfo']['wiki_info_id'])); ?>
+			<?php echo $this->Html->link($setInfo['SetWikiInfo']['set_wiki_info_id'], array('controller' => 'set_wiki_infos', 'action' => 'view', $setInfo['SetWikiInfo']['set_wiki_info_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -50,8 +50,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Set Info'), array('action' => 'delete', $setInfo['SetInfo']['set_info_id']), null, __('Are you sure you want to delete # %s?', $setInfo['SetInfo']['set_info_id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Set Infos'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Set Info'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Wiki Infos'), array('controller' => 'wiki_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Wiki Info'), array('controller' => 'wiki_infos', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Set Wiki Infos'), array('controller' => 'set_wiki_infos', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Set Wiki Info'), array('controller' => 'set_wiki_infos', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Brands'), array('controller' => 'brands', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Brand'), array('controller' => 'brands', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Acc Catalogs'), array('controller' => 'acc_catalogs', 'action' => 'index')); ?> </li>
@@ -69,10 +69,8 @@
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Card Number'); ?></th>
 		<th><?php echo __('Set Info Id'); ?></th>
-		<th><?php echo __('Wiki Info Id'); ?></th>
+		<th><?php echo __('Card Wiki Info Id'); ?></th>
 		<th><?php echo __('Team Id'); ?></th>
-		<th><?php echo __('Dist Start Year'); ?></th>
-		<th><?php echo __('Dist End Year'); ?></th>
 		<th><?php echo __('Notes'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Updated'); ?></th>
@@ -86,10 +84,8 @@
 			<td><?php echo $card['name'];?></td>
 			<td><?php echo $card['card_number'];?></td>
 			<td><?php echo $card['set_info_id'];?></td>
-			<td><?php echo $card['wiki_info_id'];?></td>
+			<td><?php echo $card['card_wiki_info_id'];?></td>
 			<td><?php echo $card['team_id'];?></td>
-			<td><?php echo $card['dist_start_year'];?></td>
-			<td><?php echo $card['dist_end_year'];?></td>
 			<td><?php echo $card['notes'];?></td>
 			<td><?php echo $card['created'];?></td>
 			<td><?php echo $card['updated'];?></td>

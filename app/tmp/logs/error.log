@@ -489,3 +489,45 @@
 #11 /srv/www/whitewhaledev1/cakephp/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardsController), Object(CakeRequest), Object(CakeResponse))
 #12 /srv/www/whitewhaledev1/cakephp/app/webroot/index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #13 {main}
+2012-02-13 12:08:59 Error: [MissingControllerException] Controller class CardimagesController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-13 12:09:04 Error: [MissingViewException] View file "/var/www/whitewhale/White-Whale/app/View/CardImages/index.ctp" is missing.
+#0 /var/www/whitewhale/White-Whale/lib/Cake/View/View.php(360): View->_getViewFileName(NULL)
+#1 /var/www/whitewhale/White-Whale/lib/Cake/Controller/Controller.php(900): View->render(NULL, NULL)
+#2 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(111): Controller->render()
+#3 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-13 12:09:11 Error: [MissingActionException] Action CardImagesController::add() could not be found.
+#0 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-02-13 16:59:41 Error: [MissingViewException] View file "/var/www/whitewhale/White-Whale/app/View/CardImages/index.ctp" is missing.
+#0 /var/www/whitewhale/White-Whale/lib/Cake/View/View.php(360): View->_getViewFileName(NULL)
+#1 /var/www/whitewhale/White-Whale/lib/Cake/Controller/Controller.php(900): View->render(NULL, NULL)
+#2 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(111): Controller->render()
+#3 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-13 17:00:00 Error: [MissingViewException] View file "/var/www/whitewhale/White-Whale/app/View/CardImages/index.ctp" is missing.
+#0 /var/www/whitewhale/White-Whale/lib/Cake/View/View.php(360): View->_getViewFileName(NULL)
+#1 /var/www/whitewhale/White-Whale/lib/Cake/Controller/Controller.php(900): View->render(NULL, NULL)
+#2 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(111): Controller->render()
+#3 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-02-14 16:34:23 Error: [MissingTableException] Database table card_images for model CardImages was not found.
+#0 /var/www/whitewhale/White-Whale/lib/Cake/Model/Model.php(3258): Model->setSource('card_images')
+#1 /var/www/whitewhale/White-Whale/lib/Cake/Model/Model.php(1223): Model->getDataSource()
+#2 /var/www/whitewhale/White-Whale/lib/Cake/View/Helper/FormHelper.php(197): Model->schema()
+#3 /var/www/whitewhale/White-Whale/lib/Cake/View/Helper/FormHelper.php(450): FormHelper->_introspectModel('CardImages', 'fields')
+#4 /var/www/whitewhale/White-Whale/app/View/CardImages/add.ctp(2): FormHelper->create('CardImages', Array)
+#5 /var/www/whitewhale/White-Whale/lib/Cake/View/View.php(595): include('/var/www/whitew...')
+#6 /var/www/whitewhale/White-Whale/lib/Cake/View/View.php(362): View->_render('/var/www/whitew...')
+#7 /var/www/whitewhale/White-Whale/lib/Cake/Controller/Controller.php(900): View->render(NULL, NULL)
+#8 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(111): Controller->render()
+#9 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}

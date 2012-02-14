@@ -35,7 +35,8 @@
  *
  */
 	if (!defined('ROOT')) {
-		define('ROOT', '/srv/www/whitewhaledev1/cakephp');
+		//define('ROOT', '/srv/www/whitewhaledev1/cakephp');
+            define('ROOT', '/var/www/whitewhale/White-Whale');
 	}
 /**
  * The actual directory name for the "app".

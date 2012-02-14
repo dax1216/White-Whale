@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'gumb00tdb',
-		'database' => 'whaledev1',
+		'password' => 'dax',
+		'database' => 'whitewhale',
 	);
 }

@@ -1,5 +1,5 @@
 <?php
-/* CardVariations Test cases generated on: 2012-02-13 18:37:43 : 1329183463*/
+/* CardVariations Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('CardVariationsController', 'Controller');
 
 /**

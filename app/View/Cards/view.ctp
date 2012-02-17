@@ -111,6 +111,7 @@
 	<tr>
 		<th><?php echo __('Card Variation Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
+		<th><?php echo __('Card Variation Type Id'); ?></th>
 		<th><?php echo __('Front Img'); ?></th>
 		<th><?php echo __('Rear Img'); ?></th>
 		<th><?php echo __('Is Base'); ?></th>
@@ -123,6 +124,7 @@
 		<tr>
 			<td><?php echo $cardVariation['card_variation_id'];?></td>
 			<td><?php echo $cardVariation['name'];?></td>
+			<td><?php echo $cardVariation['card_variation_type_id'];?></td>
 			<td><?php echo $cardVariation['front_img'];?></td>
 			<td><?php echo $cardVariation['rear_img'];?></td>
 			<td><?php echo $cardVariation['is_base'];?></td>

@@ -14,7 +14,7 @@
 		<td><?php echo h($theme['Theme']['theme_id']); ?>&nbsp;</td>
 		<td><?php echo h($theme['Theme']['name']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($theme['User']['user_id'], array('controller' => 'users', 'action' => 'view', $theme['User']['user_id'])); ?>
+			<?php echo $this->Html->link($theme['User']['full_name'], array('controller' => 'users', 'action' => 'view', $theme['User']['user_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($theme['ParentTheme']['name'], array('controller' => 'themes', 'action' => 'view', $theme['ParentTheme']['theme_id'])); ?>

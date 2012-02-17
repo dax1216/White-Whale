@@ -1,5 +1,5 @@
 <?php
-/* CardVariationTypes Test cases generated on: 2012-02-13 18:45:57 : 1329183957*/
+/* CardVariationTypes Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('CardVariationTypesController', 'Controller');
 
 /**
@@ -59,6 +59,51 @@ class CardVariationTypesControllerTestCase extends CakeTestCase {
 		unset($this->CardVariationTypes);
 
 		parent::tearDown();
+	}
+
+/**
+ * testIndex method
+ *
+ * @return void
+ */
+	public function testIndex() {
+
+	}
+
+/**
+ * testView method
+ *
+ * @return void
+ */
+	public function testView() {
+
+	}
+
+/**
+ * testAdd method
+ *
+ * @return void
+ */
+	public function testAdd() {
+
+	}
+
+/**
+ * testEdit method
+ *
+ * @return void
+ */
+	public function testEdit() {
+
+	}
+
+/**
+ * testDelete method
+ *
+ * @return void
+ */
+	public function testDelete() {
+
 	}
 
 }

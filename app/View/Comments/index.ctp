@@ -14,7 +14,7 @@
 		<td><?php echo h($comment['Comment']['comment_id']); ?>&nbsp;</td>
 		<td><?php echo h($comment['Comment']['text']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($comment['User']['user_id'], array('controller' => 'users', 'action' => 'view', $comment['User']['user_id'])); ?>
+			<?php echo $this->Html->link($comment['User']['full_name'], array('controller' => 'users', 'action' => 'view', $comment['User']['user_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($comment['ParentComment']['comment_id'], array('controller' => 'comments', 'action' => 'view', $comment['ParentComment']['comment_id'])); ?>

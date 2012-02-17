@@ -15,7 +15,7 @@
 		<td><?php echo h($offer['Offer']['offer_id']); ?>&nbsp;</td>
 		<td><?php echo h($offer['Offer']['amount']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($offer['User']['user_id'], array('controller' => 'users', 'action' => 'view', $offer['User']['user_id'])); ?>
+			<?php echo $this->Html->link($offer['User']['full_name'], array('controller' => 'users', 'action' => 'view', $offer['User']['user_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($offer['UserCard']['user_card_id'], array('controller' => 'user_cards', 'action' => 'view', $offer['UserCard']['user_card_id'])); ?>

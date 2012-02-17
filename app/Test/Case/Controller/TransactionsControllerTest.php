@@ -1,5 +1,5 @@
 <?php
-/* Transactions Test cases generated on: 2012-02-13 18:25:06 : 1329182706*/
+/* Transactions Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('TransactionsController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class TransactionsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.transaction', 'app.user_card', 'app.user', 'app.card_variation', 'app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation_type', 'app.grade_type', 'app.grade_value', 'app.watch', 'app.offer', 'app.qualifier', 'app.user_cards_qualifier', 'app.theme', 'app.user_cards_theme');
+	public $fixtures = array('app.transaction', 'app.user_card', 'app.user', 'app.card_variation', 'app.card_variation_type', 'app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.grade_type', 'app.grade_value', 'app.watch', 'app.offer', 'app.qualifier', 'app.user_cards_qualifier', 'app.theme', 'app.user_cards_theme');
 
 /**
  * setUp method

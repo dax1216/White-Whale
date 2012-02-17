@@ -1,5 +1,5 @@
 <?php
-/* SetWikiInfos Test cases generated on: 2012-02-13 18:25:05 : 1329182705*/
+/* SetWikiInfos Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('SetWikiInfosController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class SetWikiInfosControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.set_wiki_info', 'app.set_info', 'app.brand', 'app.acc_catalog', 'app.card', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation', 'app.card_variation_type', 'app.user_card', 'app.user', 'app.grade_type', 'app.grade_value', 'app.watch', 'app.offer', 'app.qualifier', 'app.user_cards_qualifier', 'app.theme', 'app.user_cards_theme');
+	public $fixtures = array('app.set_wiki_info', 'app.set_info', 'app.brand', 'app.acc_catalog', 'app.card', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation', 'app.card_variation_type');
 
 /**
  * setUp method

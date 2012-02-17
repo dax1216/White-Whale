@@ -73,10 +73,8 @@
 		<th><?php echo __('Name'); ?></th>
 		<th><?php echo __('Card Number'); ?></th>
 		<th><?php echo __('Set Info Id'); ?></th>
-		<th><?php echo __('Wiki Info Id'); ?></th>
+		<th><?php echo __('Card Wiki Info Id'); ?></th>
 		<th><?php echo __('Team Id'); ?></th>
-		<th><?php echo __('Dist Start Year'); ?></th>
-		<th><?php echo __('Dist End Year'); ?></th>
 		<th><?php echo __('Notes'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Updated'); ?></th>
@@ -90,10 +88,8 @@
 			<td><?php echo $card['name'];?></td>
 			<td><?php echo $card['card_number'];?></td>
 			<td><?php echo $card['set_info_id'];?></td>
-			<td><?php echo $card['wiki_info_id'];?></td>
+			<td><?php echo $card['card_wiki_info_id'];?></td>
 			<td><?php echo $card['team_id'];?></td>
-			<td><?php echo $card['dist_start_year'];?></td>
-			<td><?php echo $card['dist_end_year'];?></td>
 			<td><?php echo $card['notes'];?></td>
 			<td><?php echo $card['created'];?></td>
 			<td><?php echo $card['updated'];?></td>

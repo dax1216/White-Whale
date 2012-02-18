@@ -1,13 +1,14 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Cards Controller
+ * CardHome Controller
  *
  * @property Card $Card
  */
 class CardHomeController extends AppController {
+	
+public $uses=array('Card');
 
-var $uses = array( 'Card'); 
 /**
  * index method
  *
@@ -49,8 +50,11 @@ var $uses = array( 'Card');
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$franchiseGroups = $this->Card->FranchiseGroup->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'franchiseGroups'));
+		$teams = $this->Card->Team->find('list');
+                $players = $this->Card->CardPlayers->Player->find('list', array( 'order' => 'name ASC' ) );
+                $positions = $this->Card->CardPlayers->Position->find('list'); 
+                $cardVariationTypes = $this->Card->CardVariation->CardVariationType->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'teams', 'players', 'positions','cardVariationTypes'));
 	}
 
 /**
@@ -76,8 +80,8 @@ var $uses = array( 'Card');
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$franchiseGroups = $this->Card->FranchiseGroup->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'franchiseGroups'));
+		$teams = $this->Card->Team->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'teams'));
 	}
 
 /**

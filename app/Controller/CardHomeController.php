@@ -51,7 +51,10 @@ public $uses=array('Card');
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
 		$teams = $this->Card->Team->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'teams'));
+                $players = $this->Card->CardPlayers->Player->find('list', array( 'order' => 'name ASC' ) );
+                $positions = $this->Card->CardPlayers->Position->find('list'); 
+                $cardVariationTypes = $this->Card->CardVariation->CardVariationType->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'teams', 'players', 'positions','cardVariationTypes'));
 	}
 
 /**

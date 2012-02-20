@@ -329,3 +329,8 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+/**
+ * File location for card images
+ */
+Configure::write('card_images_dir', WWW_ROOT . 'files' . DS . 'card_images' . DS);

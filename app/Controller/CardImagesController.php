@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class CardImagesController extends AppController {
+    public $name = 'CardImages';
     public $components = array('ImageResizer');
 
     public function index() {
@@ -9,9 +10,15 @@ class CardImagesController extends AppController {
     }
 
     public function add() {        
-        if($this->request->isPost()) {
-            $card_frontside = $this->request->data['CardImages']['card_front_side'];
-            $card_backside = $this->request->data['CardImages']['card_back_side'];
+        if($this->request->is('post')) {
+            $card_frontside = $this->request->data['CardImage']['card_front_side'];
+            $card_backside = $this->request->data['CardImage']['card_back_side'];
+
+            $this->CardImage->set($this->request->data);
+
+            if($this->CardImage->validates()) {
+                
+            } 
         }
     }
 }

@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'test',
-		'database' => 'whitewhale',
+		'password' => 'dax',
+		'database' => 'whitewhale'
 	);
 }

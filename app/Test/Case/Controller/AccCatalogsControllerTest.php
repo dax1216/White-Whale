@@ -1,5 +1,5 @@
 <?php
-/* AccCatalogs Test cases generated on: 2012-02-07 22:46:33 : 1328679993*/
+/* AccCatalogs Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('AccCatalogsController', 'Controller');
 
 /**
@@ -59,6 +59,51 @@ class AccCatalogsControllerTestCase extends CakeTestCase {
 		unset($this->AccCatalogs);
 
 		parent::tearDown();
+	}
+
+/**
+ * testIndex method
+ *
+ * @return void
+ */
+	public function testIndex() {
+
+	}
+
+/**
+ * testView method
+ *
+ * @return void
+ */
+	public function testView() {
+
+	}
+
+/**
+ * testAdd method
+ *
+ * @return void
+ */
+	public function testAdd() {
+
+	}
+
+/**
+ * testEdit method
+ *
+ * @return void
+ */
+	public function testEdit() {
+
+	}
+
+/**
+ * testDelete method
+ *
+ * @return void
+ */
+	public function testDelete() {
+
 	}
 
 }

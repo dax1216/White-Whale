@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($offer['User']['user_id'], array('controller' => 'users', 'action' => 'view', $offer['User']['user_id'])); ?>
+			<?php echo $this->Html->link($offer['User']['full_name'], array('controller' => 'users', 'action' => 'view', $offer['User']['user_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('User Card'); ?></dt>

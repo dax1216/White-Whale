@@ -25,7 +25,7 @@
 			<?php echo $this->Html->link($transaction['UserCard']['user_card_id'], array('controller' => 'user_cards', 'action' => 'view', $transaction['UserCard']['user_card_id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($transaction['User']['user_id'], array('controller' => 'users', 'action' => 'view', $transaction['User']['user_id'])); ?>
+			<?php echo $this->Html->link($transaction['User']['full_name'], array('controller' => 'users', 'action' => 'view', $transaction['User']['user_id'])); ?>
 		</td>
 		<td><?php echo h($transaction['Transaction']['sell_price']); ?>&nbsp;</td>
 		<td><?php echo h($transaction['Transaction']['is_white_whale']); ?>&nbsp;</td>

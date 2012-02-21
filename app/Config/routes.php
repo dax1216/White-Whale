@@ -26,6 +26,12 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/admin', array('controller' => 'pages', 'action' => 'display', 'admin_home'));
+	
+	Router::connect('/sethome', array('controller' => 'SetHome', 'action' => 'index'));
+	Router::connect('/cardhome', array('controller' => 'CardHome', 'action' => 'index'));
+	Router::connect('/mycollection', array('controller' => 'MyCollection', 'action' => 'index'));
+	Router::connect('/myaccount', array('controller' => 'MyAccount', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

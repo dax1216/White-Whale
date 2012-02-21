@@ -53,7 +53,7 @@ class Card extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'wiki_info_id' => array(
+		'card_wiki_info_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -72,27 +72,7 @@ class Card extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
-		'dist_start_year' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'dist_end_year' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -111,9 +91,9 @@ class Card extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'WikiInfo' => array(
-			'className' => 'WikiInfo',
-			'foreignKey' => 'wiki_info_id',
+		'CardWikiInfo' => array(
+			'className' => 'CardWikiInfo',
+			'foreignKey' => 'card_wiki_info_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

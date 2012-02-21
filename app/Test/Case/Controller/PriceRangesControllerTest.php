@@ -1,5 +1,5 @@
 <?php
-/* PriceRanges Test cases generated on: 2012-02-04 19:11:10 : 1328407870*/
+/* PriceRanges Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('PriceRangesController', 'Controller');
 
 /**

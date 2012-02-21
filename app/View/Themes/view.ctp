@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($theme['User']['user_id'], array('controller' => 'users', 'action' => 'view', $theme['User']['user_id'])); ?>
+			<?php echo $this->Html->link($theme['User']['full_name'], array('controller' => 'users', 'action' => 'view', $theme['User']['user_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Parent Theme'); ?></dt>

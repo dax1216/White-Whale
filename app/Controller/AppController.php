@@ -21,7 +21,6 @@
  */
 
 App::uses('Controller', 'Controller');
-App::import('Set');
 
 /**
  * This is a placeholder class.

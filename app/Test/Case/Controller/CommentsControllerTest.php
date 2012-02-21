@@ -1,5 +1,5 @@
 <?php
-/* Comments Test cases generated on: 2012-02-04 19:11:10 : 1328407870*/
+/* Comments Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('CommentsController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class CommentsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.comment', 'app.user', 'app.watch', 'app.user_card', 'app.card_variation', 'app.card', 'app.set', 'app.wiki_info', 'app.brand', 'app.acc_catalog', 'app.team', 'app.card_player', 'app.position', 'app.player', 'app.variation', 'app.grade_type', 'app.grade_value', 'app.offer', 'app.qualifier', 'app.user_cards_qualifier', 'app.theme', 'app.user_cards_theme');
+	public $fixtures = array('app.comment', 'app.user');
 
 /**
  * setUp method

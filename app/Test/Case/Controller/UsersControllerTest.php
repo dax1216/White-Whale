@@ -1,5 +1,5 @@
 <?php
-/* Users Test cases generated on: 2012-02-08 00:12:30 : 1328685150*/
+/* Users Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('UsersController', 'Controller');
 
 /**
@@ -59,6 +59,51 @@ class UsersControllerTestCase extends CakeTestCase {
 		unset($this->Users);
 
 		parent::tearDown();
+	}
+
+/**
+ * testIndex method
+ *
+ * @return void
+ */
+	public function testIndex() {
+
+	}
+
+/**
+ * testView method
+ *
+ * @return void
+ */
+	public function testView() {
+
+	}
+
+/**
+ * testAdd method
+ *
+ * @return void
+ */
+	public function testAdd() {
+
+	}
+
+/**
+ * testEdit method
+ *
+ * @return void
+ */
+	public function testEdit() {
+
+	}
+
+/**
+ * testDelete method
+ *
+ * @return void
+ */
+	public function testDelete() {
+
 	}
 
 }

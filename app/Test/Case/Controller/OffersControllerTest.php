@@ -1,5 +1,5 @@
 <?php
-/* Offers Test cases generated on: 2012-02-06 23:49:57 : 1328597397*/
+/* Offers Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
 App::uses('OffersController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class OffersControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.offer', 'app.user', 'app.watch', 'app.user_card', 'app.card_variation', 'app.card', 'app.set_info', 'app.wiki_info', 'app.brand', 'app.acc_catalog', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.grade_type', 'app.grade_value', 'app.qualifier', 'app.user_cards_qualifier', 'app.theme', 'app.user_cards_theme');
+	public $fixtures = array('app.offer', 'app.user', 'app.user_card', 'app.card_variation', 'app.card_variation_type', 'app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.grade_type', 'app.grade_value', 'app.watch', 'app.qualifier', 'app.user_cards_qualifier', 'app.theme', 'app.user_cards_theme');
 
 /**
  * setUp method
@@ -59,6 +59,51 @@ class OffersControllerTestCase extends CakeTestCase {
 		unset($this->Offers);
 
 		parent::tearDown();
+	}
+
+/**
+ * testIndex method
+ *
+ * @return void
+ */
+	public function testIndex() {
+
+	}
+
+/**
+ * testView method
+ *
+ * @return void
+ */
+	public function testView() {
+
+	}
+
+/**
+ * testAdd method
+ *
+ * @return void
+ */
+	public function testAdd() {
+
+	}
+
+/**
+ * testEdit method
+ *
+ * @return void
+ */
+	public function testEdit() {
+
+	}
+
+/**
+ * testDelete method
+ *
+ * @return void
+ */
+	public function testDelete() {
+
 	}
 
 }

@@ -4,6 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('card_variation_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('card_variation_type_id');?></th>
 			<th><?php echo $this->Paginator->sort('front_img');?></th>
 			<th><?php echo $this->Paginator->sort('rear_img');?></th>
 			<th><?php echo $this->Paginator->sort('is_base');?></th>
@@ -15,6 +16,9 @@
 	<tr>
 		<td><?php echo h($cardVariation['CardVariation']['card_variation_id']); ?>&nbsp;</td>
 		<td><?php echo h($cardVariation['CardVariation']['name']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($cardVariation['CardVariationType']['name'], array('controller' => 'card_variation_types', 'action' => 'view', $cardVariation['CardVariationType']['card_variation_type_id'])); ?>
+		</td>
 		<td><?php echo h($cardVariation['CardVariation']['front_img']); ?>&nbsp;</td>
 		<td><?php echo h($cardVariation['CardVariation']['rear_img']); ?>&nbsp;</td>
 		<td><?php echo h($cardVariation['CardVariation']['is_base']); ?>&nbsp;</td>
@@ -48,9 +52,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Card Variation'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Card Variation Types'), array('controller' => 'card_variation_types', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Card Variation Type'), array('controller' => 'card_variation_types', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List User Cards'), array('controller' => 'user_cards', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User Card'), array('controller' => 'user_cards', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

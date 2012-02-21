@@ -17,8 +17,30 @@ class CardImagesController extends AppController {
             $this->CardImage->set($this->request->data);
 
             if($this->CardImage->validates()) {
+                $card_sizes = Configure::read('card_image_sizes');
+                $card_images_dir = Configure::read('card_images_dir');
+
+                $card_images = array('frontside' => $card_frontside, 'backside' => $card_backside);
                 
+                foreach($card_images as $side => $card_image) {
+                    foreach($card_sizes as $size_label => $dimensions) {
+                        $upload_path = $card_images_dir . $size_label . DS . $side;
+                        
+                        if(!is_dir($upload_path)) {
+                            @mkdir($upload_path, 0777, true);
+                        }
+
+                        $original = $card_image['tmp_name'];
+                        $new_filename = $upload_path . DS . $card_image['name'];
+
+                        $this->ImageResizer->resize($original, $new_filename, $dimensions['width'], $dimensions['height']);
+                    }
+                }
             } 
         }
+    }
+
+    public function popup() {
+        $this->layout = 'card_image_popup';
     }
 }

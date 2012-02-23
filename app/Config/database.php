@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'car105jr',
-		'database' => 'whitewhale-dev',
+		'password' => 'huatest',
+		'database' => 'whitewhale_dev',
 	);
 }

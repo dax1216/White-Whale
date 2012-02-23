@@ -531,3 +531,30 @@
 #9 /var/www/whitewhale/White-Whale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
 #10 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #11 {main}
+2012-02-21 21:51:44 Error: [MissingConnectionException] Database connection "SQLSTATE[28000] [1045] Access denied for user 'user'@'localhost' (using password: YES)" is missing, or could not be created.
+#0 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(244): Mysql->connect()
+#1 /var/www/whitewhale/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /var/www/whitewhale/lib/Cake/Model/Model.php(3260): ConnectionManager::getDataSource('default')
+#3 /var/www/whitewhale/lib/Cake/Model/Model.php(1223): Model->getDataSource()
+#4 /var/www/whitewhale/lib/Cake/View/Helper/FormHelper.php(197): Model->schema()
+#5 /var/www/whitewhale/lib/Cake/View/Helper/FormHelper.php(450): FormHelper->_introspectModel('CardImage', 'fields')
+#6 /var/www/whitewhale/app/View/CardImages/add.ctp(2): FormHelper->create('CardImage', Array)
+#7 /var/www/whitewhale/lib/Cake/View/View.php(595): include('/var/www/whitew...')
+#8 /var/www/whitewhale/lib/Cake/View/View.php(362): View->_render('/var/www/whitew...')
+#9 /var/www/whitewhale/lib/Cake/Controller/Controller.php(900): View->render(NULL, NULL)
+#10 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(111): Controller->render()
+#11 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardImagesController), Object(CakeRequest), Object(CakeResponse))
+#12 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2012-02-23 02:05:51 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-23 02:05:52 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-23 02:06:01 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-23 02:06:01 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

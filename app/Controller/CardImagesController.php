@@ -13,7 +13,8 @@ class CardImagesController extends AppController {
         if($this->request->is('post')) {
             $card_frontside = $this->request->data['CardImage']['card_front_side'];
             $card_backside = $this->request->data['CardImage']['card_back_side'];
-
+            $card_image_type = $this->request->data['CardImage']['card_image_type'];
+            
             $this->CardImage->set($this->request->data);
 
             if($this->CardImage->validates()) {
@@ -29,13 +30,22 @@ class CardImagesController extends AppController {
                         if(!is_dir($upload_path)) {
                             @mkdir($upload_path, 0777, true);
                         }
+                        
+                        $new_file = $upload_path . DS . $card_image['name'];
 
-                        $original = $card_image['tmp_name'];
-                        $new_filename = $upload_path . DS . $card_image['name'];
-
-                        $this->ImageResizer->resize($original, $new_filename, $dimensions['width'], $dimensions['height']);
+                        $prefs = array('resize_data' => array(RESIZE_WIDTH, $dimensions[$card_image_type], null));
+                        $errors = $this->ImageResizer->uploadFile($card_image['tmp_name'], $new_file, $prefs);
+                        
+                        if (!empty($errors)) {
+                            foreach ($errors as $key => $value) {
+                                $this->Session->setFlash('The following image resize error occured.<br />Error: ' . $value);
+                                $this->redirect('/CardImages/add');
+                            }
+                        }
                     }
                 }
+                
+                $this->Session->setFlash('Card images successfully uploaded');
             } 
         }
     }

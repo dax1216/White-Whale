@@ -334,8 +334,8 @@ Cache::config('_cake_model_', array(
  * File location for card images
  */
 Configure::write('card_images_dir', WWW_ROOT . 'files' . DS . 'card_images' . DS);
-Configure::write('card_image_sizes', array('thumbnail' => array('width' => '60', 'height' => '90'),
-                                           '100x140' => array('width' => '100', 'height' => '140'),
-                                           '280x360' => array('width' => '280', 'height' => '360'),
-                                           '1000x1250' => array('width' => '1000', 'height' => '1250')));
+Configure::write('card_image_sizes', array('thumbnail' => array('vertical' => '60', 'horizontal' => '100'),
+                                           'small' => array('vertical' => '120', 'horizontal' => '240'),
+                                           'large' => array('vertical' => '270', 'horizontal' => '400'),
+                                           'max_size' => array('vertical' => '1000', 'horizontal' => '1600')));
 

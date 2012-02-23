@@ -53,4 +53,8 @@ class CardImagesController extends AppController {
     public function popup() {
         $this->layout = 'card_image_popup';
     }
+    
+    public function popup2() {
+        $this->layout = 'card_image_popup';
+    }
 }

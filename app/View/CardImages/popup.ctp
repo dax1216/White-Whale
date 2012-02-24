@@ -28,6 +28,8 @@ $(document).ready(function() {
     
     $('.jqzoom').jqzoom({
         zoomType: 'standard',
+        zoomWidth: 300,
+        zoomHeight: 300,
         lens:true,
         preloadImages: false,
         alwaysOn:true

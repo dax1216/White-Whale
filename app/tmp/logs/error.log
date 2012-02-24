@@ -573,3 +573,63 @@
 2012-02-23 22:42:46 Error: [MissingControllerException] Controller class FilesController could not be found.
 #0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-02-24 11:19:54 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:19:55 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:22:06 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:22:20 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:22:44 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:22:56 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:23:22 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:27:21 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:28:11 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:28:18 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:04 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:08 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:09 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:09 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:09 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:09 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:10 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-24 11:29:46 Error: [MissingControllerException] Controller class CssController could not be found.
+#0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

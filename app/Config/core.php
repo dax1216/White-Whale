@@ -337,5 +337,5 @@ Configure::write('card_images_dir', WWW_ROOT . 'files' . DS . 'card_images' . DS
 Configure::write('card_image_sizes', array('thumbnail' => array('vertical' => '60', 'horizontal' => '100'),
                                            'small' => array('vertical' => '120', 'horizontal' => '240'),
                                            'large' => array('vertical' => '270', 'horizontal' => '400'),
-                                           'max_size' => array('vertical' => '1000', 'horizontal' => '1600')));
+                                           'max_size' => array('vertical' => '1200', 'horizontal' => '1500')));
 

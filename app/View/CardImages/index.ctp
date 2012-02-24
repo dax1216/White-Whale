@@ -4,7 +4,7 @@
 
 <?= $this->Html->image("/files/card_images/small/frontside/kennypowersfront.jpg", array('alt' => 'Baseball player', 'class' => 'card_image_popup'))?>
 <br />
-<?= $this->Html->image("/files/card_images/small/frontside/vintagefront1.jpg", array('alt' => 'Baseball player', 'class' => 'card_image_popup2'))?>
+<?= $this->Html->image("/files/card_images/small/frontside/vintagefront1.jpeg", array('alt' => 'Baseball player', 'class' => 'card_image_popup2'))?>
 <script type="text/javascript">
     $(document).ready( function () {                        
         $('.card_image_popup').click( function () {

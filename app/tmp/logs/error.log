@@ -633,3 +633,143 @@
 2012-02-24 11:29:46 Error: [MissingControllerException] Controller class CssController could not be found.
 #0 /var/www/whitewhale/White-Whale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2012-02-25 06:04:08 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 06:04:08 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:31:16 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:31:16 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:48:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:48:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:49:39 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:49:39 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:51:35 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:51:36 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:51:36 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:52:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:52:52 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:52:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:55:17 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 10:55:17 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 11:01:05 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 11:01:39 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 11:01:39 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 11:03:08 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 11:03:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 14:21:35 Error: [MissingControllerException] Controller class CardimageController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 15:18:41 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 15:18:41 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:05:54 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:06:37 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:06:57 Error: [MissingPluginException] Plugin  could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(282): CakePlugin::path('')
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(71): Dispatcher->asset('/files/card_ima...', Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-02-25 16:07:00 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:11:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:22:28 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:26:37 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:26:37 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:27:52 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:28:04 Error: [MissingControllerException] Controller class WebrootController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:28:11 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:31:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 16:33:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:01:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:03:07 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:03:07 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:03:07 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:03:07 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:03:07 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:03:07 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:21:26 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-02-25 17:21:27 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

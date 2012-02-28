@@ -87,6 +87,18 @@
 		<dd>
 	<?php echo $setWikiInfo['SetInfo']['set_info_id'];?>
 &nbsp;</dd>
+		<dt><?php echo __('Name');?></dt>
+		<dd>
+	<?php echo $setWikiInfo['SetInfo']['name'];?>
+&nbsp;</dd>
+		<dt><?php echo __('Short Name');?></dt>
+		<dd>
+	<?php echo $setWikiInfo['SetInfo']['short_name'];?>
+&nbsp;</dd>
+		<dt><?php echo __('Subset Name');?></dt>
+		<dd>
+	<?php echo $setWikiInfo['SetInfo']['subset_name'];?>
+&nbsp;</dd>
 		<dt><?php echo __('Acc Catalog Id');?></dt>
 		<dd>
 	<?php echo $setWikiInfo['SetInfo']['acc_catalog_id'];?>
@@ -94,10 +106,6 @@
 		<dt><?php echo __('Brand Id');?></dt>
 		<dd>
 	<?php echo $setWikiInfo['SetInfo']['brand_id'];?>
-&nbsp;</dd>
-		<dt><?php echo __('Subset Name');?></dt>
-		<dd>
-	<?php echo $setWikiInfo['SetInfo']['subset_name'];?>
 &nbsp;</dd>
 		<dt><?php echo __('Dist Start Year');?></dt>
 		<dd>
@@ -114,6 +122,10 @@
 		<dt><?php echo __('Created');?></dt>
 		<dd>
 	<?php echo $setWikiInfo['SetInfo']['created'];?>
+&nbsp;</dd>
+		<dt><?php echo __('Updated');?></dt>
+		<dd>
+	<?php echo $setWikiInfo['SetInfo']['updated'];?>
 &nbsp;</dd>
 		</dl>
 	<?php endif; ?>

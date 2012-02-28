@@ -5,11 +5,9 @@
 	<?php
 		echo $this->Form->input('card_variation_id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('card_variation_type_id');
-		echo $this->Form->input('front_img');
-		echo $this->Form->input('rear_img');
-		echo $this->Form->input('is_base');
 		echo $this->Form->input('card_id');
+		echo $this->Form->input('variation_id');
+		echo $this->Form->input('is_base');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
@@ -20,9 +18,11 @@
 
 		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('CardVariation.card_variation_id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('CardVariation.card_variation_id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Card Variations'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Card Variation Types'), array('controller' => 'card_variation_types', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Variation Type'), array('controller' => 'card_variation_types', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Variations'), array('controller' => 'variations', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Variation'), array('controller' => 'variations', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Card Variation Images'), array('controller' => 'card_variation_images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Card Variation Image'), array('controller' => 'card_variation_images', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

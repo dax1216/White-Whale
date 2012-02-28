@@ -6,10 +6,12 @@
 		echo $this->Form->input('team_id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('franchise_id');
+		echo $this->Form->input('franchise_group');
 		echo $this->Form->input('league_id');
 		echo $this->Form->input('ballpark');
 		echo $this->Form->input('year_started');
 		echo $this->Form->input('year_finished');
+		echo $this->Form->input('is_minor');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

@@ -26,6 +26,31 @@
 			<?php echo h($cardPlayer['CardPlayer']['is_primary']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Card First Name'); ?></dt>
+		<dd>
+			<?php echo h($cardPlayer['CardPlayer']['card_first_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Card Last Name'); ?></dt>
+		<dd>
+			<?php echo h($cardPlayer['CardPlayer']['card_last_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Card Nick Name'); ?></dt>
+		<dd>
+			<?php echo h($cardPlayer['CardPlayer']['card_nick_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Franchise Group'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($cardPlayer['FranchiseGroup']['name'], array('controller' => 'franchise_groups', 'action' => 'view', $cardPlayer['FranchiseGroup']['franchise_group_id'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Team Id'); ?></dt>
+		<dd>
+			<?php echo h($cardPlayer['CardPlayer']['team_id']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -41,5 +66,7 @@
 		<li><?php echo $this->Html->link(__('New Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Players'), array('controller' => 'players', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Franchise Groups'), array('controller' => 'franchise_groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Franchise Group'), array('controller' => 'franchise_groups', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -60,52 +60,5 @@
 		<li><?php echo $this->Form->postLink(__('Delete Player'), array('action' => 'delete', $player['Player']['player_id']), null, __('Are you sure you want to delete # %s?', $player['Player']['player_id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Players'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Player'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Cards');?></h3>
-	<?php if (!empty($player['Card'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Card Id'); ?></th>
-		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('Card Number'); ?></th>
-		<th><?php echo __('Set Info Id'); ?></th>
-		<th><?php echo __('Card Wiki Info Id'); ?></th>
-		<th><?php echo __('Team Id'); ?></th>
-		<th><?php echo __('Notes'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Updated'); ?></th>
-		<th class="actions"><?php echo __('Actions');?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($player['Card'] as $card): ?>
-		<tr>
-			<td><?php echo $card['card_id'];?></td>
-			<td><?php echo $card['name'];?></td>
-			<td><?php echo $card['card_number'];?></td>
-			<td><?php echo $card['set_info_id'];?></td>
-			<td><?php echo $card['card_wiki_info_id'];?></td>
-			<td><?php echo $card['team_id'];?></td>
-			<td><?php echo $card['notes'];?></td>
-			<td><?php echo $card['created'];?></td>
-			<td><?php echo $card['updated'];?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'cards', 'action' => 'view', $card['card_id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'cards', 'action' => 'edit', $card['card_id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'cards', 'action' => 'delete', $card['card_id']), null, __('Are you sure you want to delete # %s?', $card['card_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>

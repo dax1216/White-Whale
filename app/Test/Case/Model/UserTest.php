@@ -1,5 +1,5 @@
 <?php
-/* User Test cases generated on: 2012-02-06 23:50:13 : 1328597413*/
+/* User Test cases generated on: 2012-02-26 00:58:55 : 1330217935*/
 App::uses('User', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class UserTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.user');
+	public $fixtures = array('app.user', 'app.user_role', 'app.image');
 
 /**
  * setUp method

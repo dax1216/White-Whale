@@ -1,14 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * CardHome Controller
+ * Cards Controller
  *
  * @property Card $Card
  */
 class CardHomeController extends AppController {
-	
-public $uses=array('Card');
 
+var $uses = array( 'Card'); 
 /**
  * index method
  *
@@ -50,8 +49,8 @@ public $uses=array('Card');
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$teams = $this->Card->Team->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'teams'));
+		$franchiseGroups = $this->Card->FranchiseGroup->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'franchiseGroups'));
 	}
 
 /**
@@ -77,8 +76,8 @@ public $uses=array('Card');
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$teams = $this->Card->Team->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'teams'));
+		$franchiseGroups = $this->Card->FranchiseGroup->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'franchiseGroups'));
 	}
 
 /**

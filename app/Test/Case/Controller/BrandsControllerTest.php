@@ -1,5 +1,5 @@
 <?php
-/* Brands Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
+/* Brands Test cases generated on: 2012-02-26 08:47:09 : 1330246029*/
 App::uses('BrandsController', 'Controller');
 
 /**

@@ -16,6 +16,11 @@
 			<?php echo $this->Html->link($team['Franchise']['name'], array('controller' => 'franchises', 'action' => 'view', $team['Franchise']['franchise_id'])); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Franchise Group'); ?></dt>
+		<dd>
+			<?php echo h($team['Team']['franchise_group']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('League'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($team['League']['name'], array('controller' => 'leagues', 'action' => 'view', $team['League']['league_id'])); ?>
@@ -34,6 +39,11 @@
 		<dt><?php echo __('Year Finished'); ?></dt>
 		<dd>
 			<?php echo h($team['Team']['year_finished']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Is Minor'); ?></dt>
+		<dd>
+			<?php echo h($team['Team']['is_minor']); ?>
 			&nbsp;
 		</dd>
 	</dl>

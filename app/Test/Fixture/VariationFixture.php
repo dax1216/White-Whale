@@ -1,5 +1,5 @@
 <?php
-/* Variation Fixture generated on: 2012-02-04 19:20:48 : 1328408448 */
+/* Variation Fixture generated on: 2012-02-24 18:01:06 : 1330106466 */
 
 /**
  * VariationFixture
@@ -14,11 +14,11 @@ class VariationFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'variation_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary', 'collate' => NULL, 'comment' => ''),
-		'title' => array('type' => 'string', 'null' => false, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'charset' => 'latin1'),
-		'front_img' => array('type' => 'string', 'null' => true, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'charset' => 'latin1'),
-		'rear_img' => array('type' => 'string', 'null' => true, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'charset' => 'latin1'),
+		'name' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 512, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'charset' => 'latin1'),
+		'short_name' => array('type' => 'string', 'null' => true, 'default' => NULL, 'length' => 45, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'charset' => 'latin1'),
+		'set_info_id' => array('type' => 'integer', 'null' => true, 'default' => NULL, 'collate' => NULL, 'comment' => ''),
 		'indexes' => array('PRIMARY' => array('column' => 'variation_id', 'unique' => 1)),
-		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'InnoDB')
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
 
 /**
@@ -29,9 +29,9 @@ class VariationFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'variation_id' => 1,
-			'title' => 'Lorem ipsum dolor sit amet',
-			'front_img' => 'Lorem ipsum dolor sit amet',
-			'rear_img' => 'Lorem ipsum dolor sit amet'
+			'name' => 'Lorem ipsum dolor sit amet',
+			'short_name' => 'Lorem ipsum dolor sit amet',
+			'set_info_id' => 1
 		),
 	);
 }

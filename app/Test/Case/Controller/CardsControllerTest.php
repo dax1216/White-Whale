@@ -1,5 +1,5 @@
 <?php
-/* Cards Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
+/* Cards Test cases generated on: 2012-02-28 07:17:30 : 1330413450*/
 App::uses('CardsController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class CardsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation', 'app.card_variation_type');
+	public $fixtures = array('app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.franchise_group', 'app.card_player', 'app.position', 'app.player', 'app.card_variation', 'app.variation', 'app.card_variation_image', 'app.image');
 
 /**
  * setUp method
@@ -59,51 +59,6 @@ class CardsControllerTestCase extends CakeTestCase {
 		unset($this->Cards);
 
 		parent::tearDown();
-	}
-
-/**
- * testIndex method
- *
- * @return void
- */
-	public function testIndex() {
-
-	}
-
-/**
- * testView method
- *
- * @return void
- */
-	public function testView() {
-
-	}
-
-/**
- * testAdd method
- *
- * @return void
- */
-	public function testAdd() {
-
-	}
-
-/**
- * testEdit method
- *
- * @return void
- */
-	public function testEdit() {
-
-	}
-
-/**
- * testDelete method
- *
- * @return void
- */
-	public function testDelete() {
-
 	}
 
 }

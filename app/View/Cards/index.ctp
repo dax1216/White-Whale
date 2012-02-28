@@ -4,9 +4,12 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('card_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('short_name');?></th>
+			<th><?php echo $this->Paginator->sort('descriptor');?></th>
 			<th><?php echo $this->Paginator->sort('card_number');?></th>
 			<th><?php echo $this->Paginator->sort('set_info_id');?></th>
 			<th><?php echo $this->Paginator->sort('card_wiki_info_id');?></th>
+			<th><?php echo $this->Paginator->sort('franchise_group_id');?></th>
 			<th><?php echo $this->Paginator->sort('team_id');?></th>
 			<th><?php echo $this->Paginator->sort('notes');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
@@ -18,16 +21,19 @@
 	<tr>
 		<td><?php echo h($card['Card']['card_id']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['name']); ?>&nbsp;</td>
+		<td><?php echo h($card['Card']['short_name']); ?>&nbsp;</td>
+		<td><?php echo h($card['Card']['descriptor']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['card_number']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($card['SetInfo']['set_info_id'], array('controller' => 'set_infos', 'action' => 'view', $card['SetInfo']['set_info_id'])); ?>
+			<?php echo $this->Html->link($card['SetInfo']['name'], array('controller' => 'set_infos', 'action' => 'view', $card['SetInfo']['set_info_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($card['CardWikiInfo']['card_wiki_info_id'], array('controller' => 'card_wiki_infos', 'action' => 'view', $card['CardWikiInfo']['card_wiki_info_id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($card['Team']['name'], array('controller' => 'teams', 'action' => 'view', $card['Team']['team_id'])); ?>
+			<?php echo $this->Html->link($card['FranchiseGroup']['name'], array('controller' => 'franchise_groups', 'action' => 'view', $card['FranchiseGroup']['franchise_group_id'])); ?>
 		</td>
+		<td><?php echo h($card['Card']['team_id']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['notes']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['created']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['updated']); ?>&nbsp;</td>
@@ -62,8 +68,8 @@
 		<li><?php echo $this->Html->link(__('New Set Info'), array('controller' => 'set_infos', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Card Wiki Infos'), array('controller' => 'card_wiki_infos', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Card Wiki Info'), array('controller' => 'card_wiki_infos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Teams'), array('controller' => 'teams', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Team'), array('controller' => 'teams', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Franchise Groups'), array('controller' => 'franchise_groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Franchise Group'), array('controller' => 'franchise_groups', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Card Players'), array('controller' => 'card_players', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Card Players'), array('controller' => 'card_players', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Card Variations'), array('controller' => 'card_variations', 'action' => 'index')); ?> </li>

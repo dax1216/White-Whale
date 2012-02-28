@@ -33,4 +33,35 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/view/957/The-App-Controller
  */
 class AppController extends Controller {
+	/*
+	 public $components = array(
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'MyCollection', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'HomePage', 'action' => 'index'),
+        	'authorize' => array('Controller')
+        )
+    );
+
+	public function isAuthorized($user) {
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true; //Admin can access every action
+		}
+		return false; // The rest don't
+	}
+
+    function beforeFilter() {
+        $this->Auth->allow('index', 'view', 'logout', 'add');
+		//$this->set('login_user_name', 'kjenson');  //$this->Auth-user('id'));
+    }
+	function beforeRender()
+	{
+		  if (!array_key_exists('requested', $this->params)) {
+                $user = $this->Session->read($this->Auth->sessionKey);
+				$this->set('login_user_name', $this->Auth->user('username'));
+				$this->set('login_user_id', $this->Auth->user('user_id'));
+                $this->set(compact('user'));
+        } 
+	}
+	*/
 }

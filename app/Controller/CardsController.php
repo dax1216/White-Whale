@@ -49,8 +49,8 @@ class CardsController extends AppController {
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$teams = $this->Card->Team->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'teams'));
+		$franchiseGroups = $this->Card->FranchiseGroup->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'franchiseGroups'));
 	}
 
 /**
@@ -76,8 +76,8 @@ class CardsController extends AppController {
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$teams = $this->Card->Team->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'teams'));
+		$franchiseGroups = $this->Card->FranchiseGroup->find('list');
+		$this->set(compact('setInfos', 'cardWikiInfos', 'franchiseGroups'));
 	}
 
 /**

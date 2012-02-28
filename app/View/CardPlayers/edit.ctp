@@ -8,6 +8,11 @@
 		echo $this->Form->input('position_id');
 		echo $this->Form->input('player_id');
 		echo $this->Form->input('is_primary');
+		echo $this->Form->input('card_first_name');
+		echo $this->Form->input('card_last_name');
+		echo $this->Form->input('card_nick_name');
+		echo $this->Form->input('franchise_group_id');
+		echo $this->Form->input('team_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
@@ -24,5 +29,7 @@
 		<li><?php echo $this->Html->link(__('New Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Players'), array('controller' => 'players', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Franchise Groups'), array('controller' => 'franchise_groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Franchise Group'), array('controller' => 'franchise_groups', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

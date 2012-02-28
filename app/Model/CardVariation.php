@@ -29,29 +29,9 @@ class CardVariation extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'card_variation_type_id' => array(
+		'variation_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'front_img' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'rear_img' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -89,9 +69,9 @@ class CardVariation extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'CardVariationType' => array(
-			'className' => 'CardVariationType',
-			'foreignKey' => 'card_variation_type_id',
+		'Variation' => array(
+			'className' => 'Variation',
+			'foreignKey' => 'variation_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -104,4 +84,20 @@ class CardVariation extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+   public $hasMany = array(
+		'CardVariationImage' => array(
+			'className' => 'CardVariationImage',
+			'foreignKey' => 'card_variation_image_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+    );
 }

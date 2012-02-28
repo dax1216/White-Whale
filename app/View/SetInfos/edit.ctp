@@ -4,9 +4,11 @@
 		<legend><?php echo __('Edit Set Info'); ?></legend>
 	<?php
 		echo $this->Form->input('set_info_id');
+		echo $this->Form->input('name');
+		echo $this->Form->input('short_name');
+		echo $this->Form->input('subset_name');
 		echo $this->Form->input('acc_catalog_id');
 		echo $this->Form->input('brand_id');
-		echo $this->Form->input('subset_name');
 		echo $this->Form->input('dist_start_year');
 		echo $this->Form->input('dist_end_year');
 		echo $this->Form->input('set_wiki_info_id');

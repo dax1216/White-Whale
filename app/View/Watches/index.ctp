@@ -17,7 +17,7 @@
 			<?php echo $this->Html->link($watch['UserCard']['user_card_id'], array('controller' => 'user_cards', 'action' => 'view', $watch['UserCard']['user_card_id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($watch['User']['full_name'], array('controller' => 'users', 'action' => 'view', $watch['User']['user_id'])); ?>
+			<?php echo $this->Html->link($watch['User']['user_id'], array('controller' => 'users', 'action' => 'view', $watch['User']['user_id'])); ?>
 		</td>
 		<td><?php echo h($watch['Watch']['created']); ?>&nbsp;</td>
 		<td><?php echo h($watch['Watch']['updated']); ?>&nbsp;</td>

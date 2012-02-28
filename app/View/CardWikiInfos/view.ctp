@@ -66,6 +66,14 @@
 		<dd>
 	<?php echo $cardWikiInfo['Card']['name'];?>
 &nbsp;</dd>
+		<dt><?php echo __('Short Name');?></dt>
+		<dd>
+	<?php echo $cardWikiInfo['Card']['short_name'];?>
+&nbsp;</dd>
+		<dt><?php echo __('Descriptor');?></dt>
+		<dd>
+	<?php echo $cardWikiInfo['Card']['descriptor'];?>
+&nbsp;</dd>
 		<dt><?php echo __('Card Number');?></dt>
 		<dd>
 	<?php echo $cardWikiInfo['Card']['card_number'];?>
@@ -89,10 +97,6 @@
 		<dt><?php echo __('Created');?></dt>
 		<dd>
 	<?php echo $cardWikiInfo['Card']['created'];?>
-&nbsp;</dd>
-		<dt><?php echo __('Updated');?></dt>
-		<dd>
-	<?php echo $cardWikiInfo['Card']['updated'];?>
 &nbsp;</dd>
 		</dl>
 	<?php endif; ?>

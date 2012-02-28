@@ -47,8 +47,6 @@ class PlayersController extends AppController {
 				$this->Session->setFlash(__('The player could not be saved. Please, try again.'));
 			}
 		}
-		$cards = $this->Player->Card->find('list');
-		$this->set(compact('cards'));
 	}
 
 /**
@@ -72,8 +70,6 @@ class PlayersController extends AppController {
 		} else {
 			$this->request->data = $this->Player->read(null, $id);
 		}
-		$cards = $this->Player->Card->find('list');
-		$this->set(compact('cards'));
 	}
 
 /**

@@ -7,6 +7,11 @@
 			<th><?php echo $this->Paginator->sort('position_id');?></th>
 			<th><?php echo $this->Paginator->sort('player_id');?></th>
 			<th><?php echo $this->Paginator->sort('is_primary');?></th>
+			<th><?php echo $this->Paginator->sort('card_first_name');?></th>
+			<th><?php echo $this->Paginator->sort('card_last_name');?></th>
+			<th><?php echo $this->Paginator->sort('card_nick_name');?></th>
+			<th><?php echo $this->Paginator->sort('franchise_group_id');?></th>
+			<th><?php echo $this->Paginator->sort('team_id');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -23,6 +28,13 @@
 			<?php echo $this->Html->link($cardPlayer['Player']['name'], array('controller' => 'players', 'action' => 'view', $cardPlayer['Player']['player_id'])); ?>
 		</td>
 		<td><?php echo h($cardPlayer['CardPlayer']['is_primary']); ?>&nbsp;</td>
+		<td><?php echo h($cardPlayer['CardPlayer']['card_first_name']); ?>&nbsp;</td>
+		<td><?php echo h($cardPlayer['CardPlayer']['card_last_name']); ?>&nbsp;</td>
+		<td><?php echo h($cardPlayer['CardPlayer']['card_nick_name']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($cardPlayer['FranchiseGroup']['name'], array('controller' => 'franchise_groups', 'action' => 'view', $cardPlayer['FranchiseGroup']['franchise_group_id'])); ?>
+		</td>
+		<td><?php echo h($cardPlayer['CardPlayer']['team_id']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $cardPlayer['CardPlayer']['card_player_id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $cardPlayer['CardPlayer']['card_player_id'])); ?>
@@ -56,5 +68,7 @@
 		<li><?php echo $this->Html->link(__('New Position'), array('controller' => 'positions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Players'), array('controller' => 'players', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Franchise Groups'), array('controller' => 'franchise_groups', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Franchise Group'), array('controller' => 'franchise_groups', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

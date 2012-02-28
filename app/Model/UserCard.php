@@ -170,7 +170,14 @@ class UserCard extends AppModel {
             'order'         => '',
             'limit'         => '',
             'dependent'     => true
-        )
+        ),
+		'MycollectionImage' => array(
+			'className' => 'MycollectionImage',
+			'foreignKey' => 'mycollection_image_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
     );
 	
 }

@@ -74,4 +74,20 @@ class Offer extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+   public $hasMany = array(
+		'OfferImage' => array(
+			'className' => 'OfferImage',
+			'foreignKey' => 'offer_image_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+    );
 }

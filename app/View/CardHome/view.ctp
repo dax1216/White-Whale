@@ -41,11 +41,6 @@
 			<?php echo $this->Html->link($card['FranchiseGroup']['name'], array('controller' => 'franchise_groups', 'action' => 'view', $card['FranchiseGroup']['franchise_group_id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Team Id'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['team_id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Notes'); ?></dt>
 		<dd>
 			<?php echo h($card['Card']['notes']); ?>
@@ -96,7 +91,6 @@
 		<th><?php echo __('Card Last Name'); ?></th>
 		<th><?php echo __('Card Nick Name'); ?></th>
 		<th><?php echo __('Franchise Group Id'); ?></th>
-		<th><?php echo __('Team Id'); ?></th>
 		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -112,7 +106,6 @@
 			<td><?php echo $cardPlayers['card_last_name'];?></td>
 			<td><?php echo $cardPlayers['card_nick_name'];?></td>
 			<td><?php echo $cardPlayers['franchise_group_id'];?></td>
-			<td><?php echo $cardPlayers['team_id'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'card_players', 'action' => 'view', $cardPlayers['card_player_id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'card_players', 'action' => 'edit', $cardPlayers['card_player_id'])); ?>

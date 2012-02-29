@@ -10,7 +10,6 @@
 			<th><?php echo $this->Paginator->sort('set_info_id');?></th>
 			<th><?php echo $this->Paginator->sort('card_wiki_info_id');?></th>
 			<th><?php echo $this->Paginator->sort('franchise_group_id');?></th>
-			<th><?php echo $this->Paginator->sort('team_id');?></th>
 			<th><?php echo $this->Paginator->sort('notes');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('updated');?></th>
@@ -33,7 +32,6 @@
 		<td>
 			<?php echo $this->Html->link($card['FranchiseGroup']['name'], array('controller' => 'franchise_groups', 'action' => 'view', $card['FranchiseGroup']['franchise_group_id'])); ?>
 		</td>
-		<td><?php echo h($card['Card']['team_id']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['notes']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['created']); ?>&nbsp;</td>
 		<td><?php echo h($card['Card']['updated']); ?>&nbsp;</td>

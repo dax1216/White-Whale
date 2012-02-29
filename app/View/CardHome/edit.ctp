@@ -11,7 +11,6 @@
 		echo $this->Form->input('set_info_id');
 		echo $this->Form->input('card_wiki_info_id');
 		echo $this->Form->input('franchise_group_id');
-		echo $this->Form->input('team_id');
 		echo $this->Form->input('notes');
 	?>
 	</fieldset>

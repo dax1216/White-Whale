@@ -7,6 +7,6 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => 'car105jr',
-		'database' => 'whitewhale-dev',
+		'database' => 'whitewhale-dev2',
 	);
 }

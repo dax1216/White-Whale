@@ -30,7 +30,7 @@
 		</div>
 		<div class="row">
 			<div class="span12">
-				<?php echo $this->Form->input( 'set_info', array( 'label' => false ) ); ?>
+				<?php echo $this->Form->input( 'set_info_id', array( 'label' => false ) ); ?>
 			</div>
 		</div>
 	</section>
@@ -45,10 +45,9 @@
 			<div class="span4">
 				<?php
 					echo $this->Form->input('name');
+					echo $this->Form->input('descriptor');
 					echo $this->Form->input('card_number');
-					// echo $this->Form->input('set_info_id');
-					// echo $this->Form->input('card_wiki_info_id');
-					echo $this->Form->input('team_id');
+					echo $this->Form->input('franchise_group_id');
 					echo $this->Form->input('notes', array( 'type' => 'textarea' ) );
 				?>				
 			</div>

@@ -120,7 +120,7 @@ class Card extends AppModel {
             'limit'         => '',
             'dependent'     => true
         ),
-		'CardVariation' => array(
+	'CardVariation' => array(
             'className'     => 'CardVariation',
             'foreignKey'    => 'card_id',
             'conditions'    => '',

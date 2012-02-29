@@ -50,11 +50,16 @@ public $uses=array('Card');
 		}
 		$setInfos = $this->Card->SetInfo->find('list');
 		$cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-		$teams = $this->Card->Team->find('list');
+		// $teams = $this->Card->Team->find('list');
                 $players = $this->Card->CardPlayers->Player->find('list', array( 'order' => 'name ASC' ) );
                 $positions = $this->Card->CardPlayers->Position->find('list'); 
                 $cardVariationTypes = $this->Card->CardVariation->CardVariationType->find('list');
-		$this->set(compact('setInfos', 'cardWikiInfos', 'teams', 'players', 'positions','cardVariationTypes'));
+                
+                // Franchise lists
+                $franchises = $this->Card->Team->Franchise->find('list');
+
+                
+		$this->set(compact('setInfos', 'cardWikiInfos', 'players', 'positions','cardVariationTypes','franchises'));
 	}
 
 /**

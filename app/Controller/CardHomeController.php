@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class CardHomeController extends AppController {
 	
 public $uses=array('Card');
-
+public $components = array('RequestHandler');
 /**
  * index method
  *
@@ -40,6 +40,10 @@ public $uses=array('Card');
  */
 	public function add() {
 		if ($this->request->is('post')) {
+                        echo '<pre>';
+                        var_dump( $this->request );
+                        exit;
+                    
 			$this->Card->create();
 			if ($this->Card->save($this->request->data)) {
 				$this->Session->setFlash(__('The card has been saved'));
@@ -60,7 +64,7 @@ public $uses=array('Card');
                 
                 // List of various positions
                 $positions = $this->Card->CardPlayers->Position->find('list'); 
-                
+
                 // List of franchise groups
                 $franchiseGroups = $this->Card->FranchiseGroup->find('list');
 
@@ -116,4 +120,13 @@ public $uses=array('Card');
 		$this->Session->setFlash(__('Card was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+	public function ajax_add_player_row($row_count = 0) {
+	
+		if ($this->RequestHandler->isAjax()) { 
+			$this->set('row_count', $row_count);
+			$this->set('data', $this->request->data);
+			$this->render('/elements/cardhome/add_player_row');
+		} 
+	}        
 }

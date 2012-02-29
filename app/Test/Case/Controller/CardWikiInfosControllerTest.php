@@ -1,5 +1,5 @@
 <?php
-/* CardWikiInfos Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
+/* CardWikiInfos Test cases generated on: 2012-02-26 08:47:10 : 1330246030*/
 App::uses('CardWikiInfosController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class CardWikiInfosControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.card_wiki_info', 'app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation', 'app.card_variation_type');
+	public $fixtures = array('app.card_wiki_info', 'app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.team', 'app.franchise', 'app.league', 'app.card_player', 'app.position', 'app.player', 'app.card_variation', 'app.variation', 'app.card_variation_image', 'app.rear_img', 'app.front_img');
 
 /**
  * setUp method

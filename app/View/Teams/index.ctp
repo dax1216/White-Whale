@@ -5,10 +5,12 @@
 			<th><?php echo $this->Paginator->sort('team_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('franchise_id');?></th>
+			<th><?php echo $this->Paginator->sort('franchise_group');?></th>
 			<th><?php echo $this->Paginator->sort('league_id');?></th>
 			<th><?php echo $this->Paginator->sort('ballpark');?></th>
 			<th><?php echo $this->Paginator->sort('year_started');?></th>
 			<th><?php echo $this->Paginator->sort('year_finished');?></th>
+			<th><?php echo $this->Paginator->sort('is_minor');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -19,12 +21,14 @@
 		<td>
 			<?php echo $this->Html->link($team['Franchise']['name'], array('controller' => 'franchises', 'action' => 'view', $team['Franchise']['franchise_id'])); ?>
 		</td>
+		<td><?php echo h($team['Team']['franchise_group']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($team['League']['name'], array('controller' => 'leagues', 'action' => 'view', $team['League']['league_id'])); ?>
 		</td>
 		<td><?php echo h($team['Team']['ballpark']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['year_started']); ?>&nbsp;</td>
 		<td><?php echo h($team['Team']['year_finished']); ?>&nbsp;</td>
+		<td><?php echo h($team['Team']['is_minor']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $team['Team']['team_id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $team['Team']['team_id'])); ?>

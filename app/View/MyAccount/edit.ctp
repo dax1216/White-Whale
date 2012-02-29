@@ -1,16 +1,15 @@
 <div class="users form">
 <?php echo $this->Form->create('User');?>
 	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
+		<legend><?php echo __('Account Details'); ?></legend>
 	<?php
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('full_name');
 		echo $this->Form->input('user_name');
-		echo $this->Form->input('password');
 		echo $this->Form->input('paypal_account_name');
 		echo $this->Form->input('address');
 		echo $this->Form->input('phone');
-		echo $this->Form->input('last_login');
+		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

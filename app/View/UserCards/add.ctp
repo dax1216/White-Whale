@@ -11,8 +11,6 @@
 		echo $this->Form->input('own_card');
 		echo $this->Form->input('active_sell');
 		echo $this->Form->input('white_whale');
-		echo $this->Form->input('front_img');
-		echo $this->Form->input('rear_img');
 		echo $this->Form->input('bought_date');
 		echo $this->Form->input('listed_date');
 		echo $this->Form->input('sell_price');
@@ -43,6 +41,8 @@
 		<li><?php echo $this->Html->link(__('New Watch'), array('controller' => 'watches', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Offers'), array('controller' => 'offers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Offer'), array('controller' => 'offers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Mycollection Images'), array('controller' => 'mycollection_images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Mycollection Image'), array('controller' => 'mycollection_images', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Qualifiers'), array('controller' => 'qualifiers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Qualifier'), array('controller' => 'qualifiers', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Themes'), array('controller' => 'themes', 'action' => 'index')); ?> </li>

@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($theme['User']['full_name'], array('controller' => 'users', 'action' => 'view', $theme['User']['user_id'])); ?>
+			<?php echo $this->Html->link($theme['User']['user_id'], array('controller' => 'users', 'action' => 'view', $theme['User']['user_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Parent Theme'); ?></dt>
@@ -87,8 +87,6 @@
 		<th><?php echo __('Own Card'); ?></th>
 		<th><?php echo __('Active Sell'); ?></th>
 		<th><?php echo __('White Whale'); ?></th>
-		<th><?php echo __('Front Img'); ?></th>
-		<th><?php echo __('Rear Img'); ?></th>
 		<th><?php echo __('Bought Date'); ?></th>
 		<th><?php echo __('Listed Date'); ?></th>
 		<th><?php echo __('Sell Price'); ?></th>
@@ -113,8 +111,6 @@
 			<td><?php echo $userCard['own_card'];?></td>
 			<td><?php echo $userCard['active_sell'];?></td>
 			<td><?php echo $userCard['white_whale'];?></td>
-			<td><?php echo $userCard['front_img'];?></td>
-			<td><?php echo $userCard['rear_img'];?></td>
 			<td><?php echo $userCard['bought_date'];?></td>
 			<td><?php echo $userCard['listed_date'];?></td>
 			<td><?php echo $userCard['sell_price'];?></td>

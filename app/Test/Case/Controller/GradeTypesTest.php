@@ -1,5 +1,5 @@
 <?php
-/* GradeTypes Test cases generated on: 2012-02-15 16:03:31 : 1329347011*/
+/* GradeTypes Test cases generated on: 2012-02-26 08:47:10 : 1330246030*/
 App::uses('GradeTypes', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class GradeTypesTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.comment', 'app.user');
+	public $fixtures = array('app.comment', 'app.user', 'app.user_role', 'app.image');
 
 /**
  * setUp method

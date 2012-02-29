@@ -1,5 +1,5 @@
 <?php
-/* Card Test cases generated on: 2012-02-06 17:15:10 : 1328573710*/
+/* Card Test cases generated on: 2012-02-26 01:03:10 : 1330218190*/
 App::uses('Card', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class CardTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.card', 'app.set_info', 'app.wiki_info', 'app.brand', 'app.acc_catalog', 'app.team', 'app.franchise', 'app.league', 'app.user', 'app.user_card', 'app.ards_qualifier', 'app.user_cards_qualifier', 'app.ards_theme', 'app.user_cards_theme');
+	public $fixtures = array('app.card', 'app.set_info', 'app.set_wiki_info', 'app.brand', 'app.acc_catalog', 'app.card_wiki_info', 'app.team', 'app.franchise', 'app.league', 'app.user', 'app.user_role', 'app.image', 'app.user_card', 'app.ards_qualifier', 'app.user_cards_qualifier', 'app.ards_theme', 'app.user_cards_theme');
 
 /**
  * setUp method

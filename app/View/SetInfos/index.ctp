@@ -3,32 +3,38 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('set_info_id');?></th>
+			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort('short_name');?></th>
+			<th><?php echo $this->Paginator->sort('subset_name');?></th>
 			<th><?php echo $this->Paginator->sort('acc_catalog_id');?></th>
 			<th><?php echo $this->Paginator->sort('brand_id');?></th>
-			<th><?php echo $this->Paginator->sort('subset_name');?></th>
 			<th><?php echo $this->Paginator->sort('dist_start_year');?></th>
 			<th><?php echo $this->Paginator->sort('dist_end_year');?></th>
 			<th><?php echo $this->Paginator->sort('set_wiki_info_id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
+			<th><?php echo $this->Paginator->sort('updated');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 	foreach ($setInfos as $setInfo): ?>
 	<tr>
 		<td><?php echo h($setInfo['SetInfo']['set_info_id']); ?>&nbsp;</td>
+		<td><?php echo h($setInfo['SetInfo']['name']); ?>&nbsp;</td>
+		<td><?php echo h($setInfo['SetInfo']['short_name']); ?>&nbsp;</td>
+		<td><?php echo h($setInfo['SetInfo']['subset_name']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($setInfo['AccCatalog']['name'], array('controller' => 'acc_catalogs', 'action' => 'view', $setInfo['AccCatalog']['acc_catalog_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($setInfo['Brand']['name'], array('controller' => 'brands', 'action' => 'view', $setInfo['Brand']['brand_id'])); ?>
 		</td>
-		<td><?php echo h($setInfo['SetInfo']['subset_name']); ?>&nbsp;</td>
 		<td><?php echo h($setInfo['SetInfo']['dist_start_year']); ?>&nbsp;</td>
 		<td><?php echo h($setInfo['SetInfo']['dist_end_year']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($setInfo['SetWikiInfo']['set_wiki_info_id'], array('controller' => 'set_wiki_infos', 'action' => 'view', $setInfo['SetWikiInfo']['set_wiki_info_id'])); ?>
 		</td>
 		<td><?php echo h($setInfo['SetInfo']['created']); ?>&nbsp;</td>
+		<td><?php echo h($setInfo['SetInfo']['updated']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $setInfo['SetInfo']['set_info_id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $setInfo['SetInfo']['set_info_id'])); ?>

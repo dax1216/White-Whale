@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($userCard['User']['full_name'], array('controller' => 'users', 'action' => 'view', $userCard['User']['user_id'])); ?>
+			<?php echo $this->Html->link($userCard['User']['user_id'], array('controller' => 'users', 'action' => 'view', $userCard['User']['user_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Card Variation'); ?></dt>
@@ -44,16 +44,6 @@
 		<dt><?php echo __('White Whale'); ?></dt>
 		<dd>
 			<?php echo h($userCard['UserCard']['white_whale']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Front Img'); ?></dt>
-		<dd>
-			<?php echo h($userCard['UserCard']['front_img']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Rear Img'); ?></dt>
-		<dd>
-			<?php echo h($userCard['UserCard']['rear_img']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Bought Date'); ?></dt>
@@ -122,6 +112,8 @@
 		<li><?php echo $this->Html->link(__('New Watch'), array('controller' => 'watches', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Offers'), array('controller' => 'offers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Offer'), array('controller' => 'offers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Mycollection Images'), array('controller' => 'mycollection_images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Mycollection Image'), array('controller' => 'mycollection_images', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Qualifiers'), array('controller' => 'qualifiers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Qualifier'), array('controller' => 'qualifiers', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Themes'), array('controller' => 'themes', 'action' => 'index')); ?> </li>
@@ -199,6 +191,43 @@
 	<div class="actions">
 		<ul>
 			<li><?php echo $this->Html->link(__('New Offer'), array('controller' => 'offers', 'action' => 'add'));?> </li>
+		</ul>
+	</div>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Mycollection Images');?></h3>
+	<?php if (!empty($userCard['MycollectionImage'])):?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Mycollection Image Id'); ?></th>
+		<th><?php echo __('User Card Id'); ?></th>
+		<th><?php echo __('Rear Img Id'); ?></th>
+		<th><?php echo __('Front Img Id'); ?></th>
+		<th><?php echo __('Is Active'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
+	</tr>
+	<?php
+		$i = 0;
+		foreach ($userCard['MycollectionImage'] as $mycollectionImage): ?>
+		<tr>
+			<td><?php echo $mycollectionImage['mycollection_image_id'];?></td>
+			<td><?php echo $mycollectionImage['user_card_id'];?></td>
+			<td><?php echo $mycollectionImage['rear_img_id'];?></td>
+			<td><?php echo $mycollectionImage['front_img_id'];?></td>
+			<td><?php echo $mycollectionImage['is_active'];?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'mycollection_images', 'action' => 'view', $mycollectionImage['mycollection_image_id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'mycollection_images', 'action' => 'edit', $mycollectionImage['mycollection_image_id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'mycollection_images', 'action' => 'delete', $mycollectionImage['mycollection_image_id']), null, __('Are you sure you want to delete # %s?', $mycollectionImage['mycollection_image_id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Mycollection Image'), array('controller' => 'mycollection_images', 'action' => 'add'));?> </li>
 		</ul>
 	</div>
 </div>

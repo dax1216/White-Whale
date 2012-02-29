@@ -4,9 +4,9 @@ App::uses('AppModel', 'Model');
  * CardImages Model
  */
 class CardImage extends AppModel {
-    public $name = 'CardImage';
+    public $use_table = false;
     
-    public $primaryKey = 'card_image_id';        
+    public $name = 'CardImage';    
     
     public $validate = array(
         'card_front_side' => array (

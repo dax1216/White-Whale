@@ -47,6 +47,9 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
+		$userRoles = $this->User->UserRole->find('list');
+		$images = $this->User->Image->find('list');
+		$this->set(compact('userRoles', 'images'));
 	}
 
 /**
@@ -70,6 +73,9 @@ class UsersController extends AppController {
 		} else {
 			$this->request->data = $this->User->read(null, $id);
 		}
+		$userRoles = $this->User->UserRole->find('list');
+		$images = $this->User->Image->find('list');
+		$this->set(compact('userRoles', 'images'));
 	}
 
 /**

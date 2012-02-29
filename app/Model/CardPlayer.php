@@ -90,6 +90,13 @@ class CardPlayer extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'FranchiseGroup' => array(
+			'className' => 'FranchiseGroup',
+			'foreignKey' => 'franchise_group_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 }

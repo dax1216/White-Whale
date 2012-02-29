@@ -20,5 +20,7 @@
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List User Cards'), array('controller' => 'user_cards', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User Card'), array('controller' => 'user_cards', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Offer Images'), array('controller' => 'offer_images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Offer Image'), array('controller' => 'offer_images', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

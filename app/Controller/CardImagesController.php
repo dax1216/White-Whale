@@ -4,14 +4,8 @@ App::uses('AppController', 'Controller');
 class CardImagesController extends AppController {
     public $name = 'CardImages';
     public $components = array('ImageResizer');
-
-    public function index($card_image_id = null) {
-        $card_image = $this->CardImage->findByCardImageId($card_image_id);
-            
-        $this->set('card_image', $card_image);
-    }
     
-    public function add($card_image_id = null) {    
+    public function add() {    
         $this->layout = 'card_images';
         
         $card_images_dir = Configure::read('card_images_dir');
@@ -61,40 +55,26 @@ class CardImagesController extends AppController {
                         if (!empty($errors)) {
                             foreach ($errors as $key => $value) {
                                 $this->Session->setFlash('The following image resize error occured.<br />Error: ' . $value);
-                                $this->redirect('/CardImages/add');
+                                
+                                return false;
                             }
                         } 
                     }
-                }
-                
-                $card_image_data['CardImage'] = array(  'front_img' => $front_img, 
-                                                        'rear_img' => $rear_img,
-                                                        'card_orientation' => $card_orientation);
-                
-                $this->CardImage->create();                                
-                
-                $this->CardImage->save($card_image_data, false);
-                
-                $this->Session->setFlash('Card images successfully uploaded');
-                $this->redirect('/CardImages/add/' . $this->CardImage->id);                
+                }                                          
             } 
+            
+            return true;
         }
         
-        if(is_numeric($card_image_id)) {
-            $card_image = $this->CardImage->findByCardImageId($card_image_id);
-            
-            $this->set('card_image', $card_image);
-        }
     }
 
-    public function popup($card_image_id = null) {
-        if(is_numeric($card_image_id)) {
-            $this->layout = 'card_images';
+    public function popup($front_img_id = null, $rear_img_id) {        
+        $this->layout = 'card_images';
 
-            $card_image = $this->CardImage->findByCardImageId($card_image_id);
+        $card_image = $this->Image->findByImageId($image_id);
 
-            $this->set('card_image', $card_image);
-        }
+        $this->set('card_image', $card_image);
+        
     }
     
     
@@ -103,20 +83,21 @@ class CardImagesController extends AppController {
             $card_sizes = Configure::read('card_image_sizes');
             $card_images_dir = Configure::read('card_images_dir');                
 
-            $card_image = $this->CardImage->find('first', array(
-                                            'conditions' => array('CardImage.card_image_id' => $id)));
+            $card_image = $this->Image->find('first', array(
+                                            'conditions' => array('Image.image_id' => $id)));
             
             foreach($card_sizes as $size_label => $dimensions) {
-                $file_path = $card_images_dir . $size_label . DS . 'frontside' . DS . $card_image['CardImage']['front_img'];
+                $file_path = $card_images_dir . $size_label . DS . 'frontside' . DS . $card_image['Image']['file_name'];
                 @unlink($file_path);
 
-                $file_path = $card_images_dir . $size_label . DS . 'backside' . DS . $card_image['CardImage']['rear_img'];
+                $file_path = $card_images_dir . $size_label . DS . 'backside' . DS . $card_image['Image']['file_name'];
                 @unlink($file_path);
             }
             
-            $this->CardImage->delete($id);
+            $this->Image->delete($id);
         } else {
             $this->redirect('/');
         }
     }
+
 }

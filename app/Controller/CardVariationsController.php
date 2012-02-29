@@ -47,9 +47,9 @@ class CardVariationsController extends AppController {
 				$this->Session->setFlash(__('The card variation could not be saved. Please, try again.'));
 			}
 		}
-		$cardVariationTypes = $this->CardVariation->CardVariationType->find('list');
+		$variations = $this->CardVariation->Variation->find('list');
 		$cards = $this->CardVariation->Card->find('list');
-		$this->set(compact('cardVariationTypes', 'cards'));
+		$this->set(compact('variations', 'cards'));
 	}
 
 /**
@@ -73,9 +73,9 @@ class CardVariationsController extends AppController {
 		} else {
 			$this->request->data = $this->CardVariation->read(null, $id);
 		}
-		$cardVariationTypes = $this->CardVariation->CardVariationType->find('list');
+		$variations = $this->CardVariation->Variation->find('list');
 		$cards = $this->CardVariation->Card->find('list');
-		$this->set(compact('cardVariationTypes', 'cards'));
+		$this->set(compact('variations', 'cards'));
 	}
 
 /**

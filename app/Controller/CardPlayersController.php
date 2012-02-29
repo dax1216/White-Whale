@@ -50,7 +50,8 @@ class CardPlayersController extends AppController {
 		$cards = $this->CardPlayer->Card->find('list');
 		$positions = $this->CardPlayer->Position->find('list');
 		$players = $this->CardPlayer->Player->find('list');
-		$this->set(compact('cards', 'positions', 'players'));
+		$franchiseGroups = $this->CardPlayer->FranchiseGroup->find('list');
+		$this->set(compact('cards', 'positions', 'players', 'franchiseGroups'));
 	}
 
 /**
@@ -77,7 +78,8 @@ class CardPlayersController extends AppController {
 		$cards = $this->CardPlayer->Card->find('list');
 		$positions = $this->CardPlayer->Position->find('list');
 		$players = $this->CardPlayer->Player->find('list');
-		$this->set(compact('cards', 'positions', 'players'));
+		$franchiseGroups = $this->CardPlayer->FranchiseGroup->find('list');
+		$this->set(compact('cards', 'positions', 'players', 'franchiseGroups'));
 	}
 
 /**

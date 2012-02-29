@@ -6,6 +6,21 @@
 			<?php echo h($setInfo['SetInfo']['set_info_id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Name'); ?></dt>
+		<dd>
+			<?php echo h($setInfo['SetInfo']['name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Short Name'); ?></dt>
+		<dd>
+			<?php echo h($setInfo['SetInfo']['short_name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Subset Name'); ?></dt>
+		<dd>
+			<?php echo h($setInfo['SetInfo']['subset_name']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Acc Catalog'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($setInfo['AccCatalog']['name'], array('controller' => 'acc_catalogs', 'action' => 'view', $setInfo['AccCatalog']['acc_catalog_id'])); ?>
@@ -14,11 +29,6 @@
 		<dt><?php echo __('Brand'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($setInfo['Brand']['name'], array('controller' => 'brands', 'action' => 'view', $setInfo['Brand']['brand_id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Subset Name'); ?></dt>
-		<dd>
-			<?php echo h($setInfo['SetInfo']['subset_name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Dist Start Year'); ?></dt>
@@ -39,6 +49,11 @@
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($setInfo['SetInfo']['created']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Updated'); ?></dt>
+		<dd>
+			<?php echo h($setInfo['SetInfo']['updated']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -67,13 +82,14 @@
 	<tr>
 		<th><?php echo __('Card Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
+		<th><?php echo __('Short Name'); ?></th>
+		<th><?php echo __('Descriptor'); ?></th>
 		<th><?php echo __('Card Number'); ?></th>
 		<th><?php echo __('Set Info Id'); ?></th>
 		<th><?php echo __('Card Wiki Info Id'); ?></th>
 		<th><?php echo __('Team Id'); ?></th>
 		<th><?php echo __('Notes'); ?></th>
 		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Updated'); ?></th>
 		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -82,13 +98,14 @@
 		<tr>
 			<td><?php echo $card['card_id'];?></td>
 			<td><?php echo $card['name'];?></td>
+			<td><?php echo $card['short_name'];?></td>
+			<td><?php echo $card['descriptor'];?></td>
 			<td><?php echo $card['card_number'];?></td>
 			<td><?php echo $card['set_info_id'];?></td>
 			<td><?php echo $card['card_wiki_info_id'];?></td>
 			<td><?php echo $card['team_id'];?></td>
 			<td><?php echo $card['notes'];?></td>
 			<td><?php echo $card['created'];?></td>
-			<td><?php echo $card['updated'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'cards', 'action' => 'view', $card['card_id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'cards', 'action' => 'edit', $card['card_id'])); ?>

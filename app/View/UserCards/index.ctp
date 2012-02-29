@@ -11,8 +11,6 @@
 			<th><?php echo $this->Paginator->sort('own_card');?></th>
 			<th><?php echo $this->Paginator->sort('active_sell');?></th>
 			<th><?php echo $this->Paginator->sort('white_whale');?></th>
-			<th><?php echo $this->Paginator->sort('front_img');?></th>
-			<th><?php echo $this->Paginator->sort('rear_img');?></th>
 			<th><?php echo $this->Paginator->sort('bought_date');?></th>
 			<th><?php echo $this->Paginator->sort('listed_date');?></th>
 			<th><?php echo $this->Paginator->sort('sell_price');?></th>
@@ -29,7 +27,7 @@
 	<tr>
 		<td><?php echo h($userCard['UserCard']['user_card_id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($userCard['User']['full_name'], array('controller' => 'users', 'action' => 'view', $userCard['User']['user_id'])); ?>
+			<?php echo $this->Html->link($userCard['User']['user_id'], array('controller' => 'users', 'action' => 'view', $userCard['User']['user_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($userCard['CardVariation']['name'], array('controller' => 'card_variations', 'action' => 'view', $userCard['CardVariation']['card_variation_id'])); ?>
@@ -44,8 +42,6 @@
 		<td><?php echo h($userCard['UserCard']['own_card']); ?>&nbsp;</td>
 		<td><?php echo h($userCard['UserCard']['active_sell']); ?>&nbsp;</td>
 		<td><?php echo h($userCard['UserCard']['white_whale']); ?>&nbsp;</td>
-		<td><?php echo h($userCard['UserCard']['front_img']); ?>&nbsp;</td>
-		<td><?php echo h($userCard['UserCard']['rear_img']); ?>&nbsp;</td>
 		<td><?php echo h($userCard['UserCard']['bought_date']); ?>&nbsp;</td>
 		<td><?php echo h($userCard['UserCard']['listed_date']); ?>&nbsp;</td>
 		<td><?php echo h($userCard['UserCard']['sell_price']); ?>&nbsp;</td>
@@ -94,6 +90,8 @@
 		<li><?php echo $this->Html->link(__('New Watch'), array('controller' => 'watches', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Offers'), array('controller' => 'offers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Offer'), array('controller' => 'offers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Mycollection Images'), array('controller' => 'mycollection_images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Mycollection Image'), array('controller' => 'mycollection_images', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Qualifiers'), array('controller' => 'qualifiers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Qualifier'), array('controller' => 'qualifiers', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Themes'), array('controller' => 'themes', 'action' => 'index')); ?> </li>

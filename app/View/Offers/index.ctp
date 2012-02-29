@@ -15,7 +15,7 @@
 		<td><?php echo h($offer['Offer']['offer_id']); ?>&nbsp;</td>
 		<td><?php echo h($offer['Offer']['amount']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($offer['User']['full_name'], array('controller' => 'users', 'action' => 'view', $offer['User']['user_id'])); ?>
+			<?php echo $this->Html->link($offer['User']['user_id'], array('controller' => 'users', 'action' => 'view', $offer['User']['user_id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($offer['UserCard']['user_card_id'], array('controller' => 'user_cards', 'action' => 'view', $offer['UserCard']['user_card_id'])); ?>
@@ -52,5 +52,7 @@
 		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List User Cards'), array('controller' => 'user_cards', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New User Card'), array('controller' => 'user_cards', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Offer Images'), array('controller' => 'offer_images', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Offer Image'), array('controller' => 'offer_images', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

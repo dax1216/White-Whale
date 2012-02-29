@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * Card Model
  *
  * @property SetInfo $SetInfo
- * @property WikiInfo $WikiInfo
+ * @property CardWikiInfo $CardWikiInfo
  * @property Team $Team
  * @property User $User
  * @property ArdsQualifier $ArdsQualifier
@@ -53,9 +53,9 @@ class Card extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'card_wiki_info_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'franchise_group_id' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -63,9 +63,9 @@ class Card extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'team_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		'card_wiki_info_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -76,7 +76,6 @@ class Card extends AppModel {
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 
 /**
  * belongsTo associations
@@ -98,9 +97,9 @@ class Card extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Team' => array(
-			'className' => 'Team',
-			'foreignKey' => 'team_id',
+		'FranchiseGroup' => array(
+			'className' => 'FranchiseGroup',
+			'foreignKey' => 'franchise_group_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

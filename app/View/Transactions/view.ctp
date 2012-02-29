@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($transaction['User']['full_name'], array('controller' => 'users', 'action' => 'view', $transaction['User']['user_id'])); ?>
+			<?php echo $this->Html->link($transaction['User']['user_id'], array('controller' => 'users', 'action' => 'view', $transaction['User']['user_id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Sell Price'); ?></dt>

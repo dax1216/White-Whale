@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Variation Model
  *
+ * @property SetInfo $SetInfo
  * @property Card $Card
  */
 class Variation extends AppModel {
@@ -18,7 +19,7 @@ class Variation extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'title' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -33,18 +34,17 @@ class Variation extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
-   public $hasMany = array(
-        'CardVariation' => array(
-            'className'     => 'CardVariation',
-            'foreignKey'    => 'variation_id',
-            'conditions'    => '',
-            'order'         => '',
-            'limit'         => '',
-            'dependent'     => true
-        )
-    );
+	public $belongsTo = array(
+		'SetInfo' => array(
+			'className' => 'SetInfo',
+			'foreignKey' => 'set_info_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 }

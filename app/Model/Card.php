@@ -112,7 +112,7 @@ class Card extends AppModel {
  * @var array
  */
    public $hasMany = array(
-        'CardPlayers' => array(
+        'CardPlayer' => array(
             'className'     => 'CardPlayer',
             'foreignKey'    => 'card_id',
             'conditions'    => '',

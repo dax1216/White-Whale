@@ -1,32 +1,29 @@
+<?= $this->Html->script(array('jquery-1.7.1','jquery.form.js'), array('inline' => false)); ?>
+
 <div class="cardImages form">
 <?php echo $this->Form->create('CardImage', array(
                                                 'inputDefaults' => array(
                                                     'label' => false,
                                                     'div' => false
                                                 ),
-                                                'enctype' => 'multipart/form-data'));?>
+                                                'enctype' => 'multipart/form-data',
+                                                'id' => 'card_image_upload_form'));?>
 <?php echo __('Add Card Image'); ?>
 <table>
     <tr>
         <td><?= $this->Form->label('CardImage.card_front_side', 'Frontside'); ?></td>
-        <td><?php echo $this->Form->input('card_front_side', array('type' => 'file'));?></td>
+        <td>
+            <?php echo $this->Form->input('card_front_side', array('type' => 'file', 'class' => 'card_image_upload'));?>
+            <div id="card_front_preview"></div>
+        </td>
     </tr>
-<?php   if(isset($card_image['CardImage']['front_img'])) { ?>
-    <tr>
-        <td></td>
-        <td><?=$this->Html->image('/files/card_images/thumbnail/frontside/' . $card_image['CardImage']['front_img']); ?></td>
-    </tr>
-<?php   } ?>
     <tr>
         <td><?= $this->Form->label('CardImage.card_back_side', 'Backside'); ?></td>
-        <td><?php echo $this->Form->input('card_back_side', array('type' => 'file')); ?></td>
+        <td>
+            <?php echo $this->Form->input('card_back_side', array('type' => 'file', 'class' => 'card_image_upload')); ?>
+            <div id="card_rear_preview"></div>
+        </td>
     </tr>
-<?php   if(isset($card_image['CardImage']['rear_img'])) { ?>
-    <tr>
-        <td></td>
-        <td><?=$this->Html->image('/files/card_images/thumbnail/backside/' . $card_image['CardImage']['rear_img']); ?></td>
-    </tr>
-<?php   } ?>
     <tr>
         <td><?= $this->Form->label('CardImage.card_orientation', 'Orientation'); ?></td>
         <td>
@@ -38,13 +35,30 @@
         </td>
     </tr>
     <tr>
-        <td>
-<?php   if(isset($card_image['CardImage']['card_image_id'])) { 
-            echo $this->Form->input('card_image_id', array('type' => 'hidden', 'value' => $card_image['CardImage']['card_image_id']));
-        }
-?>
-        </td>
+        <td><?php echo $this->Form->input('preview_selected', array('type' => 'hidden', 'value' => 'front', 'id' => 'preview_selected'))?></td>
         <td><?php echo $this->Form->end(__('Submit'));?></td>
     </tr>
 </table>
 </div>
+<script type="text/javascript">
+    $(document).ready( function() {
+        $('.card_image_upload').change( function () {
+            var div_target = '';
+            
+            if($(this).attr('id') == 'CardImageCardFrontSide') {
+                div_target = '#card_front_preview';
+                $('#preview_selected').val('front');
+            } else {
+                div_target = '#card_rear_preview';
+                $('#preview_selected').val('rear');
+            }
+        
+            var options = {
+                target: div_target,
+                url: '/CardImages/show_preview'
+            };
+            
+            $('#card_image_upload_form').ajaxForm(options).submit();
+        });
+    });
+</script>

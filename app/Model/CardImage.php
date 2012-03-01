@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * CardImages Model
  */
 class CardImage extends AppModel {
-    public $use_table = false;
+    public $useTable = false;
     
     public $name = 'CardImage';    
     

@@ -40,17 +40,57 @@ public $components = array('RequestHandler');
  */
 	public function add() {
 		if ($this->request->is('post')) {
-                        echo '<pre>';
-                        var_dump( $this->request );
-                        exit;
                     
-			$this->Card->create();
-			if ($this->Card->save($this->request->data)) {
-				$this->Session->setFlash(__('The card has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The card could not be saved. Please, try again.'));
-			}
+                    // Remove add player form fields
+                    unset( $this->request->data[ 'player' ] );
+                    
+                    /*echo '<pre>';
+                    var_dump( $this->request->data );
+                    exit;*/
+
+                    // Create a blank card wiki info for card
+                    Controller::loadModel( 'CardWikiInfo' );
+                    $this->CardWikiInfo->create();
+                    $cardWikiInfo = $this->CardWikiInfo->save();
+                    $cardWikiInfoId = $cardWikiInfo[ 'CardWikiInfo' ][ 'card_wiki_info_id' ];
+
+                    // Assign wiki info to card
+                    $this->request->data[ 'Card' ][ 'card_wiki_info_id' ] = $cardWikiInfoId;
+                    
+                    // Save Card and Card Players
+                    if ( $this->Card->saveAssociated($this->request->data, array('atomic' => false))) 
+                    {
+                        // Build the Base Card data
+                        $this->request->data[ 'CardVariation' ][ 'variation_id' ] = $this->request->data[ 'variation_id' ];
+                        $this->request->data[ 'CardVariation' ][ 'card_id' ] = $this->Card->id;
+                        $this->request->data[ 'CardVariation' ][ 'is_base' ] = 1;
+                        $this->request->data[ 'CardVariation' ][ 'name' ] = 'SOME-NAME-HERE'; // TODO: Create a sensible name
+                        
+                        // Save the Base Card
+                        if( $this->Card->CardVariation->save( $this->request->data ) )
+                        {
+                            // TODO: Upload images here and return image_id's
+
+                            /* TODO: Save card variation images. 
+                            // Build the Card Variation Image data
+                            $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
+                            $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'rear_img_id' ] = 1;
+                            $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'front_img_id' ] = 1;
+                            
+                            // Save Card Variation Images
+                            $this->Card->CardVariation->CardVariationImages->save( $this->request->data );
+                            */
+                        }
+                        
+                        debug($this->Card->CardVariation->validationErrors);
+                        
+                        $this->Session->setFlash(__('The card has been saved'));
+                        $this->redirect( array( 'action' => 'view', $this->Card->id ) );
+                    } else {
+                            $this->Session->setFlash(__('The card could not be saved. Please, try again.'));
+                    }
+                    
+                    debug($this->Card->validationErrors);
 		}
 		
                 // List of card sets
@@ -59,17 +99,20 @@ public $components = array('RequestHandler');
                 // List of card wikis
 		// $cardWikiInfos = $this->Card->CardWikiInfo->find('list');
                 
+                // List of variations
+                $variations = $this->Card->CardVariation->Variation->find('list');
+                
                 // List of players
-                $players = $this->Card->CardPlayers->Player->find('list', array( 'order' => 'name ASC' ) );
+                $players = $this->Card->CardPlayer->Player->find('list', array( 'order' => 'name ASC' ) );
                 
                 // List of various positions
-                $positions = $this->Card->CardPlayers->Position->find('list'); 
+                $positions = $this->Card->CardPlayer->Position->find('list'); 
 
                 // List of franchise groups
                 $franchiseGroups = $this->Card->FranchiseGroup->find('list');
 
                 
-		$this->set(compact('setInfos', 'players', 'positions','franchiseGroups'));
+		$this->set(compact('setInfos', 'players', 'positions','franchiseGroups','variations'));
 	}
 
 /**

@@ -30,27 +30,6 @@
                     $add_player_form.stop(true,true).slideToggle();
             });
             
-           /* $('#add_player_form').submit(function (eve) {
-                    eve.preventDefault();
-                    var row_count = $('#added-card-players > tbody > tr').length;
-                    var url = $(this).attr('action') + row_count;
-                    $.ajax({
-                            url:url,
-                            type: "POST",
-                            datatype: "html",
-                            data: $(this).serialize(),
-                            beforeSend: function () {
-
-                            },
-                            success: function (html) {
-                                    $(html).fadeIn().appendTo('#added-card-players > tbody');
-                                    var targetOffset = $('#added-card-players').offset().top;
-                                    $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
-                                    $('player-notice').hide();
-                            }
-                    });
-            });*/
-            
             $('#add_player').live('click', function(eve) {
                     eve.preventDefault();
                     var row_count = $('#added-card-players > tbody > tr').length;
@@ -59,7 +38,7 @@
                             url:url,
                             type: "POST",
                             datatype: "html",
-                            data: $('#add_card_form').serialize(),//{player_firstname:'Carlos'},
+                            data: $('#add_card_form').serialize(),
                             beforeSend: function () {
 
                             },
@@ -67,7 +46,9 @@
                                     $(html).fadeIn().appendTo('#added-card-players > tbody');
                                     var targetOffset = $('#added-card-players').offset().top;
                                     $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
-                                    $('#no_player_notice').fadeOut();
+                                   
+                                    // TODO: Clear add-player-form
+                                    resetForm( $( '#add-player-form' ) );
                             }
                     });
             })
@@ -81,18 +62,44 @@
             
                     eve.preventDefault();
                     $(this).closest('tr').fadeOut();
-                    // $(this).closest('tr').remove();
             });
             
+            // For each select onchange event, update it's corresponding hidden input
             $('.id-2-name').live('change', function(eve) {
                 eve.preventDefault();
-                //alert( $(this).find( 'option:selected' ).text() );
-                var x = $(this).next();
-                $(this).next().val( $(this).find( 'option:selected' ).text() );
+                var selected_text = $(this).find( 'option:selected' ).text();
+                $(this).next().val( selected_text );
+                if( $( this ).attr( 'id' ) == 'PlayerPlayerId' )
+                {
+                    /* 
+                     * Populate the firstname and lastname fields based on the selected player from the droplist.
+                     * TODO: Check what is causing the slowdown. */
+                    var name = selected_text.split( ' ' );
+                    $( '#PlayerFirstName' ).val( name[0] );
+                    $( '#PlayerLastName' ).val( name[1] );
+                }
             })
         });
         
     })(jQuery);
+    
+    
+    // Clear form fields values
+    function resetForm( target_div )
+    {
+        // TODO: Find a way to parse through the form instead of updating each and every field elements
+        
+        // Reset input fields
+        $( '#PlayerFirstName' ).val( '' );
+        $( '#PlayerLastName' ).val( '' );
+        $( '#PlayerNickName' ).val( '' );
+        
+        // Reset select fields
+        $( '#PlayerPlayerId' ).val( '' );
+        $( '#PlayerPositionId' ).val( '' );
+        $( '#PlayerFranchiseGroupId' ).val( '' );
+    }
+    
 </script>
 
 
@@ -114,7 +121,7 @@
                 <div class="span12">
                     <?php 
                         // echo $this->Form->input( 'set_info_select', array( 'label' => false, 'class' => 'search-query', 'data-provide' => 'typeahead', 'data-source' => '["Carlos","Diana","John Cedrick", "John Jacob"]' ) ); 
-                        echo $this->Form->input( 'set_info_id', array( 'label' => false ) ); 
+                        echo $this->Form->input( 'Card.set_info_id', array( 'label' => false ) ); 
                     ?>
                 </div>
             </div>
@@ -129,11 +136,12 @@
             <div class="row">
                     <div class="span4">
                             <?php
-                                    echo $this->Form->input('name', array( 'class' => 'span4' ) );
-                                    echo $this->Form->input('descriptor', array( 'class' => 'span4' ));
-                                    echo $this->Form->input('card_number', array( 'class' => 'span3' ));
-                                    echo $this->Form->input('franchise_group_id', array( 'label' => 'Franchise', 'class' => 'span3' ) );
-                                    echo $this->Form->input('notes', array( 'type' => 'textarea', 'class' => 'span4' ) );
+                                    echo $this->Form->input('Card.name', array( 'class' => 'span4' ) );
+                                    echo $this->Form->input('Card.descriptor', array( 'class' => 'span4' ));
+                                    echo $this->Form->input('Card.card_number', array( 'class' => 'span3' ));
+                                    echo $this->Form->input('Card.franchise_group_id', array( 'label' => 'Franchise', 'class' => 'span3' ) );
+                                    echo $this->Form->input('variation_id', array( 'label' => 'Variation', 'class' => 'span3' ) );
+                                    echo $this->Form->input('Card.notes', array( 'type' => 'textarea', 'class' => 'span4' ) );
                             ?>				
                     </div>
                     <div class="span6">
@@ -259,15 +267,15 @@
                 <div class="span12">&nbsp;</div>
                 
                 <div class="span12">
-                    <table id="added-card-players" class="table table-striped table-condensed span12">
+                    <table id="added-card-players" class="table table-striped table-condensed span11">
                     <thead>
                         <tr>
                             <th class="span1"><?php echo __('Player');?></th>
                             <th class="span2"><?php echo __('Firstname');?></th>
                             <th class="span2"><?php echo __('Lastname');?></th>
                             <th class="span2"><?php echo __('Nickname');?></th>
-                            <th class="span2"><?php echo __('Franchise');?></th>
                             <th class="span1"><?php echo __('Position');?></th>
+                            <th class="span2"><?php echo __('Franchise');?></th>
                             <th class="span1"><?php echo __('Pimary');?></th>
                             <th class="span2"><?php echo __('Action(s)');?></th>                                
                         </tr>

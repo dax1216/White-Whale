@@ -41,58 +41,75 @@ public $components = array('RequestHandler');
 	public function add() {
 		if ($this->request->is('post')) {
                     
+                    // Send to view
+                    $this->set( 'data', $this->request->data );
+                    
                     // Remove add player form fields
                     unset( $this->request->data[ 'player' ] );
                     
-                    /*echo '<pre>';
-                    var_dump( $this->request->data );
-                    exit;*/
-
-                    // Create a blank card wiki info for card
-                    Controller::loadModel( 'CardWikiInfo' );
-                    $this->CardWikiInfo->create();
-                    $cardWikiInfo = $this->CardWikiInfo->save();
-                    $cardWikiInfoId = $cardWikiInfo[ 'CardWikiInfo' ][ 'card_wiki_info_id' ];
-
-                    // Assign wiki info to card
-                    $this->request->data[ 'Card' ][ 'card_wiki_info_id' ] = $cardWikiInfoId;
+                    // Set the data to the model
+                    $this->Card->set( $this->request->data );
                     
-                    // Save Card and Card Players
-                    if ( $this->Card->saveAssociated($this->request->data, array('atomic' => false))) 
+                    // Validate card
+                    if ( $this->Card->validates() )
                     {
-                        // Build the Base Card data
-                        $this->request->data[ 'CardVariation' ][ 'variation_id' ] = $this->request->data[ 'variation_id' ];
-                        $this->request->data[ 'CardVariation' ][ 'card_id' ] = $this->Card->id;
-                        $this->request->data[ 'CardVariation' ][ 'is_base' ] = 1;
-                        $this->request->data[ 'CardVariation' ][ 'name' ] = 'SOME-NAME-HERE'; // TODO: Create a sensible name
-                        
-                        // Save the Base Card
-                        if( $this->Card->CardVariation->save( $this->request->data ) )
+                        if ( !isset( $this->request->data[ 'CardPlayer' ] ) )
                         {
-                            // TODO: Upload images here and return image_id's
-
-                            /* TODO: Save card variation images. 
-                            // Build the Card Variation Image data
-                            $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
-                            $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'rear_img_id' ] = 1;
-                            $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'front_img_id' ] = 1;
-                            
-                            // Save Card Variation Images
-                            $this->Card->CardVariation->CardVariationImages->save( $this->request->data );
-                            */
+                            $this->Session->setFlash( __( 'Must have at least one player.' ), 'default', array( 'class' => 'alert alert-error' ) );
                         }
-                        
-                        debug($this->Card->CardVariation->validationErrors);
-                        
-                        $this->Session->setFlash(__('The card has been saved'));
-                        $this->redirect( array( 'action' => 'view', $this->Card->id ) );
-                    } else {
-                            $this->Session->setFlash(__('The card could not be saved. Please, try again.'));
+                        else
+                        {
+                            // Create a blank card wiki info for card
+                            Controller::loadModel( 'CardWikiInfo' );
+                            $this->CardWikiInfo->create();
+                            $cardWikiInfo = $this->CardWikiInfo->save();
+                            $cardWikiInfoId = $cardWikiInfo[ 'CardWikiInfo' ][ 'card_wiki_info_id' ];
+
+                            // Assign wiki info to card
+                            $this->request->data[ 'Card' ][ 'card_wiki_info_id' ] = $cardWikiInfoId;
+
+                            // Save Card and Card Players
+                            if ( $this->Card->saveAssociated($this->request->data, array('atomic' => false))) 
+                            {
+                                // Build the Base Card data
+                                $this->request->data[ 'CardVariation' ][ 'variation_id' ] = $this->request->data[ 'variation_id' ];
+                                $this->request->data[ 'CardVariation' ][ 'card_id' ] = $this->Card->id;
+                                $this->request->data[ 'CardVariation' ][ 'is_base' ] = 1;
+                                $this->request->data[ 'CardVariation' ][ 'name' ] = 'SOME-NAME-HERE'; // TODO: Create a sensible name
+
+                                // Save the Base Card
+                                if( $this->Card->CardVariation->save( $this->request->data ) )
+                                {
+                                    // TODO: Upload images here and return image_id's
+
+                                    /* TODO: Save card variation images. 
+                                    // Build the Card Variation Image data
+                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
+                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'rear_img_id' ] = 1;
+                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'front_img_id' ] = 1;
+
+                                    // Save Card Variation Images
+                                    $this->Card->CardVariation->CardVariationImages->save( $this->request->data );
+                                    */
+                                }
+
+                                // debug($this->Card->CardVariation->validationErrors);
+
+                                $this->Session->setFlash(__('The card has been saved'), 'default', array( 'class' => 'alert alert-success' ));
+                                $this->redirect( array( 'action' => 'view', $this->Card->id ) );
+                            } else {
+                                    $this->Session->setFlash(__('The card could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
+                            }  
+                        }
                     }
-                    
-                    debug($this->Card->validationErrors);
+                    else
+                    {
+                        $this->Session->setFlash(__('The card could not be saved. Invalid data.'), 'default', array( 'class' => 'alert alert-error' ));
+                    }
+
+                    // debug($this->Card->validationErrors);
 		}
-		
+
                 // List of card sets
                 $setInfos = $this->Card->SetInfo->find('list');
                 
@@ -168,8 +185,8 @@ public $components = array('RequestHandler');
 	
 		if ($this->RequestHandler->isAjax()) { 
 			$this->set('row_count', $row_count);
-			$this->set('data', $this->request->data);
-			$this->render('/Elements/CardHome/add_player_row');
+			$this->set('data', $this->request->data[ 'player' ]);
+			$this->render('/Elements/Cardhome/add_player_row');
 		} 
 	}        
 }

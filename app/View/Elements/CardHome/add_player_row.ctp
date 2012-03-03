@@ -1,9 +1,4 @@
 <tr>
-    <pre>
-    <?php
-        //var_dump( $data );
-    ?>
-    </pre>
         <td>
 		<?php 
                 	echo $this->Form->hidden( "CardPlayer.{$row_count}.row_count", array( 'class' => 'row-count', 'value' => $row_count ) );
@@ -45,14 +40,17 @@
 	</td>
 	<td>
                 <?php 
-                    // var_dump( $data );
-                    $is_primary = $data["is_primary"];
-                    if ( $row_count == 0 )
+                    if ( isset( $data["is_primary"] ) )
                     {
-                        $is_primary = '1';
+                        $is_primary = $data["is_primary"] ? $data["is_primary"] : '0';
                     }
+                    else
+                    {
+                        $is_primary = !$row_count ? '1' : '0';
+                    }
+                    // $is_primary = isset( $data["is_primary"] ) ? $data["is_primary"] : '0';
                     echo $this->Form->hidden( "CardPlayer.{$row_count}.is_primary", array( 'value' => $is_primary ) );
-                    if ( $is_primary > 0 )
+                    if ( !$is_primary )
                     {
                         echo $this->Html->tag( 'i', '' );
                     }
@@ -66,7 +64,7 @@
 		<button id="set_as_primary" class="btn btn-success set-as-primary-btn" type="button">
 			<i class="icon-flag icon-white"></i>
 		</button>
-		<button id="edit_player" class="btn btn-success" type="button">
+		<button id="edit_player" class="btn btn-success disabled" type="button">
 			<i class="icon-pencil icon-white"></i>
 		</button>
 		<button id="delete_players" class="btn btn-danger delete_player" type="button">

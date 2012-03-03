@@ -186,7 +186,7 @@ public $components = array('RequestHandler');
 		if ($this->RequestHandler->isAjax()) { 
 			$this->set('row_count', $row_count);
 			$this->set('data', $this->request->data[ 'player' ]);
-			$this->render('/Elements/Cardhome/add_player_row');
+			$this->render('/Elements/CardHome/add_player_row');
 		} 
 	}        
 }

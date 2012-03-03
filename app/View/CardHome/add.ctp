@@ -327,7 +327,7 @@
                         if( isset( $data[ 'CardPlayer' ] ) ) {
                             foreach( $data[ 'CardPlayer' ] as $key => $cardPlayer )
                             {
-                                echo $this->element( 'Cardhome/add_player_row', array( 'row_count' => $key, 'data' => $cardPlayer ) );
+                                echo $this->element( 'CardHome/add_player_row', array( 'row_count' => $key, 'data' => $cardPlayer ) );
                             }
                         }
                     ?>

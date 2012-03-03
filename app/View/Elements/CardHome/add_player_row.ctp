@@ -1,4 +1,9 @@
 <tr>
+    <pre>
+    <?php
+        //var_dump( $data );
+    ?>
+    </pre>
         <td>
 		<?php 
                 	echo $this->Form->hidden( "CardPlayer.{$row_count}.row_count", array( 'class' => 'row-count', 'value' => $row_count ) );
@@ -39,11 +44,17 @@
 		?>
 	</td>
 	<td>
-		<?php 
-                    echo $this->Form->hidden( "CardPlayer.{$row_count}.is_pimary", array( 'value' => $row_count ? '0' : '1' ) );
-                    if ( $row_count > 0 )
+                <?php 
+                    // var_dump( $data );
+                    $is_primary = $data["is_primary"];
+                    if ( $row_count == 0 )
                     {
-                        echo '&nbsp;';
+                        $is_primary = '1';
+                    }
+                    echo $this->Form->hidden( "CardPlayer.{$row_count}.is_primary", array( 'value' => $is_primary ) );
+                    if ( $is_primary > 0 )
+                    {
+                        echo $this->Html->tag( 'i', '' );
                     }
                     else
                     {
@@ -52,7 +63,7 @@
 		?>
 	</td>
 	<td>
-		<button id="set_as_primary" class="btn btn-success" type="button">
+		<button id="set_as_primary" class="btn btn-success set-as-primary-btn" type="button">
 			<i class="icon-flag icon-white"></i>
 		</button>
 		<button id="edit_player" class="btn btn-success" type="button">

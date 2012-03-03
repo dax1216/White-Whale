@@ -42,8 +42,6 @@
                         });
                     }
                     
-                    alert( row_count );
-                    
                     var url = 'ajax_add_player_row/' + row_count;
                     $.ajax({
                             url:url,
@@ -56,8 +54,10 @@
                             success: function (html) {
                                     $(html).fadeIn().appendTo('#added-card-players > tbody');
                                     var targetOffset = $('#added-card-players').offset().top;
-                                    $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
-                                    // TODO: Clear add-player-form
+                                    
+                                    // TODO: Somehow this is throwing an error. Check.
+                                    // $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
+                                    
                                     resetForm( $( '#add-player-form' ) );
                             }
                     });
@@ -89,10 +89,24 @@
                     $( '#PlayerLastName' ).val( name[1] );
                 }
             })
+            
+            $('.set-as-primary-btn').live('click', function(eve) {
+                eve.preventDefault();
+                
+                // Unmark everything
+                $('#added-card-players tr').each(function() {
+                    $(this).find('td').eq(6).each(function() {
+                        $(this).find('input').val('0');
+                        $(this).find('i').removeClass('icon-flag');
+                    })
+                })
+                
+                $(this).closest('tr').find('td').eq(6).find('input').val('1');
+                $(this).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');
+            })
         });
         
     })(jQuery);
-    
     
     // Clear form fields values
     function resetForm( target_div )
@@ -202,7 +216,7 @@
             </div>
 	</section>
 
-        <section id="card_players">
+        <section id="card_players" class="well">
             <div class="page-header">
                 <h2>
                         Card Players
@@ -216,7 +230,7 @@
                         <div>
                             <a id="add-player-toggle" style="cursor:pointer;"><i class="icon-chevron-up"></i>Hide Form</a>
                         </div>
-                        <div id="add-player-form" class="well">
+                        <div id="add-player-form">
                             <!--<form method="POST" action="ajax_add_player_row/" id="add_player_form"> //-->
                                 <fieldset class="add-player-set">
                                 <div class="span12">

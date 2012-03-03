@@ -1,40 +1,40 @@
-<?php 
-    $data = $data[ 'player' ];
-?>
 <tr>
-	<td>
+        <td>
 		<?php 
-			echo $this->Form->hidden( "CardPlayer.{$row_count}.player_id", array( 'class' => 'player_id', 'value' => $data["id"] ) );
-                        echo $data["id"];
+                	echo $this->Form->hidden( "CardPlayer.{$row_count}.row_count", array( 'class' => 'row-count', 'value' => $row_count ) );
+			echo $this->Form->hidden( "CardPlayer.{$row_count}.player_id", array( 'class' => 'player_id', 'value' => $data["player_id"] ) );
+                        echo $data["player_id"];
 		?>
 	</td>
 	<td>
 		<?php 
-			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_first_name", array( 'value' => $data["first_name"] ) );
-			echo $data["first_name"];
+			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_first_name", array( 'value' => $data["card_first_name"] ) );
+			echo $data["card_first_name"];
 		?>
 	</td>
 	<td>
 		<?php 
-			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_last_name", array( 'value' => $data["last_name"] ) );
-			echo $data["last_name"];
+			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_last_name", array( 'value' => $data["card_last_name"] ) );
+			echo $data["card_last_name"];
 		?>
 	</td>
 	<td>
 		<?php 
-			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_nick_name", array( 'value' => $data["nick_name"] ) );
-			echo $data["nick_name"];
+			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_nick_name", array( 'value' => $data["card_nick_name"] ) );
+			echo $data["card_nick_name"];
 		?>
 	</td>
 	<td>
 		<?php 
 			echo $this->Form->hidden( "CardPlayer.{$row_count}.position_id", array( 'value' => $data["position_id"] ) );
+			echo $this->Form->hidden( "CardPlayer.{$row_count}.position_name", array( 'value' => $data["position_name"] ) );
 			echo $data["position_name"];
 		?>
 	</td>
 	<td>
 		<?php 
 			echo $this->Form->hidden( "CardPlayer.{$row_count}.franchise_group_id", array( 'value' => $data["franchise_group_id"] ) );
+			echo $this->Form->hidden( "CardPlayer.{$row_count}.franchise_group_name", array( 'value' => $data["franchise_group_name"] ) );
 			echo $data["franchise_group_name"];
 		?>
 	</td>

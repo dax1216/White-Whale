@@ -32,7 +32,7 @@ class ImagesController extends AppController {
             $card_sizes = Configure::read('card_image_sizes');                
 
             $card_images = array('front' => $card_frontside, 'rear' => $card_backside);
-            $front_img = $rear_img = '';
+            $img_ids = array('front_img_id' => 0, 'rear_img_id' => 0);
 
             foreach($card_images as $side => $card_image) {
                 //Rename file
@@ -69,9 +69,15 @@ class ImagesController extends AppController {
 
                 $this->Image->create();
                 $this->Image->save($data);
+                
+                if($side == 'front') {
+                    $img_ids['front_img_id'] = $this->Image->id;
+                } else {
+                    $img_ids['front_rear_id'] = $this->Image->id;
+                }
             }
 
-            return true;
+            return $img_ids;
         } else {                  
             
             //return $this->CardImage->validationErrors;

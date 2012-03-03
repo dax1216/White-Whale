@@ -7,7 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class TeamsController extends AppController {
 
-
+        public $components = array('RequestHandler');
+    
 /**
  * index method
  *
@@ -99,4 +100,21 @@ class TeamsController extends AppController {
 		$this->Session->setFlash(__('Team was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+        // JSON for Ajax call
+        
+        public function listing()
+        {
+            // Set the Json layout
+            // $this->layout = 'json';
+            
+            header('Content-type: application/json');
+
+            // Featch teams
+            $teams = $this->Team->find( 'list' );
+            
+            // Send to view
+            $this->set( compact( 'teams' ) );
+            $this->set( '_serialize', array( 'teams' ) );
+        }        
 }

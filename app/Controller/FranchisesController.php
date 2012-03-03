@@ -93,4 +93,13 @@ class FranchisesController extends AppController {
 		$this->Session->setFlash(__('Franchise was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+        // JSON for Ajax call
+        
+        public function listing()
+        {
+            $this->layout = 'json';
+            $franchises = $this->Franchise->find('list');
+            $this->set( 'data', $franchises );
+        }
 }

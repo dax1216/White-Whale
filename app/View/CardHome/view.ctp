@@ -1,168 +1,387 @@
-<div class="cards view">
-<h2><?php  echo __('Card');?></h2>
-	<dl>
-		<dt><?php echo __('Card Id'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['card_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Name'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Short Name'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['short_name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Descriptor'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['descriptor']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Card Number'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['card_number']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Set Info'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($card['SetInfo']['name'], array('controller' => 'set_infos', 'action' => 'view', $card['SetInfo']['set_info_id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Card Wiki Info'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($card['CardWikiInfo']['card_wiki_info_id'], array('controller' => 'card_wiki_infos', 'action' => 'view', $card['CardWikiInfo']['card_wiki_info_id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Franchise Group'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($card['FranchiseGroup']['name'], array('controller' => 'franchise_groups', 'action' => 'view', $card['FranchiseGroup']['franchise_group_id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Team Id'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['team_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Notes'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['notes']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Updated'); ?></dt>
-		<dd>
-			<?php echo h($card['Card']['updated']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Card'), array('action' => 'edit', $card['Card']['card_id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Card'), array('action' => 'delete', $card['Card']['card_id']), null, __('Are you sure you want to delete # %s?', $card['Card']['card_id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Cards'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Set Infos'), array('controller' => 'set_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Set Info'), array('controller' => 'set_infos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Card Wiki Infos'), array('controller' => 'card_wiki_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Wiki Info'), array('controller' => 'card_wiki_infos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Franchise Groups'), array('controller' => 'franchise_groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Franchise Group'), array('controller' => 'franchise_groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Card Players'), array('controller' => 'card_players', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Players'), array('controller' => 'card_players', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Card Variations'), array('controller' => 'card_variations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Variation'), array('controller' => 'card_variations', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Card Players');?></h3>
-	<?php if (!empty($card['CardPlayers'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Card Player Id'); ?></th>
-		<th><?php echo __('Card Id'); ?></th>
-		<th><?php echo __('Position Id'); ?></th>
-		<th><?php echo __('Player Id'); ?></th>
-		<th><?php echo __('Is Primary'); ?></th>
-		<th><?php echo __('Card First Name'); ?></th>
-		<th><?php echo __('Card Last Name'); ?></th>
-		<th><?php echo __('Card Nick Name'); ?></th>
-		<th><?php echo __('Franchise Group Id'); ?></th>
-		<th><?php echo __('Team Id'); ?></th>
-		<th class="actions"><?php echo __('Actions');?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($card['CardPlayers'] as $cardPlayers): ?>
-		<tr>
-			<td><?php echo $cardPlayers['card_player_id'];?></td>
-			<td><?php echo $cardPlayers['card_id'];?></td>
-			<td><?php echo $cardPlayers['position_id'];?></td>
-			<td><?php echo $cardPlayers['player_id'];?></td>
-			<td><?php echo $cardPlayers['is_primary'];?></td>
-			<td><?php echo $cardPlayers['card_first_name'];?></td>
-			<td><?php echo $cardPlayers['card_last_name'];?></td>
-			<td><?php echo $cardPlayers['card_nick_name'];?></td>
-			<td><?php echo $cardPlayers['franchise_group_id'];?></td>
-			<td><?php echo $cardPlayers['team_id'];?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'card_players', 'action' => 'view', $cardPlayers['card_player_id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'card_players', 'action' => 'edit', $cardPlayers['card_player_id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'card_players', 'action' => 'delete', $cardPlayers['card_player_id']), null, __('Are you sure you want to delete # %s?', $cardPlayers['card_player_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+<?php 
+    echo $this->Html->script( 'jquery/jquery-1.7.1.min.js', array( 'inline' => false ) ); 
+    echo $this->Html->script( 'jquery/jquery-ui-1.8.17.custom.min', array( 'inline' => false ) ); 
+    echo $this->Html->script( 'jquery/plugin/jquery.table.addrow.js', array( 'inline' => false ) ); 
+    //echo $this->Html->script( 'bootstrap/bootstrap-collapse.js', array( 'inline' => false ) ); 
+    echo $this->Html->script( 'bootstrap/bootstrap-typeahead.js', array( 'inline' => false ) ); 
+?>
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function(){
+            /*$('.search-player').typeahead({
+                source: ['Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Dakota','North Carolina','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+            });*/
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Card Players'), array('controller' => 'card_players', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Card Variations');?></h3>
-	<?php if (!empty($card['CardVariation'])):?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Card Variation Id'); ?></th>
-		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('Card Id'); ?></th>
-		<th><?php echo __('Variation Id'); ?></th>
-		<th><?php echo __('Is Base'); ?></th>
-		<th class="actions"><?php echo __('Actions');?></th>
-	</tr>
-	<?php
-		$i = 0;
-		foreach ($card['CardVariation'] as $cardVariation): ?>
-		<tr>
-			<td><?php echo $cardVariation['card_variation_id'];?></td>
-			<td><?php echo $cardVariation['name'];?></td>
-			<td><?php echo $cardVariation['card_id'];?></td>
-			<td><?php echo $cardVariation['variation_id'];?></td>
-			<td><?php echo $cardVariation['is_base'];?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'card_variations', 'action' => 'view', $cardVariation['card_variation_id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'card_variations', 'action' => 'edit', $cardVariation['card_variation_id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'card_variations', 'action' => 'delete', $cardVariation['card_variation_id']), null, __('Are you sure you want to delete # %s?', $cardVariation['card_variation_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
+            //if we're doing a lot of toggling then let's cache the selectors in a variable to minimize overhead
+            var $add_player_toggle = $("#add-player-toggle");
+            var $add_player_form = $('#add-player-form');
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Card Variation'), array('controller' => 'card_variations', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
+            $add_player_toggle.bind('click',function(eve) {
+                    eve.preventDefault();
+                    if($add_player_form.is(':hidden'))
+                    {
+                            $add_player_toggle.html('<i class="icon-chevron-up"></i>Hide Form');
+                    }
+                    else
+                    {
+                            $add_player_toggle.html('<i class="icon-chevron-down"></i>Add  New Player');
+                    }
+                    // stop animation stacking and execute the final animation
+                    $add_player_form.stop(true,true).slideToggle();
+            });
+            
+            $('#add_player').live('click', function(eve) {
+                    eve.preventDefault();
+                    
+                    var row_count = $('#added-card-players > tbody > tr').length;
+                    
+                    if ( row_count > 0 ) 
+                    {
+                        $('#added-card-players tr:last').each(function() {
+                            row_count = Number( $( this ).find("td:first").find("input:first").val() ) + 1;    
+                        });
+                    }
+                    
+                    var url = '/CardHome/ajax_save_player_and_add/' + row_count;
+                    $.ajax({
+                            url:url,
+                            type: "POST",
+                            datatype: "html",
+                            data: $('#add_player_form').serialize(),
+                            beforeSend: function () {
+
+                            },
+                            success: function (html) {
+                                    $(html).fadeIn().appendTo('#added-card-players > tbody');
+                                    var targetOffset = $('#added-card-players').offset().top;
+                                    
+                                    // TODO: Somehow this is throwing an error. Check.
+                                    // $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
+                                    
+                                    resetForm( $( '#add-player-form' ) );
+                            }
+                    });
+            })
+
+            $('.delete_player').live('click', function(eve) {
+            
+                    if ( !confirm( 'Remove player!' ) )
+                    {
+                        return false;
+                    }
+            
+                    eve.preventDefault();
+                    $(this).closest('tr').fadeOut().remove();
+            });
+            
+            // For each select onchange event, update it's corresponding hidden input
+            $('.id-2-name').live('change', function(eve) {
+                eve.preventDefault();
+                var selected_text = $(this).find( 'option:selected' ).text();
+                $(this).next().val( selected_text );
+                if( $( this ).attr( 'id' ) == 'PlayerPlayerId' )
+                {
+                    /* 
+                     * Populate the firstname and lastname fields based on the selected player from the droplist.
+                     * TODO: Check what is causing the slowdown. */
+                    var name = selected_text.split( ' ' );
+                    $( '#PlayerFirstName' ).val( name[0] );
+                    $( '#PlayerLastName' ).val( name[1] );
+                }
+            })
+            
+            $('.set-as-primary-btn').live('click', function(eve) {
+                eve.preventDefault();
+                
+                // Unmark everything
+                $('#added-card-players tr').each(function() {
+                    $(this).find('td').eq(6).each(function() {
+                        $(this).find('input').val('0');
+                        $(this).find('i').removeClass('icon-flag');
+                    })
+                })
+                
+                $(this).closest('tr').find('td').eq(6).find('input').val('1');
+                $(this).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');
+            })
+        });
+        
+    })(jQuery);
+    
+    // Clear form fields values
+    function resetForm( target_div )
+    {
+        // TODO: Find a way to parse through the form instead of updating each and every field elements
+        
+        // Reset input fields
+        $( '#PlayerFirstName' ).val( '' );
+        $( '#PlayerLastName' ).val( '' );
+        $( '#PlayerNickName' ).val( '' );
+        
+        // Reset select fields
+        $( '#PlayerPlayerId' ).val( 0 );
+        $( '#PlayerPositionId' ).val( 0 );
+        $( '#PlayerFranchiseGroupId' ).val( 0 );
+    }
+    
+</script>
+
+<div class="container">
+	<?php 
+            $card = $data[ 'Card' ];
+            // var_dump( $data[ 'Card' ] );
+        ?>
+	<header id="title" class="jumbotron subhead">
+            <h1><?php echo __('View Card'); ?></h1>
+	</header>
+	<section id="set_select" class="well">
+            <div class="page-header">
+                    <h2>
+                            Card Set
+                            <small>The Set the card belongs to</small>
+                    </h2>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <strong>
+                    <?php 
+                        echo __( $setInfos[ $card[ 'set_info_id' ] ] ); 
+                    ?>
+                    </strong>
+                </div>
+            </div>
+	</section>
+	<section id="card_details" class="well">
+            <div class="page-header">
+                    <h2>
+                            Card Details
+                            <small>Enter card details below.</small>
+                    </h2>
+            </div>
+            
+            <div class="row">
+                <div class="span4">
+                    <fieldset>
+                    <ul class="unstyled">
+                        <li>
+                            <div>
+                                <label>Name:</label>
+                                <strong>
+                                <?php 
+                                    echo __( $card[ 'name' ] ); 
+                                ?>
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Short Name:</label>
+                                <strong>
+                                <?php 
+                                    echo __( $card[ 'short_name' ] ); 
+                                ?>
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Descriptor:</label>
+                                <strong>
+                                <?php 
+                                    echo __( $card[ 'descriptor' ] ); 
+                                ?>
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Card Number:</label>
+                                <strong>
+                                <?php 
+                                    echo __( $card[ 'card_number' ] ); 
+                                ?>
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Franchise Group:</label>
+                                <strong>
+                                <?php 
+                                    echo __( $franchiseGroups[ $card[ 'franchise_group_id' ] ] ); 
+                                ?>
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div>
+                                <label>Notes:</label>
+                                <strong>
+                                <?php 
+                                    echo __( $card[ 'notes' ] ); 
+                                ?>
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                    </ul>
+                    </fieldset>
+                </div>
+                
+                    <div class="span6">
+                            <h3>Base Card Images</h3>
+                            <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+                            <ul class="thumbnails">
+                                    <li class="span3">
+                                            <div class="thumbnail">
+                                                    <img alt="" src="http://placehold.it/260x180">
+                                                    <div class="caption">
+                                                            <h5>Front</h5>
+                                                            <p>The front side of the card.</p>
+                                                    </div>
+                                            </div>
+                                    </li>
+                                    <li class="span3">
+                                            <div class="thumbnail">
+                                                    <img alt="" src="http://placehold.it/260x180">
+                                                    <div class="caption">
+                                                            <h5>Back</h5>
+                                                            <p>The back side of the card.</p>
+                                                    </div>
+                                            </div>
+                                    </li>
+                            </ul>
+                    </div>
+            </div>
+	</section>
+
+        <section id="card_players" class="well">
+            <div class="page-header">
+                <h2>
+                        Card Players
+                        <small>Players found on this Card.</small>
+                </h2>
+            </div>
+            
+                <div class="row">
+                    <div class="span12">
+                            <div>
+                                <a id="add-player-toggle" style="cursor:pointer;"><i class="icon-chevron-up"></i>Hide Form</a>
+                            </div>
+                            <div id="add-player-form">
+                                <?php echo $this->Form->create( 'CardPlayer', array( 'id' => 'add_player_form' ) ); ?>
+                                    <fieldset class="add-player-set">
+                                    <?php
+                                        echo $this->Form->input( 'card_id', array( 'type' => 'hidden', 'value' => $card[ 'name' ] ) );
+                                    ?>
+                                    <div class="span12">
+                                        <div class="row">
+                                            <div class="span3 input select">
+                                               <label for="PlayerPlayerId">Player</label>
+                                               <select id="PlayerPlayerId" name="data[CardPlayer][player_id]" class="span3 id-2-name">
+                                                    <option value="0">-- Select a Player</option>
+                                                    <?php
+                                                        foreach( $players as $player_id => $player )
+                                                        {
+                                                            echo "<option value='{$player_id}'>{$player}</option>";
+                                                        }
+                                                    ?>
+                                                </select>
+                                                <input type="hidden" id="PlayerName" name="data[CardPlayer][name]" />
+                                            </div>                                    
+                                        </div>
+                                    </div>
+                                    <div class="span12">
+                                        <div class="row">
+                                            <div class="span2 input text">
+                                                <label for="PlayerFirstName">Firstname (on Card)</label>
+                                                <input id="PlayerFirstName" type="text" name="data[CardPlayer][card_first_name]" value="" class="span2" />
+                                            </div>
+                                            <div class="span2 input text">
+                                                <label for="PlayerLastname">Lastname (on Card)</label>
+                                                <input id="PlayerLastName" type="text" name="data[CardPlayer][card_last_name]" value="" class="span2" />
+                                            </div>
+                                            <div class="span2 input text">
+                                                <label for="PlayerNickName">Nickname</label>
+                                                <input id="PlayerNickName" type="text" name="data[CardPlayer][card_nick_name]" value="" class="span2" />
+                                            </div>
+                                            <div class="span2 input select">
+                                                <label for="PlayerPositionId">Position</label>
+                                                <select id="PlayerPositionId" name="data[CardPlayer][position_id]" class="span2 id-2-name">
+                                                    <option value="0">-- Select a Position</option>
+                                                    <?php
+                                                        foreach( $positions as $position_id => $position )
+                                                        {
+                                                            echo "<option value='{$position_id}'>{$position}</option>";
+                                                        }
+                                                    ?>
+                                                </select>
+                                                <input type="hidden" id="PlayerPositionName" name="data[CardPlayer][position_name]" value="" />
+                                            </div>
+                                            <div class="span2 input select">
+                                                <label for="PlayerFranchiseGroupId">Franchise Group</label>
+                                                <select id="PlayerFranchiseGroupId" name="data[CardPlayer][franchise_group_id]" class="span2 id-2-name">
+                                                    <option value="0">-- Select a Franchise</option>
+                                                    <?php
+                                                        foreach( $franchiseGroups as $franchise_id => $franchise )
+                                                        {
+                                                            echo "<option value='{$franchise_id}'>{$franchise}</option>";
+                                                        }
+                                                    ?>
+                                                </select>
+                                                <input type="hidden" id="PlayerFranchiseGroupName" name="data[CardPlayer][franchise_group_name]" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span12">
+                                        <button id="add_player" name="add_player" type="button" class="add-new-player btn btn-primary">
+                                            <i class="icon-plus icon-white"></i>
+                                            Add Player
+                                        </button>
+                                    </div>
+                                    </fieldset>
+                                <?php echo $this->Form->end(); ?>
+                            </div>
+                        </div>
+                    </div>                  
+
+                    <div class="span12">&nbsp;</div>             
+
+            <div class="row">
+                <div class="span12">
+                    <table id="added-card-players" class="table table-striped table-condensed span11">
+                    <thead>
+                        <tr>
+                            <th class="span1"><?php echo __('Player');?></th>
+                            <th class="span2"><?php echo __('Firstname');?></th>
+                            <th class="span2"><?php echo __('Lastname');?></th>
+                            <th class="span2"><?php echo __('Nickname');?></th>
+                            <th class="span1"><?php echo __('Position');?></th>
+                            <th class="span2"><?php echo __('Franchise');?></th>
+                            <th class="span1"><?php echo __('Primary');?></th>
+                            <th class="span2"><?php echo __('Action(s)');?></th>                                
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        if( isset( $data[ 'CardPlayer' ] ) ) {
+                            foreach( $data[ 'CardPlayer' ] as $key => $cardPlayer )
+                            {
+                                $cardPlayer[ 'position_name' ] = isset( $positions[ $cardPlayer[ 'position_id' ] ] ) ? $positions[ $cardPlayer[ 'position_id' ] ] : '';
+                                $cardPlayer[ 'franchise_group_name' ] = isset( $franchiseGroups[ $cardPlayer[ 'franchise_group_id' ] ] ) ? $franchiseGroups[ $cardPlayer[ 'franchise_group_id' ] ] : '';
+                                echo $this->element( 'CardHome/add_player_row', array( 'row_count' => $key, 'data' => $cardPlayer ) );
+                            }
+                        }
+                    ?>
+                    </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+	</section>	
 </div>

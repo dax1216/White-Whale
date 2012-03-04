@@ -1,37 +1,70 @@
-<div class="cards form">
-<?php echo $this->Form->create('Card');?>
-	<fieldset>
-		<legend><?php echo __('Edit Card'); ?></legend>
-	<?php
-		echo $this->Form->input('card_id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('short_name');
-		echo $this->Form->input('descriptor');
-		echo $this->Form->input('card_number');
-		echo $this->Form->input('set_info_id');
-		echo $this->Form->input('card_wiki_info_id');
-		echo $this->Form->input('franchise_group_id');
-		echo $this->Form->input('team_id');
-		echo $this->Form->input('notes');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Card.card_id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Card.card_id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Cards'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Set Infos'), array('controller' => 'set_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Set Info'), array('controller' => 'set_infos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Card Wiki Infos'), array('controller' => 'card_wiki_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Wiki Info'), array('controller' => 'card_wiki_infos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Franchise Groups'), array('controller' => 'franchise_groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Franchise Group'), array('controller' => 'franchise_groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Card Players'), array('controller' => 'card_players', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Players'), array('controller' => 'card_players', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Card Variations'), array('controller' => 'card_variations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card Variation'), array('controller' => 'card_variations', 'action' => 'add')); ?> </li>
-	</ul>
+<div class="container">
+	<header id="title" class="jumbotron subhead">
+            <h1><?php echo __('Edit Card'); ?></h1>
+	</header>
+	<?php echo $this->Form->create('Card'); ?>
+	<section id="set_select" class="well">
+            <div class="page-header">
+                    <h2>
+                            Card Set
+                            <small>Select another Set below to move this Card to another Set.</small>
+                    </h2>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <?php 
+                        echo $this->Form->input( 'set_info_id', array( 'label' => false ) ); 
+                    ?>
+                </div>
+            </div>
+	</section>
+	<section id="card_details" class="well">
+            <div class="page-header">
+                <h2>
+                    Card Details
+                    <small>Enter new Card details here.</small>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="span4">
+                    <fieldset>
+                        <?php
+                            echo $this->Form->input('card_id', array( 'type' => 'hidden' ) );
+                        ?>
+                        <ul class="unstyled">
+                            <li>
+                                <?php 
+                                    echo $this->Form->input('name', 
+                                                            array( 'class' => 'span4',
+                                                                   'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); 
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                    echo $this->Form->input('descriptor', array( 'class' => 'span4' )); 
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                    echo $this->Form->input('card_number',  
+                                                            array( 'class' => 'span3',
+                                                                   'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); 
+                                ?>
+                            </li>
+                            <li>
+                                <?php 
+                                    echo $this->Form->input('franchise_group_id', array( 'label' => 'Franchise', 'class' => 'span3' ) ); 
+                                ?>
+                            </li>
+                            <li>
+                                <?php  
+                                    echo $this->Form->input('notes', array( 'type' => 'textarea', 'class' => 'span4' ) ); 
+                                ?>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </div>
+            </div>
+	</section>	
+	<?php echo $this->Form->end( array( 'label' => __( 'Save' ), 'class' => 'btn btn-success' ) ); ?>
 </div>

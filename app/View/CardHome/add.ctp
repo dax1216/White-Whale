@@ -162,13 +162,17 @@
                     <fieldset>
                     <ul class="unstyled">
                         <li>
-                            <?php echo $this->Form->input('Card.name', array( 'class' => 'span4' ) ); ?>
+                            <?php echo $this->Form->input('Card.name', 
+                                                          array( 'class' => 'span4',
+                                                                 'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); ?>
                         </li>
                         <li>
                             <?php echo $this->Form->input('Card.descriptor', array( 'class' => 'span4' )); ?>
                         </li>
                         <li>
-                            <?php echo $this->Form->input('Card.card_number', array( 'class' => 'span3' )); ?>
+                            <?php echo $this->Form->input('Card.card_number',  
+                                                          array( 'class' => 'span3',
+                                                                 'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); ?>
                         </li>
                         <li>
                             <?php echo $this->Form->input('Card.franchise_group_id', array( 'label' => 'Franchise', 'class' => 'span3' ) ); ?>
@@ -314,7 +318,7 @@
                             <th class="span2"><?php echo __('Nickname');?></th>
                             <th class="span1"><?php echo __('Position');?></th>
                             <th class="span2"><?php echo __('Franchise');?></th>
-                            <th class="span1"><?php echo __('Pimary');?></th>
+                            <th class="span1"><?php echo __('Primary');?></th>
                             <th class="span2"><?php echo __('Action(s)');?></th>                                
                         </tr>
                     </thead>
@@ -323,7 +327,7 @@
                         if( isset( $data[ 'CardPlayer' ] ) ) {
                             foreach( $data[ 'CardPlayer' ] as $key => $cardPlayer )
                             {
-                                echo $this->element( 'Cardhome/add_player_row', array( 'row_count' => $key, 'data' => $cardPlayer ) );
+                                echo $this->element( 'CardHome/add_player_row', array( 'row_count' => $key, 'data' => $cardPlayer ) );
                             }
                         }
                     ?>

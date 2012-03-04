@@ -1,3 +1,43 @@
+<?= $this->Html->css(array('jquery.fancybox-1.3.4',), null, array('inline' => false)) ?>
+<?= $this->Html->script(array('jquery-1.7.1','jquery.easing-1.3.pack','jquery.fancybox-1.3.4.pack'), array('inline' => false)); ?>
+
+<script type="text/javascript">
+    function popup_image(card_variation_img_id, orientation) {
+        var width = 600;
+        
+        if(orientation == 'horizontal') {  
+            width = 730;
+        }
+        
+        $.fancybox({
+            'width'         : width,		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'iframe',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : '/Images/card_variation_image_popup/' + card_variation_img_id,
+            'onComplete'    : function() {
+                $('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
+                    $('#fancybox-content').height($(this).contents().find('body').height()+20);
+                });
+            }
+        });
+    }
+    
+    function view_hi_res(image_path) {
+        $.fancybox({		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'image',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : image_path
+        });
+    }
+</script>
 <div class="cards view">
 <h2><?php  echo __('Card');?></h2>
 	<dl>
@@ -61,6 +101,11 @@
 			<?php echo h($card['Card']['updated']); ?>
 			&nbsp;
 		</dd>
+                <dt><?php echo __('Card Image')?></dt>
+                <dd>
+                    <?= $this->Html->image("/files/card_images/card_variations/" . $card_image['CardVariationImage']['card_variation_id'] ."/large/" . $card_image['FrontImage']['file_name'], array('alt' => '', 
+                                                                                                            'onclick' => 'popup_image('.$card_image['CardVariationImage']['card_variation_id'].',"'.$card_image['FrontImage']['orientation'].'")'))?>
+                </dd>
 	</dl>
 </div>
 <div class="actions">

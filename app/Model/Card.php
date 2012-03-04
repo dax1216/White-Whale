@@ -129,5 +129,16 @@ class Card extends AppModel {
             'dependent'     => true
         )
     );
-
+   
+   public $hasOne = array(
+       
+        'BaseCardVariationImage' => array(
+                'className' => 'CardVariation',
+                'foreignKey' => 'card_id',
+                'conditions' => array('BaseCardVariationImage.is_base' => 1),
+                'fields' => '',
+                'order' => ''
+	)
+   );
+   
 }

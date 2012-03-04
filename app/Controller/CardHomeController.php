@@ -10,7 +10,7 @@ App::import('Controller', 'Images');
  */
 class CardHomeController extends AppController {
 	
-public $uses=array('Card');
+public $uses = array('Card', 'Image');
 public $components = array('RequestHandler');
 /**
  * index method
@@ -33,7 +33,15 @@ public $components = array('RequestHandler');
 		if (!$this->Card->exists()) {
 			throw new NotFoundException(__('Invalid card'));
 		}
-		$this->set('card', $this->Card->read(null, $id));
+                
+                Controller::loadModel( 'CardVariationImage' );                
+                
+                $card = $this->Card->read(null, $id);
+		
+                $this->set('card', $card);                
+                
+                $this->set('card_image', $this->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']));                
+                
 	}
 
 /**
@@ -97,12 +105,12 @@ public $components = array('RequestHandler');
                                     if(($res = $cardImages->upload_images($params)) !== FALSE) {       
                                         // TODO: Save card variation images. 
                                         // Build the Card Variation Image data
-                                        $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
-                                        $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'rear_img_id' ] = $res['rear_img_id'];
-                                        $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'front_img_id' ] = $res['front_img_id'];;
+                                        $this->request->data[ 'CardVariationImage' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
+                                        $this->request->data[ 'CardVariationImage' ][ 'rear_img_id' ] = $res['rear_img_id'];
+                                        $this->request->data[ 'CardVariationImage' ][ 'front_img_id' ] = $res['front_img_id'];;
 
                                         // Save Card Variation Images
-                                        $this->Card->CardVariation->CardVariationImages->save( $this->request->data );
+                                        $this->Card->CardVariation->CardVariationImage->save( $this->request->data );
                                     }
                                 }
 

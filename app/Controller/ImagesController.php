@@ -9,7 +9,7 @@ class ImagesController extends AppController {
 
     public $components = array('ImageResizer');
     
-    public $uses = array('Image');    
+    public $uses = array('Image', 'CardVariationImage');    
     
     
     public function upload_images($params) {    
@@ -65,7 +65,7 @@ class ImagesController extends AppController {
                     } 
                 }
 
-                $data = array('Image' => array('file_name' => $new_filename));
+                $data = array('Image' => array('file_name' => $new_filename, 'orientation' => $card_orientation));
 
                 $this->Image->create();
                 $this->Image->save($data);
@@ -85,13 +85,15 @@ class ImagesController extends AppController {
         }                
     }
 
-    public function popup($front_img_id = null, $rear_img_id) {        
+    public function card_variation_image_popup($card_variation_img_id) {        
         $this->layout = 'card_images';
 
-        $card_image = $this->Image->findByImageId($image_id);
-
-        $this->set('card_image', $card_image);
+        $card_image = $this->CardVariationImage->findByCardVariationId($card_variation_img_id);
         
+        $this->set('card_image', $card_image);
+        $this->set('card_group', 'card_variations');
+        
+        $this->render('card_image_popup');
     }       
     
     public function delete($id = null) {

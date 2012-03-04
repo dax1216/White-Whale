@@ -1579,3 +1579,399 @@
 #1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
 #2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2012-03-03 22:18:12 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:18:13 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:18:13 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:22:00 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:22:00 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:22:01 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:28:09 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:28:09 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:28:10 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:28:12 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:34:36 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'xxxx' for key 'name_UNIQUE'
+#0 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('INSERT INTO `ca...', Array)
+#2 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(967): DboSource->execute('INSERT INTO `ca...')
+#3 /var/www/whitewhale/lib/Cake/Model/Model.php(1646): DboSource->create(Object(Card), Array, Array)
+#4 /var/www/whitewhale/lib/Cake/Model/Model.php(2071): Model->save(Array, Array)
+#5 /var/www/whitewhale/app/Controller/CardHomeController.php(75): Model->saveAssociated(Array, Array)
+#6 [internal function]: CardHomeController->add()
+#7 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#8 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#9 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#10 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2012-03-03 22:34:37 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:34:54 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:34:54 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:34:54 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:34:55 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:35:35 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 22:52:03 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:52:03 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 22:52:03 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 22:52:04 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 23:02:51 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:02:52 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:13:12 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-03 23:13:12 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 23:13:13 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-03 23:14:19 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:14:19 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:18:19 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:18:20 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:20:01 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-03 23:20:04 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:09:55 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CardVariation.is_base' in 'on clause'
+#0 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `Card`.`...', Array)
+#2 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `Card`.`...', Array, Array)
+#3 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(1040): DboSource->fetchAll('SELECT `Card`.`...', false)
+#4 /var/www/whitewhale/lib/Cake/Model/Model.php(2483): DboSource->read(Object(Card), Array)
+#5 /var/www/whitewhale/lib/Cake/Model/Model.php(1436): Model->find('first', Array)
+#6 /var/www/whitewhale/app/Controller/CardHomeController.php(39): Model->read(NULL, '937')
+#7 [internal function]: CardHomeController->view('937')
+#8 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#9 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#11 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2012-03-04 00:09:56 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:11:28 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CardVariation.is_base' in 'where clause'
+#0 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(436): PDOStatement->execute(Array)
+#1 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(403): DboSource->_execute('SELECT `BaseCar...', Array)
+#2 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(647): DboSource->execute('SELECT `BaseCar...', Array, Array)
+#3 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(1282): DboSource->fetchAll('SELECT `BaseCar...', false)
+#4 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(1150): DboSource->fetchAssociated(Object(Card), 'SELECT `BaseCar...', Array)
+#5 /var/www/whitewhale/lib/Cake/Model/Datasource/DboSource.php(1069): DboSource->queryAssociation(Object(Card), Object(CardVariation), 'hasMany', 'BaseCardVariati...', Array, Array, true, Array, 0, Array)
+#6 /var/www/whitewhale/lib/Cake/Model/Model.php(2483): DboSource->read(Object(Card), Array)
+#7 /var/www/whitewhale/lib/Cake/Model/Model.php(1436): Model->find('first', Array)
+#8 /var/www/whitewhale/app/Controller/CardHomeController.php(39): Model->read(NULL, '937')
+#9 [internal function]: CardHomeController->view('937')
+#10 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#11 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#12 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#13 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2012-03-04 00:11:28 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:23:19 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:23:19 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:23:19 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:23:19 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:24:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:24:42 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:24:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:24:42 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:25:25 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:25:44 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:25:44 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:25:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:25:45 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:25:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:26:15 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:26:17 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:37:22 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:37:23 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:37:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:37:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:37:54 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:37:54 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:38:03 Error: [MissingControllerException] Controller class FilesController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 00:45:15 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 00:45:15 Error: [NotFoundException] Invalid card
+#0 [internal function]: CardHomeController->view('img', 'logo_footer.png')
+#1 /var/www/whitewhale/lib/Cake/Controller/Controller.php(473): ReflectionMethod->invokeArgs(Object(CardHomeController), Array)
+#2 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#3 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#4 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2012-03-04 13:09:24 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:09:24 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:09:24 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:09:26 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:14:09 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:14:09 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:14:31 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:15:38 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:15:38 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:15:38 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:15:40 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:21:22 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:21:22 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2012-03-04 13:21:23 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2012-03-04 13:21:24 Error: [MissingActionException] Action CardHomeController::img() could not be found.
+#0 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(104): Controller->invokeAction(Object(CakeRequest))
+#1 /var/www/whitewhale/lib/Cake/Routing/Dispatcher.php(86): Dispatcher->_invoke(Object(CardHomeController), Object(CakeRequest), Object(CakeResponse))
+#2 /var/www/whitewhale/app/webroot/index.php(97): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

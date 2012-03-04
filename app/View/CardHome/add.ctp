@@ -211,25 +211,27 @@
                 </div>
                     <div class="span6">
                         <h3>Card Pictures</h3>                            
+                        <fieldset>
+                            <ul class="unstyled">
+                            <li>                                        
+                            <?php  
+                                echo $this->Form->label('Card.card_orientation');
 
-                        <div class="span3 input file">                                        
-                        <?php  
-                            echo $this->Form->label('Card.card_orientation');
+                                $attributes = array('legend' => false, 'value' => 'vertical', 'label' => false, 'class' => 'card_orientation');           
 
-                            $attributes = array('legend' => false, 'value' => 'vertical', 'label' => false, 'class' => 'card_orientation');           
-
-                            echo $this->Form->radio('Card.card_orientation', array('vertical' => 'Vertical', 'horizontal' => 'Horizontal'), $attributes);
-                        ?>
-                        </div>
-                        <div class="span3 input file">
-                            <?php echo $this->Form->input('Card.card_front_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)'));?>
-                            <div class="preview"></div>
-                        </div>
-                        <div class="span3 input file">
-                            <?php echo $this->Form->input('Card.card_back_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)')); ?>
-                            <div class="preview"></div>
-                        </div>
-
+                                echo $this->Form->radio('Card.card_orientation', array('vertical' => 'Vertical', 'horizontal' => 'Horizontal'), $attributes);
+                            ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Form->input('Card.card_front_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)'));?>
+                                <div class="preview"></div>
+                            </li>
+                            <li>
+                                <?php echo $this->Form->input('Card.card_back_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)')); ?>
+                                <div class="preview"></div>
+                            </li>
+                            </ul>
+                        </fieldset>
                     </div>
             </div>
 	</section>

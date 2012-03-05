@@ -265,13 +265,10 @@ public $components = array('RequestHandler');
                 // Save player to db
                 if ( isset( $this->request->data ) )
                 {
-                   
                    $this->Card->CardPlayer->create();
                    if ( $this->Card->CardPlayer->save( $this->request->data ) )
                    {
                        // Handle save success here...
-                       $this->Session->setFlash(__('Card Player saved!'));
-                       debug(__('Card Player saved!'));
                    }
                 }
                 

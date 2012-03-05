@@ -42,7 +42,7 @@
                         });
                     }
                     
-                    var url = '/CardHome/ajax_save_player_and_add/' + row_count;
+                    var url = '/CardPlayers/save_player_and_add_row/' + row_count;
                     $.ajax({
                             url:url,
                             type: "POST",
@@ -93,16 +93,41 @@
             $('.set-as-primary-btn').live('click', function(eve) {
                 eve.preventDefault();
                 
+                var btn_clicked = $(this);
+                
                 // Unmark everything
-                $('#added-card-players tr').each(function() {
+                $('#card_players tr').each(function() {
                     $(this).find('td').eq(6).each(function() {
                         $(this).find('input').val('0');
                         $(this).find('i').removeClass('icon-flag');
                     })
                 })
-                
+
                 $(this).closest('tr').find('td').eq(6).find('input').val('1');
-                $(this).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');
+                $(this).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');                
+                
+                var url = '/CardPlayers/set_as_primary/';
+                $.ajax({
+                        url:url,
+                        type: "POST",
+                        datatype: "html",
+                        data: $('#add_player_form').serialize(),
+                        beforeSend: function () {
+
+                        },
+                        success: function (html) {
+                                    // Unmark everything
+                                    /*$('#card_players tr').each(function() {
+                                        $(this).find('td').eq(6).each(function() {
+                                            $(this).find('input').val('0');
+                                            $(this).find('i').removeClass('icon-flag');
+                                        })
+                                    })
+
+                                    $(btn_clicked).closest('tr').find('td').eq(6).find('input').val('1');
+                                    $(btn_clicked).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');*/
+                                }
+                });                
             })
         });
         
@@ -260,6 +285,7 @@
             </div>
 	</section>
 
+<?php echo $this->Form->create( 'CardPlayer', array( 'id' => 'add_player_form' ) ); ?>        
         <section id="card_players" class="well">
             <div class="page-header">
                 <h2>
@@ -274,16 +300,15 @@
                                 <a id="add-player-toggle" style="cursor:pointer;"><i class="icon-chevron-up"></i>Hide Form</a>
                             </div>
                             <div id="add-player-form">
-                                <?php echo $this->Form->create( 'CardPlayer', array( 'id' => 'add_player_form' ) ); ?>
                                     <fieldset class="add-player-set">
                                     <?php
-                                        echo $this->Form->input( 'card_id', array( 'type' => 'hidden', 'value' => $card[ 'name' ] ) );
+                                        echo $this->Form->input( 'Player.card_id', array( 'type' => 'hidden', 'value' => $card[ 'card_id' ] ) );
                                     ?>
                                     <div class="span12">
                                         <div class="row">
                                             <div class="span3 input select">
                                                <label for="PlayerPlayerId">Player</label>
-                                               <select id="PlayerPlayerId" name="data[CardPlayer][player_id]" class="span3 id-2-name">
+                                               <select id="PlayerPlayerId" name="data[Player][player_id]" class="span3 id-2-name">
                                                     <option value="0">-- Select a Player</option>
                                                     <?php
                                                         foreach( $players as $player_id => $player )
@@ -292,7 +317,7 @@
                                                         }
                                                     ?>
                                                 </select>
-                                                <input type="hidden" id="PlayerName" name="data[CardPlayer][name]" />
+                                                <input type="hidden" id="PlayerName" name="data[Player][name]" />
                                             </div>                                    
                                         </div>
                                     </div>
@@ -300,19 +325,19 @@
                                         <div class="row">
                                             <div class="span2 input text">
                                                 <label for="PlayerFirstName">Firstname (on Card)</label>
-                                                <input id="PlayerFirstName" type="text" name="data[CardPlayer][card_first_name]" value="" class="span2" />
+                                                <input id="PlayerFirstName" type="text" name="data[Player][card_first_name]" value="" class="span2" />
                                             </div>
                                             <div class="span2 input text">
                                                 <label for="PlayerLastname">Lastname (on Card)</label>
-                                                <input id="PlayerLastName" type="text" name="data[CardPlayer][card_last_name]" value="" class="span2" />
+                                                <input id="PlayerLastName" type="text" name="data[Player][card_last_name]" value="" class="span2" />
                                             </div>
                                             <div class="span2 input text">
                                                 <label for="PlayerNickName">Nickname</label>
-                                                <input id="PlayerNickName" type="text" name="data[CardPlayer][card_nick_name]" value="" class="span2" />
+                                                <input id="PlayerNickName" type="text" name="data[Player][card_nick_name]" value="" class="span2" />
                                             </div>
                                             <div class="span2 input select">
                                                 <label for="PlayerPositionId">Position</label>
-                                                <select id="PlayerPositionId" name="data[CardPlayer][position_id]" class="span2 id-2-name">
+                                                <select id="PlayerPositionId" name="data[Player][position_id]" class="span2 id-2-name">
                                                     <option value="0">-- Select a Position</option>
                                                     <?php
                                                         foreach( $positions as $position_id => $position )
@@ -321,11 +346,11 @@
                                                         }
                                                     ?>
                                                 </select>
-                                                <input type="hidden" id="PlayerPositionName" name="data[CardPlayer][position_name]" value="" />
+                                                <input type="hidden" id="PlayerPositionName" name="data[Player][position_name]" value="" />
                                             </div>
                                             <div class="span2 input select">
                                                 <label for="PlayerFranchiseGroupId">Franchise Group</label>
-                                                <select id="PlayerFranchiseGroupId" name="data[CardPlayer][franchise_group_id]" class="span2 id-2-name">
+                                                <select id="PlayerFranchiseGroupId" name="data[Player][franchise_group_id]" class="span2 id-2-name">
                                                     <option value="0">-- Select a Franchise</option>
                                                     <?php
                                                         foreach( $franchiseGroups as $franchise_id => $franchise )
@@ -334,7 +359,7 @@
                                                         }
                                                     ?>
                                                 </select>
-                                                <input type="hidden" id="PlayerFranchiseGroupName" name="data[CardPlayer][franchise_group_name]" value="" />
+                                                <input type="hidden" id="PlayerFranchiseGroupName" name="data[Player][franchise_group_name]" value="" />
                                             </div>
                                         </div>
                                     </div>
@@ -345,7 +370,6 @@
                                         </button>
                                     </div>
                                     </fieldset>
-                                <?php echo $this->Form->end(); ?>
                             </div>
                         </div>
                     </div>                  
@@ -353,8 +377,10 @@
                     <div class="span12">&nbsp;</div>             
 
             <div class="row">
+                <form id="card_players_form"
+                <fieldset>
                 <div class="span12">
-                    <table id="added-card-players" class="table table-striped table-condensed span11">
+                    <table id="card_players" class="table table-striped table-condensed span11">
                     <thead>
                         <tr>
                             <th class="span1"><?php echo __('Player');?></th>
@@ -380,8 +406,9 @@
                     ?>
                     </tbody>
                     </table>
-                    
                 </div>
+                </fieldset>
             </div>
 	</section>	
+        <?php $this->Form->end(); ?>
 </div>

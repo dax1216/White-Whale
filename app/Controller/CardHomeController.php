@@ -1,5 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
+
+// Import images controller for uploading of card images
+App::import('Controller', 'Images');
 /**
  * CardHome Controller
  *
@@ -7,7 +10,7 @@ App::uses('AppController', 'Controller');
  */
 class CardHomeController extends AppController {
 	
-public $uses=array('Card');
+public $uses = array('Card', 'Image');
 public $components = array('RequestHandler');
 /**
  * index method
@@ -105,17 +108,27 @@ public $components = array('RequestHandler');
                                 // Save the Base Card
                                 if( $this->Card->CardVariation->save( $this->request->data ) )
                                 {
-                                    // TODO: Upload images here and return image_id's
+                                    // Import ImagesController to upload images
+                                    $cardImages = new ImagesController();
+                                    $cardImages->constructClasses();                
 
-                                    /* TODO: Save card variation images. 
-                                    // Build the Card Variation Image data
-                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
-                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'rear_img_id' ] = 1;
-                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'front_img_id' ] = 1;
+                                    $params = array('front_img' => $this->request->data['Card']['card_front_side'],
+                                                    'rear_img' => $this->request->data['Card']['card_back_side'],
+                                                    'card_orientation' => $this->request->data['Card']['card_orientation'],
+                                                    'filename' => '1909_T206_TyCobb_WhiteSleaves_OldMill', // Change this when you have figured out how to generate the card name
+                                                    'image_group_type' => 'card_variations', 
+                                                    'image_group_id' => $this->Card->CardVariation->id);
 
-                                    // Save Card Variation Images
-                                    $this->Card->CardVariation->CardVariationImages->save( $this->request->data );
-                                    */
+                                    if(($res = $cardImages->upload_images($params)) !== FALSE) {       
+                                        // TODO: Save card variation images. 
+                                        // Build the Card Variation Image data
+                                        $this->request->data[ 'CardVariationImage' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
+                                        $this->request->data[ 'CardVariationImage' ][ 'rear_img_id' ] = $res['rear_img_id'];
+                                        $this->request->data[ 'CardVariationImage' ][ 'front_img_id' ] = $res['front_img_id'];;
+
+                                        // Save Card Variation Images
+                                        $this->Card->CardVariation->CardVariationImage->save( $this->request->data );
+                                    }
                                 }
 
                                 // debug($this->Card->CardVariation->validationErrors);

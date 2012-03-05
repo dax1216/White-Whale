@@ -116,6 +116,29 @@
         $(target_div).find('option:selected').removeAttr('selected');
     }
     
+    function imagePreview(files, input_obj) {
+        var file = files[0];
+        var imageType = /image.*/;
+        if (!file.type.match(imageType)) {
+            alert('The file selected is not an image');
+            return false;
+        }  
+        var img = document.createElement("img");
+        
+        if($('input.card_orientation:checked').val() == 'horizontal') {
+            img.style.height = '100px';
+            img.height = 100;
+        } else {
+            img.style.height = '150px';
+            img.height = 150;
+        }
+        
+        img.file = file;
+        $(input_obj).parent('div').siblings('.preview').html(img);
+        var reader = new FileReader();
+        reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+        reader.readAsDataURL(file);
+    }
 </script>
 
 
@@ -125,7 +148,7 @@
 	<header id="title" class="jumbotron subhead">
             <h1><?php echo __('Add Card'); ?></h1>
 	</header>
-        <form id="add_card_form" method="POST">
+        <form id="add_card_form" method="POST" enctype="multipart/form-data">
 	<section id="set_select" class="well">
             <div class="page-header">
                     <h2>
@@ -180,35 +203,28 @@
                     </fieldset>
                 </div>
                     <div class="span6">
-                            <h3>Card Pictures</h3>
-                            <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
-                            <ul class="thumbnails">
-                                    <li class="span3">
-                                            <div class="thumbnail">
-                                                    <img alt="" src="http://placehold.it/260x180">
-                                                    <div class="caption">
-                                                            <h5>Front</h5>
-                                                            <p>The front side of the card.</p>
-                                                            <p>
-                                                                    <a class="btn btn-primary" href="#">Upload</a>
-                                                            </p>
-                                                    </div>
-                                            </div>
-                                    </li>
-                                    <li class="span3">
-                                            <div class="thumbnail">
-                                                    <img alt="" src="http://placehold.it/260x180">
-                                                    <div class="caption">
-                                                            <h5>Back</h5>
-                                                            <p>The back side of the card.</p>
-                                                            <p>
-                                                                    <a class="btn btn-primary" href="#">Action</a>
-                                                                    <a class="btn" href="#">Action</a>
-                                                            </p>
-                                                    </div>
-                                            </div>
-                                    </li>
+                        <h3>Card Pictures</h3>                            
+                        <fieldset>
+                            <ul class="unstyled">
+                            <li>                                        
+                            <?php  
+                                echo $this->Form->label('Card.card_orientation');
+
+                                $attributes = array('legend' => false, 'value' => 'vertical', 'label' => false, 'class' => 'card_orientation');           
+
+                                echo $this->Form->radio('Card.card_orientation', array('vertical' => 'Vertical', 'horizontal' => 'Horizontal'), $attributes);
+                            ?>
+                            </li>
+                            <li>
+                                <?php echo $this->Form->input('Card.card_front_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)'));?>
+                                <div class="preview"></div>
+                            </li>
+                            <li>
+                                <?php echo $this->Form->input('Card.card_back_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)')); ?>
+                                <div class="preview"></div>
+                            </li>
                             </ul>
+                        </fieldset>
                     </div>
             </div>
 	</section>

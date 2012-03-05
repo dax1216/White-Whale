@@ -31,12 +31,13 @@ define('DS', DIRECTORY_SEPARATOR);
 */
 
 /**
-* The full path to the directory which holds "app", WITHOUT a trailing DS.
-*
-*/
+ * The full path to the directory which holds "app", WITHOUT a trailing DS.
+ *
+ */
 if (!defined('ROOT')) {
 define('ROOT', dirname(dirname(dirname(__FILE__))));
 }
+
 /**
 * The actual directory name for the "app".
 *

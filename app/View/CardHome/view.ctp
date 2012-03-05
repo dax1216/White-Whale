@@ -4,13 +4,49 @@
     echo $this->Html->script( 'jquery/plugin/jquery.table.addrow.js', array( 'inline' => false ) ); 
     //echo $this->Html->script( 'bootstrap/bootstrap-collapse.js', array( 'inline' => false ) ); 
     echo $this->Html->script( 'bootstrap/bootstrap-typeahead.js', array( 'inline' => false ) ); 
+    echo $this->Html->css(array('jquery.fancybox-1.3.4',), null, array('inline' => false));
+    echo $this->Html->script(array('jquery-1.7.1','jquery.easing-1.3.pack','jquery.fancybox-1.3.4.pack'), array('inline' => false));
 ?>
+
 <script type="text/javascript">
+    function popup_image(card_variation_img_id, orientation) {
+        var width = 600;
+        
+        if(orientation == 'horizontal') {  
+            width = 730;
+        }
+        
+        $.fancybox({
+            'width'         : width,		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'iframe',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : '/Images/card_variation_image_popup/' + card_variation_img_id,
+            'onComplete'    : function() {
+                $('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
+                    $('#fancybox-content').height($(this).contents().find('body').height()+20);
+                });
+            }
+        });
+    }
+    
+    function view_hi_res(image_path) {
+        $.fancybox({		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'image',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : image_path
+        });
+    }
+    
     (function($){
         $(document).ready(function(){
-            /*$('.search-player').typeahead({
-                source: ['Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Dakota','North Carolina','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
-            });*/
 
             //if we're doing a lot of toggling then let's cache the selectors in a variable to minimize overhead
             var $add_player_toggle = $("#add-player-toggle");

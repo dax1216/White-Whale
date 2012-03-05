@@ -2,8 +2,6 @@
         <td>
 		<?php 
                 	echo $this->Form->hidden( "CardPlayer.{$row_count}.row_count", array( 'class' => 'row-count', 'value' => $row_count ) );
-			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_player_id", array( 'value' => $data["card_player_id"] ) );
-			echo $this->Form->hidden( "CardPlayer.{$row_count}.card_id", array( 'value' => $data["card_id"] ) );
 			echo $this->Form->hidden( "CardPlayer.{$row_count}.player_id", array( 'class' => 'player_id', 'value' => $data["player_id"] ) );
                         echo $data["player_id"];
 		?>

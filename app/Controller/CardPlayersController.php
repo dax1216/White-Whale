@@ -7,6 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class CardPlayersController extends AppController {
 
+    public $uses=array('CardPlayer');
+    public $components = array('RequestHandler');
 
 /**
  * index method
@@ -103,4 +105,57 @@ class CardPlayersController extends AppController {
 		$this->Session->setFlash(__('Card player was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+        
+        // Ajax functions
+        
+        public function save_player_and_add_row( $row_count = 0 )
+        {
+            if ( $this->RequestHandler->isAjax() )
+            {
+                // Save player to db
+                if ( isset( $this->request->data ) )
+                {
+                   $this->CardPlayer->create();
+                   if ( $this->CardPlayer->save( $this->request->data ) )
+                   {
+                       // Handle save success here...
+                   }
+                }
+                
+                $this->set('row_count', $row_count);
+                $this->set('data', $this->CardPlayer->data);                
+                
+                $this->render('/Elements/CardHome/save_player_and_add');                
+                
+                // Build row return
+                
+            }
+        }        
+        
+        public function set_as_primary( $val = true )
+        {
+            $result = array( 'status' => 0, 'message' => 'Failed!' );
+            if ( $this->RequestHandler->isAjax() )
+            {
+                $this->layout = 'json';
+                if ( isset( $this->request->data ) )
+                {                
+                    // TODO: Optimize update code
+                    foreach( $this->request->data[ 'CardPlayer' ] as $key => $cardPlayer )
+                    {
+                        $data = array( 'card_player_id' => $cardPlayer[ 'card_player_id' ],
+                                       'is_primary' => $cardPlayer[ 'is_primary' ] ? true : false );
+                        if ( $this->CardPlayer->save( $data ) )
+                        {
+                            $result[ 'status' ] = 1;
+                            $result[ 'message' ] = 'New primary player is set.';
+                        }
+                        
+                        debug( $this->CardPlayer->validationErrors );
+                    }
+                }
+            }
+            
+            $this->set( 'data', $result );
+        }
 }

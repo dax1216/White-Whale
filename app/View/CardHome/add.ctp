@@ -32,7 +32,16 @@
             
             $('#add_player').live('click', function(eve) {
                     eve.preventDefault();
+                    
                     var row_count = $('#added-card-players > tbody > tr').length;
+                    
+                    if ( row_count > 0 ) 
+                    {
+                        $('#added-card-players tr:last').each(function() {
+                            row_count = Number( $( this ).find("td:first").find("input:first").val() ) + 1;    
+                        });
+                    }
+                    
                     var url = 'ajax_add_player_row/' + row_count;
                     $.ajax({
                             url:url,
@@ -45,9 +54,10 @@
                             success: function (html) {
                                     $(html).fadeIn().appendTo('#added-card-players > tbody');
                                     var targetOffset = $('#added-card-players').offset().top;
-                                    $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
-                                   
-                                    // TODO: Clear add-player-form
+                                    
+                                    // TODO: Somehow this is throwing an error. Check.
+                                    // $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
+                                    
                                     resetForm( $( '#add-player-form' ) );
                             }
                     });
@@ -55,13 +65,13 @@
 
             $('.delete_player').live('click', function(eve) {
             
-                    if ( !confirm( 'Removing player!' ) )
+                    if ( !confirm( 'Remove player!' ) )
                     {
                         return false;
                     }
             
                     eve.preventDefault();
-                    $(this).closest('tr').fadeOut();
+                    $(this).closest('tr').fadeOut().remove();
             });
             
             // For each select onchange event, update it's corresponding hidden input
@@ -79,10 +89,24 @@
                     $( '#PlayerLastName' ).val( name[1] );
                 }
             })
+            
+            $('.set-as-primary-btn').live('click', function(eve) {
+                eve.preventDefault();
+                
+                // Unmark everything
+                $('#added-card-players tr').each(function() {
+                    $(this).find('td').eq(6).each(function() {
+                        $(this).find('input').val('0');
+                        $(this).find('i').removeClass('icon-flag');
+                    })
+                })
+                
+                $(this).closest('tr').find('td').eq(6).find('input').val('1');
+                $(this).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');
+            })
         });
         
     })(jQuery);
-    
     
     // Clear form fields values
     function resetForm( target_div )
@@ -95,9 +119,9 @@
         $( '#PlayerNickName' ).val( '' );
         
         // Reset select fields
-        $( '#PlayerPlayerId' ).val( '' );
-        $( '#PlayerPositionId' ).val( '' );
-        $( '#PlayerFranchiseGroupId' ).val( '' );
+        $( '#PlayerPlayerId' ).val( 0 );
+        $( '#PlayerPositionId' ).val( 0 );
+        $( '#PlayerFranchiseGroupId' ).val( 0 );
     }
     
 </script>
@@ -134,16 +158,34 @@
                     </h2>
             </div>
             <div class="row">
-                    <div class="span4">
-                            <?php
-                                    echo $this->Form->input('Card.name', array( 'class' => 'span4' ) );
-                                    echo $this->Form->input('Card.descriptor', array( 'class' => 'span4' ));
-                                    echo $this->Form->input('Card.card_number', array( 'class' => 'span3' ));
-                                    echo $this->Form->input('Card.franchise_group_id', array( 'label' => 'Franchise', 'class' => 'span3' ) );
-                                    echo $this->Form->input('variation_id', array( 'label' => 'Variation', 'class' => 'span3' ) );
-                                    echo $this->Form->input('Card.notes', array( 'type' => 'textarea', 'class' => 'span4' ) );
-                            ?>				
-                    </div>
+                <div class="span4">
+                    <fieldset>
+                    <ul class="unstyled">
+                        <li>
+                            <?php echo $this->Form->input('Card.name', 
+                                                          array( 'class' => 'span4',
+                                                                 'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Form->input('Card.descriptor', array( 'class' => 'span4' )); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Form->input('Card.card_number',  
+                                                          array( 'class' => 'span3',
+                                                                 'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Form->input('Card.franchise_group_id', array( 'label' => 'Franchise', 'class' => 'span3' ) ); ?>
+                        </li>
+                        <li>
+                            <?php echo $this->Form->input('variation_id', array( 'label' => 'Variation', 'class' => 'span3' ) ); ?>
+                        </li>
+                        <li>
+                            <?php  echo $this->Form->input('Card.notes', array( 'type' => 'textarea', 'class' => 'span4' ) ); ?>
+                        </li>
+                    </ul>
+                    </fieldset>
+                </div>
                     <div class="span6">
                             <h3>Card Pictures</h3>
                             <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
@@ -199,7 +241,7 @@
                                     <div class="row">
                                         <div class="span3 input select">
                                            <label for="PlayerPlayerId">Player</label>
-                                           <select id="PlayerPlayerId" name="player[id]" class="span3 id-2-name">
+                                           <select id="PlayerPlayerId" name="player[player_id]" class="span3 id-2-name">
                                                 <option value="0">-- Select a Player</option>
                                                 <?php
                                                     foreach( $players as $player_id => $player )
@@ -216,15 +258,15 @@
                                     <div class="row">
                                         <div class="span2 input text">
                                             <label for="PlayerFirstName">Firstname (on Card)</label>
-                                            <input id="PlayerFirstName" type="text" name="player[first_name]" value="" class="span2" />
+                                            <input id="PlayerFirstName" type="text" name="player[card_first_name]" value="" class="span2" />
                                         </div>
                                         <div class="span2 input text">
                                             <label for="PlayerLastname">Lastname (on Card)</label>
-                                            <input id="PlayerLastName" type="text" name="player[last_name]" value="" class="span2" />
+                                            <input id="PlayerLastName" type="text" name="player[card_last_name]" value="" class="span2" />
                                         </div>
                                         <div class="span2 input text">
                                             <label for="PlayerNickName">Nickname</label>
-                                            <input id="PlayerNickName" type="text" name="player[nick_name]" value="" class="span2" />
+                                            <input id="PlayerNickName" type="text" name="player[card_nick_name]" value="" class="span2" />
                                         </div>
                                         <div class="span2 input select">
                                             <label for="PlayerPositionId">Position</label>
@@ -237,7 +279,7 @@
                                                     }
                                                 ?>
                                             </select>
-                                            <input type="hidden" id="PlayerPositionName" name="player[position_name]" />
+                                            <input type="hidden" id="PlayerPositionName" name="player[position_name]" value="" />
                                         </div>
                                         <div class="span2 input select">
                                             <label for="PlayerFranchiseGroupId">Franchise Group</label>
@@ -250,7 +292,7 @@
                                                     }
                                                 ?>
                                             </select>
-                                            <input type="hidden" id="PlayerFranchiseGroupName" name="player[franchise_group_name]" />
+                                            <input type="hidden" id="PlayerFranchiseGroupName" name="player[franchise_group_name]" value="" />
                                         </div>
                                     </div>
                                 </div>
@@ -276,11 +318,19 @@
                             <th class="span2"><?php echo __('Nickname');?></th>
                             <th class="span1"><?php echo __('Position');?></th>
                             <th class="span2"><?php echo __('Franchise');?></th>
-                            <th class="span1"><?php echo __('Pimary');?></th>
+                            <th class="span1"><?php echo __('Primary');?></th>
                             <th class="span2"><?php echo __('Action(s)');?></th>                                
                         </tr>
                     </thead>
                     <tbody>
+                    <?php
+                        if( isset( $data[ 'CardPlayer' ] ) ) {
+                            foreach( $data[ 'CardPlayer' ] as $key => $cardPlayer )
+                            {
+                                echo $this->element( 'CardHome/add_player_row', array( 'row_count' => $key, 'data' => $cardPlayer ) );
+                            }
+                        }
+                    ?>
                     </tbody>
                     </table>
                 </div>

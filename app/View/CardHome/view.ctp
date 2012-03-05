@@ -52,7 +52,7 @@
 
                             },
                             success: function (html) {
-                                    $(html).fadeIn().appendTo('#added-card-players > tbody');
+                                    $(html).fadeIn().appendTo('#card_players > tbody');
                                     var targetOffset = $('#added-card-players').offset().top;
                                     
                                     // TODO: Somehow this is throwing an error. Check.
@@ -63,14 +63,26 @@
                     });
             })
 
-            $('.delete_player').live('click', function(eve) {
+            $('.delete-player').live('click', function(eve) {
             
                     if ( !confirm( 'Remove player!' ) )
                     {
                         return false;
                     }
-            
-                    eve.preventDefault();
+                    var url = '/CardPlayers/remove_player_from_card/';
+                    $.ajax({
+                            url:url,
+                            type: "GET",
+                            datatype: "html",
+                            data: $(this).closest( 'td' ).find( 'input' ).val(),
+                            beforeSend: function () {
+                                // Additional processing before sending out request
+                            },
+                            success: function (html) {
+                                        // TODO: Add functionality to display success message on page
+                                    }
+                    });                     
+                    
                     $(this).closest('tr').fadeOut().remove();
             });
             
@@ -113,19 +125,10 @@
                         datatype: "html",
                         data: $('#add_player_form').serialize(),
                         beforeSend: function () {
-
+                            // Additional processing before sending out request
                         },
                         success: function (html) {
-                                    // Unmark everything
-                                    /*$('#card_players tr').each(function() {
-                                        $(this).find('td').eq(6).each(function() {
-                                            $(this).find('input').val('0');
-                                            $(this).find('i').removeClass('icon-flag');
-                                        })
-                                    })
-
-                                    $(btn_clicked).closest('tr').find('td').eq(6).find('input').val('1');
-                                    $(btn_clicked).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');*/
+                                    // TODO: Add functionality to display success message on page
                                 }
                 });                
             })

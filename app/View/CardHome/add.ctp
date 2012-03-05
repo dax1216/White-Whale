@@ -63,7 +63,7 @@
                     });
             })
 
-            $('.delete_player').live('click', function(eve) {
+            $('.delete-player').live('click', function(eve) {
             
                     if ( !confirm( 'Remove player!' ) )
                     {
@@ -112,16 +112,8 @@
     function resetForm( target_div )
     {
         // TODO: Find a way to parse through the form instead of updating each and every field elements
-        
-        // Reset input fields
-        $( '#PlayerFirstName' ).val( '' );
-        $( '#PlayerLastName' ).val( '' );
-        $( '#PlayerNickName' ).val( '' );
-        
-        // Reset select fields
-        $( '#PlayerPlayerId' ).val( 0 );
-        $( '#PlayerPositionId' ).val( 0 );
-        $( '#PlayerFranchiseGroupId' ).val( 0 );
+        $(target_div + 'input[type=text]').val('');
+        $(target_div).find('option:selected').removeAttr('selected');
     }
     
 </script>
@@ -162,9 +154,10 @@
                     <fieldset>
                     <ul class="unstyled">
                         <li>
-                            <?php echo $this->Form->input('Card.name', 
+                            <?php /*echo $this->Form->input('Card.name', 
                                                           array( 'class' => 'span4',
-                                                                 'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) ); ?>
+                                                                 'disabled' => '1',
+                                                                 'error' => array( 'attributes' => array( 'class' => 'label label-important' ) ) ) );*/ ?>
                         </li>
                         <li>
                             <?php echo $this->Form->input('Card.descriptor', array( 'class' => 'span4' )); ?>

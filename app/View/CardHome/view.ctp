@@ -9,10 +9,10 @@
 ?>
 <script type="text/javascript">
     function popup_image(card_variation_img_id, side, orientation) {
-        var width = 600;
+        var width = 620;
         
         if(orientation == 'horizontal') {  
-            width = 730;
+            width = 735;
         }
         
         $.fancybox({

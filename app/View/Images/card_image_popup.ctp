@@ -4,7 +4,7 @@
 <?= $this->Html->css(array('whitewhale', 'jquery.jqzoom'), null, array('inline' => false)) ?>
 <?= $this->Html->script(array('jquery-1.7.1', 'jquery.jqzoom.pack'), array('inline' => false))?>
 <div class="clearfix">
-<?php   if($set_side_display = 'front') { ?>
+<?php   if($set_side_display == 'front') { ?>
     <a href="<?=$card_dir?>max_size/<?=$card_image['FrontImage']['file_name']?>" class="jqzoom" rel='gal1' title="">
         <img src="<?=$card_dir?>large/<?=$card_image['FrontImage']['file_name']?>" title="">
     </a>
@@ -17,11 +17,11 @@
 <p><a href="javascript:void(0)" class="view_hi_res">View Hi-res Image</a></p>
 <div class="clearfix" >
     <ul id="thumblist" class="clearfix" >
-        <li><a <?=($set_side_display = 'front') ? 'class="zoomThumbActive"' : ''?> href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: '<?=$card_dir?>large/<?=$card_image['FrontImage']['file_name']?>', largeimage: '<?=$card_dir?>max_size/<?=$card_image['FrontImage']['file_name']?>'}">
+        <li><a <?=($set_side_display == 'front') ? 'class="zoomThumbActive"' : ''?> href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: '<?=$card_dir?>large/<?=$card_image['FrontImage']['file_name']?>', largeimage: '<?=$card_dir?>max_size/<?=$card_image['FrontImage']['file_name']?>'}">
                 <img src='<?=$card_dir?>thumbnail/<?=$card_image['FrontImage']['file_name']?>'>
             </a>
         </li>
-        <li><a <?=($set_side_display = 'rear') ? 'class="zoomThumbActive"' : ''?> href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: '<?=$card_dir?>large/<?=$card_image['RearImage']['file_name']?>', largeimage: '<?=$card_dir?>max_size/<?=$card_image['RearImage']['file_name']?>'}">
+        <li><a <?=($set_side_display == 'rear') ? 'class="zoomThumbActive"' : ''?> href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: '<?=$card_dir?>large/<?=$card_image['RearImage']['file_name']?>', largeimage: '<?=$card_dir?>max_size/<?=$card_image['RearImage']['file_name']?>'}">
                 <img src='<?=$card_dir?>thumbnail/<?=$card_image['RearImage']['file_name']?>'>
             </a>
         </li>        

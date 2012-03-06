@@ -51,7 +51,7 @@ class ImagesController extends AppController {
 
                     $new_file = $upload_path . DS . $new_filename;
 
-                    $prefs = array('resize_data' => array(RESIZE_WIDTH, $dimensions[$card_orientation], null));
+                    $prefs = array('resize_data' => array(RESIZE_HEIGHT, $dimensions[$card_orientation], null));
                     $errors = $this->ImageResizer->uploadFile($card_image['tmp_name'], $new_file, $prefs);
 
                     if (!empty($errors)) {

@@ -179,8 +179,8 @@ public $components = array('RequestHandler');
                                         // Save Card Variation Images
                                         $this->Card->CardVariation->CardVariationImage->save( $this->request->data );
                                     } else {
-                                        // TODO:
-                                        // Rollback insert queries from upload failure...
+                                        // TODO for carlos:
+                                        // Rollback previous insert queries from upload failure...
                                         $imageValidationErrors = $cardImages->getValidationErrors();
                                         
                                         $this->Card->validationErrors = array_merge($this->Card->validationErrors, $imageValidationErrors);

@@ -67,6 +67,11 @@ public $components = array('RequestHandler');
  * @return void
  */
 	public function add() {
+            
+                // List of variations
+                $variations = $this->Card->CardVariation->Variation->find('list');
+                // debug( $variations );
+                    
 		if ($this->request->is('post')) {
                     
                     // Send to view
@@ -77,6 +82,42 @@ public $components = array('RequestHandler');
                     
                     // Set the data to the model
                     $this->Card->set( $this->request->data );
+                    
+                    $setInfoId = $this->request->data[ 'Card' ][ 'set_info_id' ];
+                    $setInfo = $this->Card->SetInfo->findBySetInfoId( $setInfoId );
+                    //debug( $this->request->data );
+                    //debug( $setInfo );
+                    // Create and set the name
+                    $cardName = trim( $setInfo[ 'SetInfo' ][ 'dist_start_year' ] ) . '-' 
+                                . trim( $setInfo[ 'SetInfo' ][ 'dist_end_year' ] ) . ' '  
+                                . trim( $setInfo[ 'AccCatalog' ][ 'name' ] ) . ' '  
+                                . trim( $setInfo[ 'Brand' ][ 'name' ] ) . ' '  
+                                . trim( $setInfo[ 'SetInfo' ][ 'card_number' ] ) . ' '  
+                                . trim( $setInfo[ 'SetInfo' ][ 'subset_name' ] );
+                    
+                    // Get primary player name
+                    $primaryPlayer = '';    
+                    foreach( $this->request->data[ 'CardPlayer' ] as $cardPlayer )
+                    {
+                        if ( $cardPlayer[ 'is_primary' ] )
+                        {
+                            $primaryPlayer = $cardPlayer[ 'card_first_name' ] . ' ' . $cardPlayer[ 'card_last_name' ];
+                            break;
+                        }
+                    }
+                    
+                    $cardName .= ' [' . trim( $primaryPlayer ) . ']'
+                                      . ' ' . trim( $this->request->data[ 'Card' ][ 'descriptor' ] );
+
+                    // Get variation name
+                    if ( $variations[ $this->request->data[ 'variation_id' ] ] )
+                    {
+                        $cardName .= ' (' . trim( $variations[ $this->request->data[ 'variation_id' ] ] ) . ')';
+                    }
+                    
+                    $this->request->data[ 'Card' ][ 'name' ] = $cardName;
+                    
+                    // debug( $this->request->data );
                     
                     // Validate card
                     if ( $this->Card->validates() )
@@ -103,7 +144,7 @@ public $components = array('RequestHandler');
                                 $this->request->data[ 'CardVariation' ][ 'variation_id' ] = $this->request->data[ 'variation_id' ];
                                 $this->request->data[ 'CardVariation' ][ 'card_id' ] = $this->Card->id;
                                 $this->request->data[ 'CardVariation' ][ 'is_base' ] = 1;
-                                $this->request->data[ 'CardVariation' ][ 'name' ] = 'SOME-NAME-HERE'; // TODO: Create a sensible name
+                                $this->request->data[ 'CardVariation' ][ 'name' ] = $cardName; // TODO: Create a sensible name. Using the Card Name for now.
 
                                 // Save the Base Card
                                 if( $this->Card->CardVariation->save( $this->request->data ) )
@@ -112,10 +153,15 @@ public $components = array('RequestHandler');
                                     $cardImages = new ImagesController();
                                     $cardImages->constructClasses();                
 
+                                    // Remove bracket and parenthesis
+                                    $filename = str_replace( array( '(', ')', '[', ']' ), '', $cardName );
+                                    $filename = str_replace( array( ' ', '-' ), '_', $filename );
+                                    // debug( $filename );
+                                                                        
                                     $params = array('front_img' => $this->request->data['Card']['card_front_side'],
                                                     'rear_img' => $this->request->data['Card']['card_back_side'],
                                                     'card_orientation' => $this->request->data['Card']['card_orientation'],
-                                                    'filename' => '1909_T206_TyCobb_WhiteSleaves_OldMill', // Change this when you have figured out how to generate the card name
+                                                    'filename' => $filename, 
                                                     'image_group_type' => 'card_variations', 
                                                     'image_group_id' => $this->Card->CardVariation->id);
 
@@ -149,13 +195,10 @@ public $components = array('RequestHandler');
 		}
 
                 // List of card sets
-                $setInfos = $this->Card->SetInfo->find('list');
-                
+                $setInfos = $this->Card->SetInfo->find('list'); 
+               
                 // List of card wikis
 		// $cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-                
-                // List of variations
-                $variations = $this->Card->CardVariation->Variation->find('list');
                 
                 // List of players
                 $players = $this->Card->CardPlayer->Player->find('list', array( 'order' => 'name ASC' ) );

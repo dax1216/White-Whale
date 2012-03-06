@@ -14,7 +14,7 @@
 
             //if we're doing a lot of toggling then let's cache the selectors in a variable to minimize overhead
             var $add_player_toggle = $("#add-player-toggle");
-            var $add_player_form = $('#add-player-form');
+            var $add_player_form = $('#add_player_form');
 
             $add_player_toggle.bind('click',function(eve) {
                     eve.preventDefault();
@@ -58,7 +58,7 @@
                                     // TODO: Somehow this is throwing an error. Check.
                                     // $('html,body').animate({scrollTop: targetOffset}, 500, 'easeInQuint');
                                     
-                                    resetForm( $( '#add-player-form' ) );
+                                    resetForm( $( '#add_player_form' ) );
                             }
                     });
             })
@@ -112,8 +112,19 @@
     function resetForm( target_div )
     {
         // TODO: Find a way to parse through the form instead of updating each and every field elements
-        $(target_div + 'input[type=text]').val('');
-        $(target_div).find('option:selected').removeAttr('selected');
+        // $(target_div).find('input[type=text]').val('');
+        // $(target_div).find('option:selected').removeAttr('selected');
+        
+        
+        // Reset input fields
+        $( '#PlayerFirstName' ).val( '' );
+        $( '#PlayerLastName' ).val( '' );
+        $( '#PlayerNickName' ).val( '' );        
+        
+        // Reset select fields
+        $( '#PlayerPlayerId' ).val( 0 );
+        $( '#PlayerPositionId' ).val( 0 );
+        $( '#PlayerFranchiseGroupId' ).val( 0 );        
     }
     
     function imagePreview(files, input_obj) {
@@ -158,10 +169,12 @@
             </div>
             <div class="row">
                 <div class="span12">
+                    <fieldset>
                     <?php 
                         // echo $this->Form->input( 'set_info_select', array( 'label' => false, 'class' => 'search-query', 'data-provide' => 'typeahead', 'data-source' => '["Carlos","Diana","John Cedrick", "John Jacob"]' ) ); 
                         echo $this->Form->input( 'Card.set_info_id', array( 'label' => false ) ); 
                     ?>
+                    </fieldset>
                 </div>
             </div>
 	</section>
@@ -202,30 +215,51 @@
                     </ul>
                     </fieldset>
                 </div>
-                    <div class="span6">
-                        <h3>Card Pictures</h3>                            
-                        <fieldset>
-                            <ul class="unstyled">
-                            <li>                                        
-                            <?php  
-                                echo $this->Form->label('Card.card_orientation');
+                <div class="span6">
+                    <h3>Card Pictures</h3>
+                    <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
+                    <fieldset>
+                    <div>
+                    <?php  
+                        echo $this->Form->label('Card.card_orientation');
 
-                                $attributes = array('legend' => false, 'value' => 'vertical', 'label' => false, 'class' => 'card_orientation');           
+                        $attributes = array('legend' => false, 'value' => 'vertical', 'label' => false, 'class' => 'card_orientation');           
 
-                                echo $this->Form->radio('Card.card_orientation', array('vertical' => 'Vertical', 'horizontal' => 'Horizontal'), $attributes);
-                            ?>
-                            </li>
-                            <li>
-                                <?php echo $this->Form->input('Card.card_front_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)'));?>
-                                <div class="preview"></div>
-                            </li>
-                            <li>
-                                <?php echo $this->Form->input('Card.card_back_side', array('type' => 'file', 'onchange' => 'imagePreview(this.files, this)')); ?>
-                                <div class="preview"></div>
-                            </li>
-                            </ul>
-                        </fieldset>
+                        echo $this->Form->radio('Card.card_orientation', array('vertical' => 'Vertical', 'horizontal' => 'Horizontal'), $attributes);
+                    ?>        
                     </div>
+                    <ul class="thumbnails">
+                        <li>
+                            <div class="thumbnail">
+                                <div class="preview">
+                                    <img src="http://placehold.it/260x180" alt="">
+                                </div>
+                                <div class="caption">
+                                    <h5>Front</h5>
+                                    <p>The front side of the card.</p>
+                                </div>
+                                <?php 
+                                    echo $this->Form->input('Card.card_front_side', array('type' => 'file', 'label' => false, 'onchange' => 'imagePreview(this.files, this)'));
+                                ?>                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumbnail">
+                                <div class="preview">
+                                    <img src="http://placehold.it/260x180" alt="">
+                                </div>
+                                <div class="caption">
+                                    <h5>Back</h5>
+                                    <p>The back side of the card.</p>
+                                </div>
+                                <?php 
+                                    echo $this->Form->input('Card.card_back_side', array('type' => 'file', 'label' => false, 'onchange' => 'imagePreview(this.files, this)')); 
+                                ?>                
+                            </div>
+                        </li>
+                    </ul>
+                    </fieldset>
+                </div>                
             </div>
 	</section>
 
@@ -243,9 +277,9 @@
                         <div>
                             <a id="add-player-toggle" style="cursor:pointer;"><i class="icon-chevron-up"></i>Hide Form</a>
                         </div>
-                        <div id="add-player-form">
+                        <div id="add_player_form">
                             <!--<form method="POST" action="ajax_add_player_row/" id="add_player_form"> //-->
-                                <fieldset class="add-player-set">
+                                <fieldset>
                                 <div class="span12">
                                     <div class="row">
                                         <div class="span3 input select">

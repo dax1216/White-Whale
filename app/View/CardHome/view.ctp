@@ -51,6 +51,9 @@
             //if we're doing a lot of toggling then let's cache the selectors in a variable to minimize overhead
             var $add_player_toggle = $("#add-player-toggle");
             var $add_player_form = $('#add-player-form');
+            
+            $add_player_toggle.html('<i class="icon-chevron-down"></i>Add  New Player');
+            $add_player_form.hide();
 
             $add_player_toggle.bind('click',function(eve) {
                     eve.preventDefault();

@@ -7,90 +7,119 @@ App::uses('AppController', 'Controller');
  */
 class ImagesController extends AppController {
 
+    public $components = array('ImageResizer');
+    
+    public $uses = array('Image', 'CardVariationImage');    
+    
+    
+    public function upload_images($params) {    
+        $this->layout = false;
+        $this->autoRender = false;
+        
+        $card_images_dir = Configure::read('card_images_dir');
+        $card_image_name = $params['filename'];
+        $image_group_type = $params['image_group_type'];
+        $image_group_id = $params['image_group_id'];                           
+        $card_frontside = $params['front_img'];
+        $card_backside = $params['rear_img'];
+        $card_orientation = $params['card_orientation'];   
+        
+        debug( $params );
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Image->recursive = 0;
-		$this->set('images', $this->paginate());
-	}
+        $validate_data = array('CardImage' => array('card_front_side' => $card_frontside,
+                                                    'card_back_side' => $card_backside));
+        $this->Image->set($validate_data);
 
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Image->id = $id;
-		if (!$this->Image->exists()) {
-			throw new NotFoundException(__('Invalid image'));
-		}
-		$this->set('image', $this->Image->read(null, $id));
-	}
+        if($this->Image->validates()) {
+            $card_sizes = Configure::read('card_image_sizes');                
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Image->create();
-			if ($this->Image->save($this->request->data)) {
-				$this->Session->setFlash(__('The image has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The image could not be saved. Please, try again.'));
-			}
-		}
-	}
+            $card_images = array('front' => $card_frontside, 'rear' => $card_backside);
+            $img_ids = array('front_img_id' => 0, 'rear_img_id' => 0);
+            
+            debug( $card_images );
 
-/**
- * edit method
- *
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		$this->Image->id = $id;
-		if (!$this->Image->exists()) {
-			throw new NotFoundException(__('Invalid image'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Image->save($this->request->data)) {
-				$this->Session->setFlash(__('The image has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The image could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->Image->read(null, $id);
-		}
-	}
+            foreach($card_images as $side => $card_image) {
+                //Rename file
+                $filename_parts = explode('.', $card_image['name']);
+                $file_extension = array_pop($filename_parts);
+                $new_filename = $card_image_name .'_'. $side .'.'. $file_extension;                                                                      
 
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		if (!$this->request->is('post')) {
-			throw new MethodNotAllowedException();
-		}
-		$this->Image->id = $id;
-		if (!$this->Image->exists()) {
-			throw new NotFoundException(__('Invalid image'));
-		}
-		if ($this->Image->delete()) {
-			$this->Session->setFlash(__('Image deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Image was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
+                foreach($card_sizes as $size_label => $dimensions) {
+                    $upload_path = $card_images_dir . $image_group_type . DS . $image_group_id . DS . $size_label;
+
+                    if(!is_dir($upload_path)) {
+                        @mkdir($upload_path, 0777, true);
+                    }                        
+
+                    $new_file = $upload_path . DS . $new_filename;
+
+                    $prefs = array('resize_data' => array(RESIZE_WIDTH, $dimensions[$card_orientation], null));
+                    $errors = $this->ImageResizer->uploadFile($card_image['tmp_name'], $new_file, $prefs);
+
+                    if (!empty($errors)) {
+                        $error_string = '';
+
+                        foreach ($errors as $key => $value) {
+                            $error_string .= 'Error: ' . $value . '<br />';                                                                                               
+                        }
+
+                        $this->Session->setFlash('The following image resize error occured.<br />'. $error_string);
+
+                        return false;
+                    } 
+                }
+
+                $data = array('Image' => array('file_name' => $new_filename, 'orientation' => $card_orientation));
+
+                $this->Image->create();
+                $this->Image->save($data);
+                
+                if($side == 'front') {
+                    $img_ids['front_img_id'] = $this->Image->id;
+                } else {
+                    $img_ids['rear_img_id'] = $this->Image->id;
+                }
+            }
+
+            return $img_ids;
+        } else {                  
+            
+            //return $this->CardImage->validationErrors;
+            return false;
+        }                
+    }
+
+    public function card_variation_image_popup($card_variation_img_id) {        
+        $this->layout = 'card_images';
+
+        $card_image = $this->CardVariationImage->findByCardVariationId($card_variation_img_id);
+        
+        $this->set('card_image', $card_image);
+        $this->set('card_group', 'card_variations');
+        
+        $this->render('card_image_popup');
+    }       
+    
+    public function delete($id = null) {
+        if(is_numeric($id)) {
+            $card_sizes = Configure::read('card_image_sizes');
+            $card_images_dir = Configure::read('card_images_dir');                
+
+            $card_image = $this->Image->find('first', array(
+                                            'conditions' => array('Image.image_id' => $id)));
+            
+            foreach($card_sizes as $size_label => $dimensions) {
+                $file_path = $card_images_dir . $size_label . DS . 'frontside' . DS . $card_image['Image']['file_name'];
+                @unlink($file_path);
+
+                $file_path = $card_images_dir . $size_label . DS . 'backside' . DS . $card_image['Image']['file_name'];
+                @unlink($file_path);
+            }
+            
+            $this->Image->delete($id);
+        } else {
+            $this->redirect('/');
+        }
+    }
+
 }

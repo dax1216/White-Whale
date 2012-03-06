@@ -228,7 +228,7 @@ Configure::write('Routing.prefixes', array('admin'));
  * any date & time related errors.
  */
 	//date_default_timezone_set('UTC');
-        date_default_timezone_set('UTC');
+        date_default_timezone_set('Asia/Manila');
 
 /**
  *
@@ -330,3 +330,13 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+/**
+ * File location for card images
+ */
+Configure::write('card_images_dir', WWW_ROOT . 'files' . DS . 'card_images' . DS);
+Configure::write('card_image_sizes', array('thumbnail' => array('vertical' => '60', 'horizontal' => '100'),
+                                           'small' => array('vertical' => '120', 'horizontal' => '240'),
+                                           'large' => array('vertical' => '270', 'horizontal' => '400'),
+                                           'max_size' => array('vertical' => '1200', 'horizontal' => '1500')));
+

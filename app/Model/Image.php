@@ -21,8 +21,13 @@ class Image extends AppModel {
             'card_front_side' => array (
                             'valid_upload' => array (
                                                 'rule' => array('validateUploadedFile', true),
-                                                'message' => 'An error occurred whilst uploading.'
+                                                'message' => 'An error occurred whilst uploading card front image.'
                                             ),
+                            'valid_upload_size' => array
+                                        (
+                                                'rule' => array('isValidFilesize'),
+                                                'message' => 'The file you have uploaded is more than 2MB.',
+                                        ),
                             'valid_image' => array
                                         (
                                                 'rule' => array('isValidImageFile'),
@@ -32,8 +37,13 @@ class Image extends AppModel {
             'card_back_side' => array (
                         'valid_upload' => array (
                                                 'rule' => array('validateUploadedFile', true),
-                                                'message' => 'An error occurred whilst uploading.'
+                                                'message' => 'An error occurred whilst uploading card rear image.'
                                             ),
+                        'valid_upload_size' => array
+                                        (
+                                                'rule' => array('isValidFilesize'),
+                                                'message' => 'The file you have uploaded is more than 2MB.',
+                                        ),
                         'valid_image' => array
                                     (
                                             'rule' => array('isValidImageFile'),
@@ -84,6 +94,18 @@ class Image extends AppModel {
             return false;
         } 
  
+        return true;
+    }
+
+    public function isValidFilesize($data) {
+        // Remove first level of Array ($data['Artwork']['size'] becomes $data['size'])
+        $upload_info = array_shift($data);
+
+        // No file uploaded.
+        if ($upload_info['size'] > 2097152) { // LIMIT to 2MB
+                return false;
+        }
+        
         return true;
     }
     

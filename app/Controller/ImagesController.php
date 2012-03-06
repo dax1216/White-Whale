@@ -10,7 +10,8 @@ class ImagesController extends AppController {
     public $components = array('ImageResizer');
     
     public $uses = array('Image', 'CardVariationImage');    
-    
+
+    private $_validationErrors = array();
     
     public function upload_images($params) {    
         $this->layout = false;
@@ -24,8 +25,9 @@ class ImagesController extends AppController {
         $card_backside = $params['rear_img'];
         $card_orientation = $params['card_orientation'];            
 
-        $validate_data = array('CardImage' => array('card_front_side' => $card_frontside,
-                                                    'card_back_side' => $card_backside));
+
+        $validate_data = array('Image' => array('card_front_side' => $card_frontside,
+                                                'card_back_side' => $card_backside));
         $this->Image->set($validate_data);
 
         if($this->Image->validates()) {
@@ -73,25 +75,26 @@ class ImagesController extends AppController {
                 if($side == 'front') {
                     $img_ids['front_img_id'] = $this->Image->id;
                 } else {
-                    $img_ids['front_rear_id'] = $this->Image->id;
+                    $img_ids['rear_img_id'] = $this->Image->id;
                 }
             }
 
             return $img_ids;
         } else {                  
-            
-            //return $this->CardImage->validationErrors;
+            $this->_validationErrors = $this->Image->validationErrors;
+
             return false;
         }                
     }
 
-    public function card_variation_image_popup($card_variation_img_id) {        
+    public function card_variation_image_popup($card_variation_img_id, $side = 'front') {
         $this->layout = 'card_images';
 
         $card_image = $this->CardVariationImage->findByCardVariationId($card_variation_img_id);
         
         $this->set('card_image', $card_image);
         $this->set('card_group', 'card_variations');
+        $this->set('set_side_display', $side);
         
         $this->render('card_image_popup');
     }       
@@ -116,6 +119,10 @@ class ImagesController extends AppController {
         } else {
             $this->redirect('/');
         }
+    }
+
+    public function getValidationErrors() {
+        return $this->_validationErrors;
     }
 
 }

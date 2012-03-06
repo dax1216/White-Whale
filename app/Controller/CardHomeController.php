@@ -92,7 +92,7 @@ public $components = array('RequestHandler');
                                 . trim( $setInfo[ 'SetInfo' ][ 'dist_end_year' ] ) . ' '  
                                 . trim( $setInfo[ 'AccCatalog' ][ 'name' ] ) . ' '  
                                 . trim( $setInfo[ 'Brand' ][ 'name' ] ) . ' '  
-                                . trim( $setInfo[ 'SetInfo' ][ 'card_number' ] ) . ' '  
+                                . trim( $this->request->data[ 'Card' ][ 'card_number' ] ) . ' '  
                                 . trim( $setInfo[ 'SetInfo' ][ 'subset_name' ] );
                     
                     // Get primary player name

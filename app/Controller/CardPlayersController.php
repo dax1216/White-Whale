@@ -115,8 +115,9 @@ class CardPlayersController extends AppController {
                 // Save player to db
                 if ( isset( $this->request->data ) )
                 {
-                   $this->CardPlayer->create();
-                   if ( $this->CardPlayer->save( $this->request->data ) )
+                   debug( $this->request->data[ 'Player' ]);
+                    $this->CardPlayer->create();
+                   if ( $this->CardPlayer->save( $this->request->data[ 'Player' ] ) )
                    {
                        // Handle save success here...
                    }
@@ -157,5 +158,24 @@ class CardPlayersController extends AppController {
             }
             
             $this->set( 'data', $result );
+        }
+        
+        public function remove_player_from_card( $card_player_id )
+        {
+            $result = array( 'status' => 0, 'message' => 'Failed!' );
+            if ( $this->RequestHandler->isAjax() )
+            {
+                $this->layout = 'json';
+                
+                $this->CardPlayer->findCardPlayerId( $card_player_id );
+                if ( $this->CardPlayer->delete() )
+                {
+                    $result[ 'status' ] = 1;
+                    $result[ 'message' ] = 'Player is removed from Card.';
+                }
+
+            }
+            
+            $this->set( 'data', $result );            
         }
 }

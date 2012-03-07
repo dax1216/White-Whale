@@ -1,5 +1,8 @@
 <?php
 App::uses('AppController', 'Controller');
+
+// Import images controller for uploading of card images
+App::import('Controller', 'Images');
 /**
  * CardHome Controller
  *
@@ -7,7 +10,7 @@ App::uses('AppController', 'Controller');
  */
 class CardHomeController extends AppController {
 	
-public $uses=array('Card');
+public $uses = array('Card', 'Image');
 public $components = array('RequestHandler');
 /**
  * index method
@@ -64,6 +67,11 @@ public $components = array('RequestHandler');
  * @return void
  */
 	public function add() {
+            
+                // List of variations
+                $variations = $this->Card->CardVariation->Variation->find('list');
+                // debug( $variations );
+                    
 		if ($this->request->is('post')) {
                     
                     // Send to view
@@ -74,6 +82,42 @@ public $components = array('RequestHandler');
                     
                     // Set the data to the model
                     $this->Card->set( $this->request->data );
+                    
+                    $setInfoId = $this->request->data[ 'Card' ][ 'set_info_id' ];
+                    $setInfo = $this->Card->SetInfo->findBySetInfoId( $setInfoId );
+                    //debug( $this->request->data );
+                    //debug( $setInfo );
+                    // Create and set the name
+                    $cardName = trim( $setInfo[ 'SetInfo' ][ 'dist_start_year' ] ) . '-' 
+                                . trim( $setInfo[ 'SetInfo' ][ 'dist_end_year' ] ) . ' '  
+                                . trim( $setInfo[ 'AccCatalog' ][ 'name' ] ) . ' '  
+                                . trim( $setInfo[ 'Brand' ][ 'name' ] ) . ' '  
+                                . trim( $this->request->data[ 'Card' ][ 'card_number' ] ) . ' '  
+                                . trim( $setInfo[ 'SetInfo' ][ 'subset_name' ] );
+                    
+                    // Get primary player name
+                    $primaryPlayer = '';    
+                    foreach( $this->request->data[ 'CardPlayer' ] as $cardPlayer )
+                    {
+                        if ( $cardPlayer[ 'is_primary' ] )
+                        {
+                            $primaryPlayer = $cardPlayer[ 'card_first_name' ] . ' ' . $cardPlayer[ 'card_last_name' ];
+                            break;
+                        }
+                    }
+                    
+                    $cardName .= ' [' . trim( $primaryPlayer ) . ']'
+                                      . ' ' . trim( $this->request->data[ 'Card' ][ 'descriptor' ] );
+
+                    // Get variation name
+                    if ( $variations[ $this->request->data[ 'variation_id' ] ] )
+                    {
+                        $cardName .= ' (' . trim( $variations[ $this->request->data[ 'variation_id' ] ] ) . ')';
+                    }
+                    
+                    $this->request->data[ 'Card' ][ 'name' ] = $cardName;
+                    
+                    // debug( $this->request->data );
                     
                     // Validate card
                     if ( $this->Card->validates() )
@@ -100,22 +144,37 @@ public $components = array('RequestHandler');
                                 $this->request->data[ 'CardVariation' ][ 'variation_id' ] = $this->request->data[ 'variation_id' ];
                                 $this->request->data[ 'CardVariation' ][ 'card_id' ] = $this->Card->id;
                                 $this->request->data[ 'CardVariation' ][ 'is_base' ] = 1;
-                                $this->request->data[ 'CardVariation' ][ 'name' ] = 'SOME-NAME-HERE'; // TODO: Create a sensible name
+                                $this->request->data[ 'CardVariation' ][ 'name' ] = $cardName; // TODO: Create a sensible name. Using the Card Name for now.
 
                                 // Save the Base Card
                                 if( $this->Card->CardVariation->save( $this->request->data ) )
                                 {
-                                    // TODO: Upload images here and return image_id's
+                                    // Import ImagesController to upload images
+                                    $cardImages = new ImagesController();
+                                    $cardImages->constructClasses();                
 
-                                    /* TODO: Save card variation images. 
-                                    // Build the Card Variation Image data
-                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
-                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'rear_img_id' ] = 1;
-                                    $this->request->data[ 'CardVariation' ][ 'CardVariationImages' ][ 'front_img_id' ] = 1;
+                                    // Remove bracket and parenthesis
+                                    $filename = str_replace( array( '(', ')', '[', ']' ), '', $cardName );
+                                    $filename = str_replace( array( ' ', '-' ), '_', $filename );
+                                    // debug( $filename );
+                                                                        
+                                    $params = array('front_img' => $this->request->data['Card']['card_front_side'],
+                                                    'rear_img' => $this->request->data['Card']['card_back_side'],
+                                                    'card_orientation' => $this->request->data['Card']['card_orientation'],
+                                                    'filename' => $filename, 
+                                                    'image_group_type' => 'card_variations', 
+                                                    'image_group_id' => $this->Card->CardVariation->id);
 
-                                    // Save Card Variation Images
-                                    $this->Card->CardVariation->CardVariationImages->save( $this->request->data );
-                                    */
+                                    if(($res = $cardImages->upload_images($params)) !== FALSE) {       
+                                        // TODO: Save card variation images. 
+                                        // Build the Card Variation Image data
+                                        $this->request->data[ 'CardVariationImage' ][ 'card_variation_id' ] = $this->Card->CardVariation->id;
+                                        $this->request->data[ 'CardVariationImage' ][ 'rear_img_id' ] = $res['rear_img_id'];
+                                        $this->request->data[ 'CardVariationImage' ][ 'front_img_id' ] = $res['front_img_id'];;
+
+                                        // Save Card Variation Images
+                                        $this->Card->CardVariation->CardVariationImage->save( $this->request->data );
+                                    }
                                 }
 
                                 // debug($this->Card->CardVariation->validationErrors);
@@ -136,13 +195,10 @@ public $components = array('RequestHandler');
 		}
 
                 // List of card sets
-                $setInfos = $this->Card->SetInfo->find('list');
-                
+                $setInfos = $this->Card->SetInfo->find('list'); 
+               
                 // List of card wikis
 		// $cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-                
-                // List of variations
-                $variations = $this->Card->CardVariation->Variation->find('list');
                 
                 // List of players
                 $players = $this->Card->CardPlayer->Player->find('list', array( 'order' => 'name ASC' ) );

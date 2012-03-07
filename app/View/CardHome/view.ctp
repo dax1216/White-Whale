@@ -4,17 +4,56 @@
     echo $this->Html->script( 'jquery/plugin/jquery.table.addrow.js', array( 'inline' => false ) ); 
     //echo $this->Html->script( 'bootstrap/bootstrap-collapse.js', array( 'inline' => false ) ); 
     echo $this->Html->script( 'bootstrap/bootstrap-typeahead.js', array( 'inline' => false ) ); 
+    echo $this->Html->css(array('jquery.fancybox-1.3.4',), null, array('inline' => false));
+    echo $this->Html->script(array('jquery-1.7.1','jquery.easing-1.3.pack','jquery.fancybox-1.3.4.pack'), array('inline' => false));
 ?>
+
 <script type="text/javascript">
+    function popup_image(card_variation_img_id, orientation) {
+        var width = 600;
+        
+        if(orientation == 'horizontal') {  
+            width = 730;
+        }
+        
+        $.fancybox({
+            'width'         : width,		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'iframe',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : '/Images/card_variation_image_popup/' + card_variation_img_id,
+            'onComplete'    : function() {
+                $('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
+                    $('#fancybox-content').height($(this).contents().find('body').height()+20);
+                });
+            }
+        });
+    }
+    
+    function view_hi_res(image_path) {
+        $.fancybox({		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'image',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : image_path
+        });
+    }
+    
     (function($){
         $(document).ready(function(){
-            /*$('.search-player').typeahead({
-                source: ['Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Dakota','North Carolina','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
-            });*/
 
             //if we're doing a lot of toggling then let's cache the selectors in a variable to minimize overhead
             var $add_player_toggle = $("#add-player-toggle");
             var $add_player_form = $('#add-player-form');
+            
+            $add_player_toggle.html('<i class="icon-chevron-down"></i>Add  New Player');
+            $add_player_form.hide();
 
             $add_player_toggle.bind('click',function(eve) {
                     eve.preventDefault();
@@ -52,7 +91,7 @@
 
                             },
                             success: function (html) {
-                                    $(html).fadeIn().appendTo('#added-card-players > tbody');
+                                    $(html).fadeIn().appendTo('#card_players > tbody');
                                     var targetOffset = $('#added-card-players').offset().top;
                                     
                                     // TODO: Somehow this is throwing an error. Check.
@@ -63,14 +102,26 @@
                     });
             })
 
-            $('.delete_player').live('click', function(eve) {
+            $('.delete-player').live('click', function(eve) {
             
                     if ( !confirm( 'Remove player!' ) )
                     {
                         return false;
                     }
-            
-                    eve.preventDefault();
+                    var url = '/CardPlayers/remove_player_from_card/';
+                    $.ajax({
+                            url:url,
+                            type: "GET",
+                            datatype: "html",
+                            data: $(this).closest( 'td' ).find( 'input' ).val(),
+                            beforeSend: function () {
+                                // Additional processing before sending out request
+                            },
+                            success: function (html) {
+                                        // TODO: Add functionality to display success message on page
+                                    }
+                    });                     
+                    
                     $(this).closest('tr').fadeOut().remove();
             });
             
@@ -113,19 +164,10 @@
                         datatype: "html",
                         data: $('#add_player_form').serialize(),
                         beforeSend: function () {
-
+                            // Additional processing before sending out request
                         },
                         success: function (html) {
-                                    // Unmark everything
-                                    /*$('#card_players tr').each(function() {
-                                        $(this).find('td').eq(6).each(function() {
-                                            $(this).find('input').val('0');
-                                            $(this).find('i').removeClass('icon-flag');
-                                        })
-                                    })
-
-                                    $(btn_clicked).closest('tr').find('td').eq(6).find('input').val('1');
-                                    $(btn_clicked).closest('tr').find('td').eq(6).find('i').addClass('icon-flag');*/
+                                    // TODO: Add functionality to display success message on page
                                 }
                 });                
             })

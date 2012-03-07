@@ -26,7 +26,7 @@ class Card extends AppModel {
 		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Please enter a name.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -36,7 +36,7 @@ class Card extends AppModel {
 		'card_number' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Please enter a card number.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -112,7 +112,7 @@ class Card extends AppModel {
  * @var array
  */
    public $hasMany = array(
-        'CardPlayers' => array(
+        'CardPlayer' => array(
             'className'     => 'CardPlayer',
             'foreignKey'    => 'card_id',
             'conditions'    => '',
@@ -120,7 +120,7 @@ class Card extends AppModel {
             'limit'         => '',
             'dependent'     => true
         ),
-		'CardVariation' => array(
+	'CardVariation' => array(
             'className'     => 'CardVariation',
             'foreignKey'    => 'card_id',
             'conditions'    => '',
@@ -129,5 +129,16 @@ class Card extends AppModel {
             'dependent'     => true
         )
     );
-
+   
+   public $hasOne = array(
+       
+        'BaseCardVariationImage' => array(
+                'className' => 'CardVariation',
+                'foreignKey' => 'card_id',
+                'conditions' => array('BaseCardVariationImage.is_base' => 1),
+                'fields' => '',
+                'order' => ''
+	)
+   );
+   
 }

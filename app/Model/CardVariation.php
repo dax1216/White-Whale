@@ -99,5 +99,5 @@ class CardVariation extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
-    );
+    );   
 }

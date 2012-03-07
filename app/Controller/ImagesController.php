@@ -24,7 +24,7 @@ class ImagesController extends AppController {
         $card_backside = $params['rear_img'];
         $card_orientation = $params['card_orientation'];   
         
-        debug( $params );
+        // debug( $params );
 
         $validate_data = array('CardImage' => array('card_front_side' => $card_frontside,
                                                     'card_back_side' => $card_backside));
@@ -36,7 +36,7 @@ class ImagesController extends AppController {
             $card_images = array('front' => $card_frontside, 'rear' => $card_backside);
             $img_ids = array('front_img_id' => 0, 'rear_img_id' => 0);
             
-            debug( $card_images );
+            // debug( $card_images );
 
             foreach($card_images as $side => $card_image) {
                 //Rename file

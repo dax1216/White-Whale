@@ -5,7 +5,7 @@ App::uses('AppController', 'Controller');
  *
  * @property UserCard $UserCard
  */
-class MyCollectionController extends AppController {
+class BuySellController extends AppController {
 
 public $uses=array('UserCard');
 

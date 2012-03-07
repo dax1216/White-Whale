@@ -98,3 +98,11 @@
 		<li><?php echo $this->Html->link(__('New Theme'), array('controller' => 'themes', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+<?php echo $this->element('debug_dump');?>
+
+<?php
+
+echo $this->element('sql_dump'); 
+dump($userCards);
+
+?>

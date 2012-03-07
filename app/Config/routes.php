@@ -26,25 +26,35 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 
+	Router::connect('/', array('controller' => 'HomePage', 'action' => 'index'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'display', 'about'));
 	Router::connect('/terms', array('controller' => 'pages', 'action' => 'display', 'terms'));
 	Router::connect('/privacy', array('controller' => 'pages', 'action' => 'display', 'privacy'));
 	Router::connect('/admin', array('controller' => 'pages', 'action' => 'display', 'admin_home'));
 	
-	Router::connect('/', array('controller' => 'HomePage', 'action' => 'index'));
-	Router::connect('/sethome', array('controller' => 'SetHome', 'action' => 'index'));
-	Router::connect('/cardhome', array('controller' => 'CardHome', 'action' => 'index'));
-	Router::connect('/search', array('controller' => 'Search', 'action' => 'index'));
-	Router::connect('/mycollection', array('controller' => 'MyCollection', 'action' => 'index'));
+	Router::connect('/cardwiki', array('controller' => 'CardWiki', 'action' => 'index'));
+	Router::connect('/cardwiki/:action/*', array('controller' => 'CardWiki', 'action' => 'index'));
+	
+	Router::connect('/buysell', array('controller' => 'BuySell', 'action' => 'index'));
+	Router::connect('/buysell/:action/*', array('controller' => 'BuySell', 'action' => 'index'));
+	
+	Router::connect('/collections', array('controller' => 'MyCollection', 'action' => 'index'));
+	Router::connect('/collections/:action/*', array('controller' => 'MyCollection', 'action' => 'index'));
+	
+	Router::connect('/whitewhales', array('controller' => 'WhiteWhales', 'action' => 'index'));
+	Router::connect('/whitewhales/:action/*', array('controller' => 'WhiteWhales', 'action' => 'index'));
+	
 	Router::connect('/myaccount/*', array('controller' => 'MyAccount', 'action' => 'edit'));
+	
 	Router::connect('/logout', array('controller' => 'MyAccount', 'action' => 'logout'));
 	Router::connect('/login', array('controller' => 'MyAccount', 'action' => 'login'));
+	
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
-        Router::parseExtensions('json');
+    Router::parseExtensions('json');
         
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 

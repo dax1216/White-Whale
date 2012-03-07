@@ -3,28 +3,6 @@
     <!-- Sub Menu -->
 
     <div class="container">
-
-        <div class="row">
-	    
-	    <div class="span12">
-		
-		<ul class="nav nav-pills">
-		    
-		    <li>
-			
-			<a href="#">Sub Menu Link 1</a>
-			
-		    </li>
-		    
-		    <li><a href="#">Sub Menu Link 2</a></li>
-		    
-		    <li class="active"><a href="#">Sub Menu Link 3</a></li>
-		    
-		  </ul>
-		
-	    </div><!-- /.span12 -->
-	    
-	</div><!-- /.row -->
 	
     </div><!-- /.container -->
     
@@ -39,7 +17,7 @@
 		<div class="spacer_10"></div>
 
 		<center><img src="img/home_featuresearch_text.png" alt="" /></center>
-         <center><img src="img/home_featuresearch_cards.png" alt="" /></center>
+        <center><img src="img/home_featuresearch_cards.png" alt="" /></center>
 		
 		<div class="spacer_30"></div>
 

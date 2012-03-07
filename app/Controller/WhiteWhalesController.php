@@ -1,11 +1,11 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * UserCards Controller
+ * WhiteWhale Controller
  *
  * @property UserCard $UserCard
  */
-class MyCollectionController extends AppController {
+class WhiteWhalesController extends AppController {
 
 public $uses=array('UserCard');
 
@@ -41,7 +41,7 @@ public $uses=array('UserCard');
 			
 			$searchTerm = '%'.$this->passedArgs['Search.name'].'%';
 			
-			$card_filter =  array("CardVariation.name LIKE '".$searchTerm."'");
+			$card_filter =  array("UserCard.white_whale = '1' AND CardVariation.name LIKE '".$searchTerm."'");
 				
 			$this->request->data['Search']['name'] = $this->passedArgs['Search.name'];
 			$title[] = __('Name',true).': '.$this->passedArgs['Search.name'];
@@ -55,22 +55,7 @@ public $uses=array('UserCard');
 			'group' => '', //fields to GROUP BY
 			'limit' => 100 //int
 			);
-			/*
-$params = array(
-			'conditions' => array($card_filter),
-			'contain' => array(
-				'UserCard'=> array('grade_number', 'own_card', 'active_sell', 'card_variation_id','grade_type_id', 'grade_value_id', 'white_whale', 'bought_date', 'listed_date', 'sell_price', 'low_price', 'high price'), 
-				'GradeType' => array( 'name'),
-				'GradeValue' => array( 'name'),	  
-				'CardVariation' => array( 'name')		
-				),
-			'recursive' => 2, //int
-			'fields' => '', //array of field names
-			'order' => '', //array('Card.name'), //string or array defining order
-			'group' => '', //fields to GROUP BY
-			'limit' => 300 //int
-			);
-			*/
+			
 		$this->UserCard->Behaviors->attach('Containable');
 		
 		$cards = $this->UserCard->find('all', $params);

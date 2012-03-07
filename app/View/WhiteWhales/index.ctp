@@ -2,7 +2,7 @@
  <div class="container-fluid">
   	<div class="row-fluid">
  		<div class="span12">
-      		<h1>Collections Home Page </h1>
+      		<h1>White Whales Home Page </h1>
       	</div>
       </div>
       	<div class="row-fluid">

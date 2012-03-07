@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class CardWikiInfosController extends AppController {
 
-
+        public $helpers = array('Ckeditor');
 /**
  * index method
  *
@@ -68,7 +68,7 @@ class CardWikiInfosController extends AppController {
 				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'));
 			}
 		} else {
-			$this->request->data = $this->CardWikiInfo->read(null, $id);
+			$this->request->data = $this->CardWikiInfo->read(null, $id);                        
 		}
 	}
 

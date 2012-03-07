@@ -12,6 +12,5 @@ public $uses=array('Card');
 	public function index() {
 		
 	}
-
-
 }
+?>

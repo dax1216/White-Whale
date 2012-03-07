@@ -1,25 +1,106 @@
-<div class="cardWikiInfos form">
-<?php echo $this->Form->create('CardWikiInfo');?>
-	<fieldset>
-		<legend><?php echo __('Edit Card Wiki Info'); ?></legend>
-	<?php
-		echo $this->Form->input('card_wiki_info_id');
-		echo $this->Form->input('overview');
-		echo $this->Form->input('variations');
-		echo $this->Form->input('rarity');
-		echo $this->Form->input('famous_copies');
-		echo $this->Form->input('public_sales');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('CardWikiInfo.card_wiki_info_id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('CardWikiInfo.card_wiki_info_id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Card Wiki Infos'), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
-	</ul>
+<?php
+    echo $this->Html->script('ckeditor/ckeditor', array('inline' => false));
+?> 
+<div class="container">	
+	<header id="title" class="jumbotron subhead">
+            <h1><?php echo __('Edit Card Wiki'); ?></h1>
+	</header>
+        <?php echo $this->Form->create('CardWikiInfo');?>
+	<section id="set_select" class="well">
+            <div class="page-header">
+                    <h2><?=$this->request->data['Card']['name']?></h2>
+            </div>
+            <div class="row">
+                <div class="span12">                    
+                    <fieldset>
+                    <ul class="unstyled">
+                        <li>
+                            <div class="span10">
+                                <label>Overview:</label>
+                                <strong>
+                                <?php echo $this->Form->textarea('CardWikiInfo.overview'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.overview');  ?> 
+                                </strong>                            
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Variations Overview:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.variations'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.variations');  ?>                           
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Set Info:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.info'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.info');  ?>                           
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Production:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.production'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.production');  ?>              
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Size:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.size'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.size');  ?>                        
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>                        
+                        <li>
+                            <div class="span10">
+                                <label>Distribution:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.distribution'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.distribution');  ?> 
+                                                           
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Rarity:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.rarity'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.rarity');  ?>               
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Counterfeits &amp; Reproductions:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.counterfeit'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.counterfeit');  ?>               
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Famous Examples &amp; Prices Realized:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.famous_copies'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.famousCopies');  ?>               
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                        <li>
+                            <div class="span10">
+                                <label>Bibliography &amp; References:</label>
+                                <?php echo $this->Form->textarea('CardWikiInfo.references'); ?>    
+                                <?php echo $this->Ckeditor->load('CardWikiInfo.references');  ?>               
+                            </div>
+                            <div>&nbsp;</div>
+                        </li>
+                    </ul>
+                    </fieldset>
+                </div>
+            </div>
+	</section>
+        <?php echo $this->Form->end( array( 'label' => __( 'Submit' ), 'class' => 'btn btn-success' ) ); ?>
 </div>

@@ -1,5 +1,5 @@
 <?php
-/* Variations Test cases generated on: 2012-02-26 08:47:10 : 1330246030*/
+/* Variations Test cases generated on: 2012-03-08 05:58:50 : 1331157530*/
 App::uses('Variations', 'Controller');
 
 /**
@@ -31,13 +31,6 @@ class TestVariations extends Variations {
  *
  */
 class VariationsTestCase extends CakeTestCase {
-/**
- * Fixtures
- *
- * @var array
- */
-	public $fixtures = array('app.user', 'app.user_role', 'app.image');
-
 /**
  * setUp method
  *

@@ -1,10 +1,10 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Variations Controller
+ * VariationTypes Controller
  *
  */
-class VariationsController extends AppController {
+class VariationTypesController extends AppController {
 
 /**
  * Scaffold

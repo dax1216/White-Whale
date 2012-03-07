@@ -244,7 +244,7 @@ public $actsAs = array('Containable');
                                 // debug($this->Card->CardVariation->validationErrors);
 
                                 $this->Session->setFlash(__('The card has been saved'), 'default', array( 'class' => 'alert alert-success' ));
-                                $this->redirect( array( 'action' => 'view', $this->Card->id ) );
+                                $this->redirect( array( 'action' => 'view_card', $this->Card->id ) );
                             } else {
                                     $this->Session->setFlash(__('The card could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
                             }  

@@ -1,17 +1,33 @@
-<div class="cardVariations form">
-<?php echo $this->Form->create('CardVariation');?>
-	<fieldset>
-		<legend><?php echo __('Edit Card Variation'); ?></legend>
-	<?php
-		echo $this->Form->input('card_variation_id');
-		echo $this->Form->input('name');
-		echo $this->Form->input('card_id');
-		echo $this->Form->input('variation_id');
-		echo $this->Form->input('is_base');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
+<div class="container">
+    <header id="title" class="jumbotron subhead">
+        <h1><?php echo __('Edit Card Variation'); ?></h1>
+    </header>
+
+    <?php echo $this->Form->create( 'CardVariation', array( 'type' => 'file' ) ); ?>
+    <section id="card_details" class="well">
+        <div class="page-header">
+            <h2>
+                Card Variation Details
+                <small>Variation details below.</small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="span4">
+                <fieldset>
+                <?php
+                    echo $this->Form->input('card_variation_id');
+                    echo $this->Form->input('name');
+                    echo $this->Form->input('card_id');
+                    echo $this->Form->input('variation_id');
+                    echo $this->Form->input('is_base');
+                ?>
+                </fieldset>
+            </div>
+        </div>
+    </section>
+    <?php echo $this->Form->end(  array( 'label' => __( 'Update' ), 'class' => 'btn btn-success' )  ); ?>
 </div>
+<!--
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -26,3 +42,4 @@
 		<li><?php echo $this->Html->link(__('New Card Variation Image'), array('controller' => 'card_variation_images', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+//-->

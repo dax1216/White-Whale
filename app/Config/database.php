@@ -5,8 +5,8 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'cbanawan',
-		'password' => 'gumb00t',
-		'database' => 'cbanawan_dev',
+		'login' => 'root',
+		'password' => 'car105jr',
+		'database' => 'whitewhale-dev2',
 	);
 }

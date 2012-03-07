@@ -27,7 +27,8 @@ public $components = array('RequestHandler');
  *
  * @param string $id
  * @return void
- */
+ */       
+
 	public function view($id = null) 
         {
                
@@ -57,8 +58,11 @@ public $components = array('RequestHandler');
                 // List of franchise groups
                 $franchiseGroups = $this->Card->FranchiseGroup->find('list');
 
-                
-		$this->set(compact('setInfos', 'players', 'positions','franchiseGroups','variations'));                
+                Controller::loadModel( 'CardVariationImage' );
+
+                $card_image = $this->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']);
+
+		$this->set(compact('setInfos', 'players', 'positions','franchiseGroups','variations', 'card_image'));
 	}
 
 /**
@@ -174,6 +178,12 @@ public $components = array('RequestHandler');
 
                                         // Save Card Variation Images
                                         $this->Card->CardVariation->CardVariationImage->save( $this->request->data );
+                                    } else {
+                                        // TODO for carlos:
+                                        // Rollback previous insert queries from upload failure...
+                                        $imageValidationErrors = $cardImages->getValidationErrors();
+                                        
+                                        $this->Card->validationErrors = array_merge($this->Card->validationErrors, $imageValidationErrors);
                                     }
                                 }
 
@@ -182,7 +192,7 @@ public $components = array('RequestHandler');
                                 $this->Session->setFlash(__('The card has been saved'), 'default', array( 'class' => 'alert alert-success' ));
                                 $this->redirect( array( 'action' => 'view', $this->Card->id ) );
                             } else {
-                                    $this->Session->setFlash(__('The card could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
+                                $this->Session->setFlash(__('The card could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
                             }  
                         }
                     }

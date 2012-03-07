@@ -7,13 +7,12 @@
     echo $this->Html->css(array('jquery.fancybox-1.3.4',), null, array('inline' => false));
     echo $this->Html->script(array('jquery-1.7.1','jquery.easing-1.3.pack','jquery.fancybox-1.3.4.pack'), array('inline' => false));
 ?>
-
 <script type="text/javascript">
-    function popup_image(card_variation_img_id, orientation) {
-        var width = 600;
+    function popup_image(card_variation_img_id, side, orientation) {
+        var width = 620;
         
         if(orientation == 'horizontal') {  
-            width = 730;
+            width = 735;
         }
         
         $.fancybox({
@@ -24,7 +23,7 @@
             'type'          : 'iframe',
             'speedIn'       : 600, 
             'speedOut'      : 200,
-            'href'          : '/Images/card_variation_image_popup/' + card_variation_img_id,
+            'href'          : '/Images/card_variation_image_popup/' + card_variation_img_id + '/' + side,
             'onComplete'    : function() {
                 $('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
                     $('#fancybox-content').height($(this).contents().find('body').height()+20);
@@ -306,7 +305,8 @@
                             <ul class="thumbnails">
                                     <li class="span3">
                                             <div class="thumbnail">
-                                                    <img alt="" src="http://placehold.it/260x180">
+                                                    <?= $this->Html->image("/files/card_images/card_variations/" . $card_image['CardVariationImage']['card_variation_id'] ."/small/" . $card_image['FrontImage']['file_name'], array('alt' => '',
+                                                                                                            'onclick' => 'popup_image('.$card_image['CardVariationImage']['card_variation_id'].',"front","'.$card_image['FrontImage']['orientation'].'")'))?>
                                                     <div class="caption">
                                                             <h5>Front</h5>
                                                             <p>The front side of the card.</p>
@@ -315,7 +315,9 @@
                                     </li>
                                     <li class="span3">
                                             <div class="thumbnail">
-                                                    <img alt="" src="http://placehold.it/260x180">
+                                                    <?= $this->Html->image("/files/card_images/card_variations/" . $card_image['CardVariationImage']['card_variation_id'] ."/small/" . $card_image['RearImage']['file_name'],
+                                                                            array('alt' => '',
+                                                                                  'onclick' => 'popup_image('.$card_image['CardVariationImage']['card_variation_id'].',"rear","'.$card_image['RearImage']['orientation'].'")'))?>
                                                     <div class="caption">
                                                             <h5>Back</h5>
                                                             <p>The back side of the card.</p>
@@ -419,7 +421,7 @@
                     <div class="span12">&nbsp;</div>             
 
             <div class="row">
-                <form id="card_players_form"
+                <form id="card_players_form">
                 <fieldset>
                 <div class="span12">
                     <table id="card_players" class="table table-striped table-condensed span11">

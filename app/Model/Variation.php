@@ -39,9 +39,9 @@ class Variation extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'SetInfo' => array(
-			'className' => 'SetInfo',
-			'foreignKey' => 'set_info_id',
+		'VariationType' => array(
+			'className' => 'VariationType',
+			'foreignKey' => 'variation_type_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

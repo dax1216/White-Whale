@@ -8,15 +8,81 @@ App::uses('AppController', 'Controller');
 class MyCollectionController extends AppController {
 
 public $uses=array('UserCard');
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->UserCard->recursive = 0;
-		$this->set('userCards', $this->paginate());
+
+	function search() {
+		// the page we will redirect to
+		$url['action'] = 'index';
+		
+		// build a URL will all the search elements in it
+		// the resulting URL will be 
+		// /search/Search.keywords:mykeyword/Search.tag_id:3
+		foreach ($this->data as $k=>$v){ 
+			foreach ($v as $kk=>$vv){ 
+				$url[$k.'.'.$kk]=$vv; 
+			} 
+		}
+
+		// redirect the user to the url
+		$this->redirect($url, null, true);
 	}
+	
+	public function index() {
+		
+		$title = array();
+		
+		//
+		// filter by name
+		//
+		$card_filter='';
+		$set_filter='';
+		$franchise_filter='';
+		
+		if(isset($this->passedArgs['Search.name']) && $this->passedArgs['Search.name'] != '') {
+			
+			$searchTerm = '%'.$this->passedArgs['Search.name'].'%';
+			
+			$card_filter =  array("CardVariation.name LIKE '".$searchTerm."'");
+				
+			$this->request->data['Search']['name'] = $this->passedArgs['Search.name'];
+			$title[] = __('Name',true).': '.$this->passedArgs['Search.name'];
+		}
+		
+		$params = array(
+			'conditions' => array($card_filter),
+			'recursive' => 2, //int
+			'fields' => array('grade_number', 'own_card', 'active_sell', 'card_variation_id','grade_type_id', 'grade_value_id', 'white_whale', 'bought_date', 'listed_date', 'sell_price', 'low_price', 'high_price'),
+			'order' => '', //array('Card.name'), //string or array defining order
+			'group' => '', //fields to GROUP BY
+			'limit' => 100 //int
+			);
+			/*
+$params = array(
+			'conditions' => array($card_filter),
+			'contain' => array(
+				'UserCard'=> array('grade_number', 'own_card', 'active_sell', 'card_variation_id','grade_type_id', 'grade_value_id', 'white_whale', 'bought_date', 'listed_date', 'sell_price', 'low_price', 'high price'), 
+				'GradeType' => array( 'name'),
+				'GradeValue' => array( 'name'),	  
+				'CardVariation' => array( 'name')		
+				),
+			'recursive' => 2, //int
+			'fields' => '', //array of field names
+			'order' => '', //array('Card.name'), //string or array defining order
+			'group' => '', //fields to GROUP BY
+			'limit' => 300 //int
+			);
+			*/
+		$this->UserCard->Behaviors->attach('Containable');
+		
+		$cards = $this->UserCard->find('all', $params);
+
+		// set title
+		$title = implode(' | ',$title);
+		$title = (isset($title)&&$title)?$title:__('All Cards',true);
+		
+		// set related data
+		$this->set('cards', $cards);
+	}
+
 
 /**
  * view method
@@ -24,7 +90,7 @@ public $uses=array('UserCard');
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function view_user_card($id = null) {
 		$this->UserCard->id = $id;
 		if (!$this->UserCard->exists()) {
 			throw new NotFoundException(__('Invalid user card'));
@@ -37,7 +103,7 @@ public $uses=array('UserCard');
  *
  * @return void
  */
-	public function add() {
+	public function add_user_card() {
 		if ($this->request->is('post')) {
 			$this->UserCard->create();
 			if ($this->UserCard->save($this->request->data)) {
@@ -62,7 +128,7 @@ public $uses=array('UserCard');
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
+	public function edit_user_card($id = null) {
 		$this->UserCard->id = $id;
 		if (!$this->UserCard->exists()) {
 			throw new NotFoundException(__('Invalid user card'));
@@ -92,7 +158,7 @@ public $uses=array('UserCard');
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function delete_user_card($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
 		}

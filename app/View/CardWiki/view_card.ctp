@@ -327,7 +327,12 @@
                             </ul>
                             <p>
                                 <?php
-                                    echo $this->Html->link( 'Add Card Variation', '/cardvariations/add/' + $card[ 'card_id' ], array( 'class' => 'btn btn-primary' ) );
+                                    echo $this->Html->link( 'Add Card Variation', 
+                                                            array( 'controller' => 'cardvariations',
+                                                                   'action' => 'add',
+                                                                   $card[ 'card_id' ],
+                                                                   '#' => 'card_details' ), 
+                                                            array( 'class' => 'btn btn-primary' ) );
                                 ?>
                             </p>
                     </div>
@@ -467,6 +472,15 @@
                         Card Variations
                         <small>Different faces of this Card.</small>
                 </h2>
+                <small>
+                    [<?php
+                        echo $this->Html->link( 'Add Card Variation', 
+                                                array( 'controller' => 'cardvariations',
+                                                       'action' => 'add',
+                                                       $card[ 'card_id' ],
+                                                       '#' => 'card_details' ) );
+                    ?>]
+                </small>
             </div>
             
             <div class="row">

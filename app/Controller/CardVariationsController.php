@@ -135,7 +135,12 @@ class CardVariationsController extends AppController
                 if ( $card_id )
                 {
                     $card = $this->CardVariation->Card->findByCardId( $card_id );
-                    unset( $card[ 'Card' ] );
+                    foreach( $card[ 'CardVariation' ] as $key => $cardVariation )
+                    {
+                        $cardVariationImage = $this->CardVariation->CardVariationImage->findByCardVariationId( $cardVariation[ 'card_variation_id' ] );
+                        $cardVariation[ 'images' ] = $cardVariationImage;
+                        $card[ 'CardVariation' ][ $key ] = $cardVariation;
+                    }                    
                     $card[ 'Card' ][ 'card_id' ] = $card_id;
                     $this->set( 'data', $card );
                 }

@@ -325,6 +325,11 @@
                                             </div>
                                     </li>
                             </ul>
+                            <p>
+                                <?php
+                                    echo $this->Html->link( 'Add Card Variation', '/cardvariations/add/' + $card[ 'card_id' ], array( 'class' => 'btn btn-primary' ) );
+                                ?>
+                            </p>
                     </div>
             </div>
 	</section>
@@ -452,7 +457,24 @@
                     </table>
                 </div>
                 </fieldset>
+                </form>
             </div>
 	</section>	
         <?php $this->Form->end(); ?>
+        <section id="card_players" class="well">
+            <div class="page-header">
+                <h2>
+                        Card Variations
+                        <small>Different faces of this Card.</small>
+                </h2>
+            </div>
+            
+            <div class="row">
+                <div class="span12">
+                    <?php
+                        echo $this->element( 'CardVariations/card_variation_list', array( 'data' => $data ) );
+                    ?>
+                </div>        
+            </div>
+        </section>
 </div>

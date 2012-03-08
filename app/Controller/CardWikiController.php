@@ -100,6 +100,12 @@ public $actsAs = array('Containable');
                 throw new NotFoundException(__('Invalid card'));
             }
 
+            foreach( $card[ 'CardVariation' ] as $key => $cardVariation )
+            {
+                $cardVariationImage = $this->Card->CardVariation->CardVariationImage->findByCardVariationId( $cardVariation[ 'card_variation_id' ] );
+                $cardVariation[ 'images' ] = $cardVariationImage;
+                $card[ 'CardVariation' ][ $key ] = $cardVariation;
+            }
             $this->set( 'data', $card );
 
             // List of card sets

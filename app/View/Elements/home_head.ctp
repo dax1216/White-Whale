@@ -7,7 +7,7 @@
       <?php echo $this->element('meta'); ?>
 
     <link rel="canonical" href="http://whitewhalecards.com/" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> //-->
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -20,7 +20,8 @@
 		echo $this->Html->css('bootstrap-responsive');
 		echo $this->Html->css('jquery.datatables');
 		echo $this->Html->css('dt_bootstrap');
-		
+                
+		echo $this->Html->script('jquery-1.7.1');
 		echo $this->Html->script('jquery.datatables');
 		echo $this->Html->script('bootstrap');
 		echo $this->Html->script('dt_bootstrap');
@@ -34,4 +35,4 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
     <!-- Google Fonts API -->
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,700,400italic' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Gudea:400,700,400italic' rel='stylesheet' type='text/css'>//-->

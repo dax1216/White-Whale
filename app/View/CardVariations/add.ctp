@@ -40,7 +40,13 @@
 </script>
 <div class="container">
 	<header id="title" class="jumbotron subhead">
-            <h1><?php echo __('Add Card Variation'); ?></h1>
+            <h1>
+                <?php echo __('Add Card Variation'); ?>
+                <small>
+                    [<?php echo $this->Html->link( 'Enter a New Variation', '#card_details' ); ?>]
+                    [<?php echo $this->Html->link( 'View Current Variations', '#card_variations' ); ?>]
+                </small>
+            </h1>
 	</header>
         
         <?php echo $this->Form->create( 'CardVariation', array( 'type' => 'file' ) ); ?>
@@ -134,69 +140,26 @@
 	</section>
         <?php echo $this->Form->end(  array( 'label' => __( 'Submit' ), 'class' => 'btn btn-success' )  ); ?>
         
-        <section id="card_players" class="well">
+        <section id="card_variations" class="well">
             <div class="page-header">
                 <h2>
-                        Existing Variations
+                        Current Variations
                         <small>Current variations here.</small>
                 </h2>
             </div>
 
             <div class="row">
                 <div class="span12">
-                    <?php if ( isset( $data[ 'CardVariation' ] ) ) { ?>
-                    <table id="added-card-players" class="table table-striped table-condensed span11">
-                    <thead>
-                        <tr>
-                            <th class="span4"><?php echo __('Name');?></th>
-                            <th class="span5"><?php echo __('Variation');?></th>
-                            <th class="span3"><?php echo __('Images');?></th>
-                            <th class="span2"><?php echo __('Is Base?');?></th>
-                            <th class="span2"><?php echo __('Action(s)');?></th>                                
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            // debug( $data[ 'CardVariation' ] );
-                            foreach( $data[ 'CardVariation' ] as $cardVariation )
-                            {
-                        ?>
-                            <tr>
-                                <td><?php echo $this->Html->link( __( $cardVariation[ 'name' ] ), 'view/' . $cardVariation[ 'card_variation_id' ] ); ?></td>
-                                <td><?php echo $this->Html->link( __( $variations[ $cardVariation[ 'variation_id' ] ] ), '/Variation/view/' . $cardVariation[ 'variation_id' ] ); ?></td>
-                                <td>
-                                <?php 
-                                    echo $this->Html->image( 'front_img.png', array( 'alt' => __( 'Front Image' ) ) );
-                                    echo ' | ';
-                                    echo $this->Html->image( 'front_img.png', array( 'alt' => __( 'Front Image' ) ) );
-                                ?>
-                                </td>
-                                <td>
-                                    <?php 
-                                        if ( $cardVariation[ 'is_base' ] ) 
-                                        {
-                                            echo '<i class="icon-flag"></i>';
-                                        }
-                                    ?>
-                                </td>
-                                <td>
-                                    <a name="btn_set_as_base_<?php echo $cardVariation[ 'card_variation_id' ]; ?>" href="/CardVariations/set_as_base/<?php echo $cardVariation[ 'card_variation_id' ]; ?>"  class="btn btn-primary btn-as-set-primary" title="Set as Base">
-                                        <i class="icon-flag icon-white"></i>
-                                    </a>
-                                    <a name="btn_edit_<?php echo $cardVariation[ 'card_variation_id' ]; ?>" href="/CardVariations/edit/<?php echo $cardVariation[ 'card_variation_id' ]; ?>"  class="btn btn-success btn-edit" title="Edit Variation">
-                                        <i class="icon-pencil icon-white"></i>
-                                    </a>
-                                    <a name="btn_delete_<?php echo $cardVariation[ 'card_variation_id' ]; ?>" href="/CardVariations/delete/<?php echo $cardVariation[ 'card_variation_id' ]; ?>"  class="btn btn-danger btn-delete" title="Delete Variation">
-                                        <i class="icon-remove icon-white"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                       <?php } ?>
-                    </tbody>
-                    </table>
-                    <?php } else { ?>
-                    <span>(No variations)</span>
-                    <?php } ?>
+                <?php 
+                    if ( isset( $data[ 'CardVariation' ] ) )
+                    {
+                        echo $this->element( 'CardVariations/card_variation_list', array( 'data' => $data ) );
+                    } 
+                    else 
+                    {
+                        echo '<span>(No variations)</span>';
+                    }
+                ?>
                 </div>
             </div>
 	</section>	

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class SetWikiInfosController extends AppController {
 
-
+        public $helpers = array('Ckeditor');
 /**
  * index method
  *

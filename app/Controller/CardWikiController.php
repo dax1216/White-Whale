@@ -10,7 +10,7 @@ App::import('Controller', 'Images');
  */
 class CardWikiController extends AppController {
 	
-public $uses = array('Card', 'Image','CardVariation');
+public $uses = array('Card', 'Image','CardVariation','SetInfo');
 public $components = array('RequestHandler');
 public $actsAs = array('Containable');
 
@@ -95,38 +95,43 @@ public $actsAs = array('Containable');
 
 	public function view_card($id = null) 
         {
-               
-                $card = $this->Card->findByCardId( $id );
-                if ( !$card )
-                {
-                    throw new NotFoundException(__('Invalid card'));
-                }
-		
-                $this->set( 'data', $card );
+            $card = $this->Card->findByCardId( $id );
+            if ( !$card )
+            {
+                throw new NotFoundException(__('Invalid card'));
+            }
 
-                // List of card sets
-                $setInfos = $this->Card->SetInfo->find('list');
-                
-                // List of card wikis
-		// $cardWikiInfos = $this->Card->CardWikiInfo->find('list');
-                
-                // List of variations
-                $variations = $this->Card->CardVariation->Variation->find('list');
-                
-                // List of players
-                $players = $this->Card->CardPlayer->Player->find('list', array( 'order' => 'name ASC' ) );
-                
-                // List of various positions
-                $positions = $this->Card->CardPlayer->Position->find('list'); 
+            foreach( $card[ 'CardVariation' ] as $key => $cardVariation )
+            {
+                $cardVariationImage = $this->Card->CardVariation->CardVariationImage->findByCardVariationId( $cardVariation[ 'card_variation_id' ] );
+                $cardVariation[ 'images' ] = $cardVariationImage;
+                $card[ 'CardVariation' ][ $key ] = $cardVariation;
+            }
+            $this->set( 'data', $card );
 
-                // List of franchise groups
-                $franchiseGroups = $this->Card->FranchiseGroup->find('list');
+            // List of card sets
+            $setInfos = $this->Card->SetInfo->find('list');
 
-                Controller::loadModel( 'CardVariationImage' );
+            // List of card wikis
+                            // $cardWikiInfos = $this->Card->CardWikiInfo->find('list');
 
-                $card_image = $this->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']);
+            // List of variations
+            $variations = $this->Card->CardVariation->Variation->find('list');
 
-		$this->set(compact('setInfos', 'players', 'positions','franchiseGroups','variations', 'card_image'));
+            // List of players
+            $players = $this->Card->CardPlayer->Player->find('list', array( 'order' => 'name ASC' ) );
+
+            // List of various positions
+            $positions = $this->Card->CardPlayer->Position->find('list'); 
+
+            // List of franchise groups
+            $franchiseGroups = $this->Card->FranchiseGroup->find('list');
+
+            // Controller::loadModel( 'CardVariationImage' );
+
+            $card_image = $this->Card->CardVariation->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']);
+
+            $this->set(compact('setInfos', 'players', 'positions','franchiseGroups','variations', 'card_image'));              
 	}
 
 /**
@@ -242,12 +247,6 @@ public $actsAs = array('Containable');
 
                                         // Save Card Variation Images
                                         $this->Card->CardVariation->CardVariationImage->save( $this->request->data );
-                                    } else {
-                                        // TODO for carlos:
-                                        // Rollback previous insert queries from upload failure...
-                                        $imageValidationErrors = $cardImages->getValidationErrors();
-                                        
-                                        $this->Card->validationErrors = array_merge($this->Card->validationErrors, $imageValidationErrors);
                                     }
                                 }
 
@@ -256,7 +255,7 @@ public $actsAs = array('Containable');
                                 $this->Session->setFlash(__('The card has been saved'), 'default', array( 'class' => 'alert alert-success' ));
                                 $this->redirect( array( 'action' => 'view_card', $this->Card->id ) );
                             } else {
-                                $this->Session->setFlash(__('The card could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
+                                    $this->Session->setFlash(__('The card could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
                             }  
                         }
                     }

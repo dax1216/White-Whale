@@ -7,8 +7,8 @@
       </div>
       	<div class="row-fluid">
  		<div class="span12" style="margin-top:10px;margin-bottom:10px;">
-      		<a class="btn-primary btn-small" href="../CardHome/cardwiki/add_card">Add Card</a>
-            <a class="btn-primary btn-small" href="../CardHome/cardwiki/add_set">Add Set</a>
+      		<a class="btn-primary btn-small" href="cardwiki/add_card">Add Card</a>
+            <a class="btn-primary btn-small" href="cardwiki/add_set">Add Set</a>
       	</div>
       </div>
       

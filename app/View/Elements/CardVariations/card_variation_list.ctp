@@ -5,7 +5,6 @@
         <th class="span3"><?php echo __('Name');?></th>
         <th class="span3"><?php echo __('Variation');?></th>
         <th class="span3"><?php echo __('Variation Type');?></th>
-        <th class="span1"><?php echo __('Base');?></th>
         <!--//
         <th class="span2"><?php echo __('Action(s)');?></th>                                
         //-->
@@ -43,14 +42,6 @@
     ?>
     </td>
     <td>&nbsp;</td>
-    <td>
-    <?php 
-        if ( $cardVariation[ 'is_base' ] )
-        {
-            echo '<i class="icon-flag"></i>'; 
-        }
-    ?>
-    </td>
     </tr>
 <?php } } ?>
 </tbody>

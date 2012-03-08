@@ -1,9 +1,46 @@
 <?php 
-    echo $this->Html->script( 'jquery/jquery-1.7.1.min.js', array( 'inline' => false ) ); 
-    // echo $this->Html->script( 'jquery/jquery-ui-1.8.17.custom.min', array( 'inline' => false ) ); 
+    // echo $this->Html->script( 'jquery/jquery-1.7.1.min.js', array( 'inline' => false ) ); 
+    echo $this->Html->css(array('jquery.fancybox-1.3.4',), null, array('inline' => false));
+    echo $this->Html->script(array('jquery-1.7.1','jquery.easing-1.3.pack','jquery.fancybox-1.3.4.pack'), array('inline' => false));
 ?>
 
 <script type="text/javascript">
+    function popup_image(card_variation_img_id, side, orientation) {
+        var width = 620;
+        
+        if(orientation == 'horizontal') {  
+            width = 735;
+        }
+        
+        $.fancybox({
+            'width'         : width,		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'iframe',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : '/Images/card_variation_image_popup/' + card_variation_img_id + '/' + side,
+            'onComplete'    : function() {
+                $('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
+                    $('#fancybox-content').height($(this).contents().find('body').height()+20);
+                });
+            }
+        });
+    }
+    
+    function view_hi_res(image_path) {
+        $.fancybox({		
+            'autoScale'     : false,
+            'transitionIn'  : 'none',
+            'transitionOut' : 'none',
+            'type'          : 'image',
+            'speedIn'       : 600, 
+            'speedOut'      : 200,
+            'href'          : image_path
+        });
+    }
+    
     (function($){
         $(document).ready(function(){
             $('#CardVariationCardId').live('change', function(eve) {
@@ -80,13 +117,7 @@
                     <fieldset>
                     <ul class="unstyled">
                         <li>
-                            <?php // echo $this->Form->input('CardVariation.name', array( 'class' => 'span4' )); ?>
-                        </li>
-                        <li>
                             <?php echo $this->Form->input('CardVariation.variation_id', array( 'label' => 'Variation', 'class' => 'span3' ) ); ?>
-                        </li>
-                        <li>
-                            <?php echo $this->Form->input('CardVariation.is_base', array( 'type' => 'checkbox', 'label' => 'Set as Base Card' ) ); ?>
                         </li>
                     </ul>
                     </fieldset>
@@ -151,7 +182,8 @@
             <div class="row">
                 <div class="span12">
                 <?php 
-                    if ( isset( $data[ 'CardVariation' ] ) )
+                    // debug( $data[ 'CardVariation' ] );
+                    if ( isset( $data[ 'CardVariation' ] ) && !empty( $data[ 'CardVariation' ] ) )
                     {
                         echo $this->element( 'CardVariations/card_variation_list', array( 'data' => $data ) );
                     } 

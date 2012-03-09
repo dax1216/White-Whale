@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
 class CardWikiInfosController extends AppController {
 
         public $helpers = array('Ckeditor');
+
+        public $uses = array('CardVariationImage', 'CardWikiInfo');
 /**
  * index method
  *
@@ -24,12 +26,29 @@ class CardWikiInfosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function view_card_wiki($id = null) {
 		$this->CardWikiInfo->id = $id;
 		if (!$this->CardWikiInfo->exists()) {
 			throw new NotFoundException(__('Invalid card wiki info'));
 		}
-		$this->set('cardWikiInfo', $this->CardWikiInfo->read(null, $id));
+
+                if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->CardWikiInfo->save($this->request->data)) {
+				$this->Session->setFlash(__('The card wiki info has been saved'));
+				$this->redirect(array('action' => 'view_card_wiki', $id));
+			} else {
+				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'));
+			}
+		} else {
+                    $this->request->data = $this->CardWikiInfo->find('first',
+                                                                        array('conditions' => array('CardWikiInfo.card_wiki_info_id' => $id),
+                                                                              'recursive' => 3));
+
+                   
+                    $card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariationImage']['card_variation_id']);
+                    
+                    $this->set(compact('card_image'));
+                }
 	}
 
 /**
@@ -93,4 +112,13 @@ class CardWikiInfosController extends AppController {
 		$this->Session->setFlash(__('Card wiki info was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+        public function update_wiki_info() {
+            $this->layout = false;
+            $this->autoRender = false;
+            
+            $data = $this->request->data['wiki_data'];
+
+            echo $data;
+        }
 }

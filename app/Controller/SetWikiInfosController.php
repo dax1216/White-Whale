@@ -8,6 +8,7 @@ App::uses('AppController', 'Controller');
 class SetWikiInfosController extends AppController {
 
         public $helpers = array('Ckeditor');
+        
 /**
  * index method
  *
@@ -24,12 +25,24 @@ class SetWikiInfosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view($id = null) {
+	public function view_set_wiki($id = null) {
 		$this->SetWikiInfo->id = $id;
 		if (!$this->SetWikiInfo->exists()) {
 			throw new NotFoundException(__('Invalid set wiki info'));
 		}
-		$this->set('setWikiInfo', $this->SetWikiInfo->read(null, $id));
+
+                if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->SetWikiInfo->save($this->request->data)) {
+				$this->Session->setFlash(__('The set wiki info has been saved'));
+				$this->redirect(array('action' => 'view_set_wiki', $id));
+			} else {
+				$this->Session->setFlash(__('The set wiki info could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->SetWikiInfo->read(null, $id);
+
+                        $card_image = $this->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']);
+		}
 	}
 
 /**
@@ -93,4 +106,13 @@ class SetWikiInfosController extends AppController {
 		$this->Session->setFlash(__('Set wiki info was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+        public function update_wiki_info() {
+            $this->layout = false;
+            $this->autoRender = false;
+
+            $data = $this->request->data['wiki_data'];
+
+            echo htmlspecialchars_decode($data);
+        }
 }

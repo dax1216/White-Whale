@@ -10,9 +10,14 @@ App::import('Controller', 'Images');
  */
 class CardWikiController extends AppController {
 	
-public $uses = array('Card', 'Image','CardVariation','SetInfo');
-public $components = array('RequestHandler');
-public $actsAs = array('Containable');
+    public $uses = array('Card', 'Image', 'CardVariation', 'SetInfo', 'CardWikiInfo', 'CardVariationImage', 'SetWikiInfo');
+    
+    public $components = array('RequestHandler');
+    
+    public $actsAs = array('Containable');
+
+    public $helpers = array('Ckeditor');
+    
 
 	function search() {
 		// the page we will redirect to
@@ -129,7 +134,7 @@ public $actsAs = array('Containable');
 
             // Controller::loadModel( 'CardVariationImage' );
 
-            $card_image = $this->Card->CardVariation->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']);
+            $card_image = $this->Card->CardVariation->CardVariationImage->findByCardVariationId($card['BaseCardVariation']['card_variation_id']);
 
             $this->set(compact('setInfos', 'players', 'positions','franchiseGroups','variations', 'card_image'));              
 	}
@@ -617,5 +622,138 @@ public $actsAs = array('Containable');
             }
             
             return $result[ 'status' ];
-        }        
+        }      
+        
+        /**
+         * Edit Card Wiki Info
+         * @author Dax
+         * @param type $id
+         */
+        
+        public function edit_card_wiki($id = null) {
+		$this->CardWikiInfo->id = $id;
+		if (!$this->CardWikiInfo->exists()) {
+			throw new NotFoundException(__('Invalid card wiki info'));
+		}
+
+                if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->CardWikiInfo->save($this->request->data)) {
+				$this->Session->setFlash(__('The card wiki info has been saved'), 'default', array( 'class' => 'alert alert-success' ));
+				$this->redirect(array('action' => 'edit_card_wiki', $id));
+			} else {
+				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
+			}
+		} else {
+                    $this->request->data = $this->CardWikiInfo->find('first',
+                                                                        array('conditions' => array('CardWikiInfo.card_wiki_info_id' => $id),
+                                                                              'recursive' => 3));
+                    
+                    $card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariation']['card_variation_id']);
+                    
+                    $card_variations = $this->CardVariation->Card->findByCardId($this->request->data['Card']['card_id']);                    
+                    
+                    $variations = $this->CardVariation->Variation->find('list');
+                    
+                    if (isset($card_variations['CardVariation'])) {
+                        foreach( $card_variations['CardVariation'] as $key => $card_variation )
+                        {
+                            $card_variation_image = $this->CardVariation->CardVariationImage->findByCardVariationId($card_variation['card_variation_id']);
+                            $card_variation[ 'images' ] = $card_variation_image;
+                            $this->request->data['CardVariation'][ $key ] = $card_variation;
+                        }                                                                    
+                    }
+                    
+                    $this->set(compact('card_image', 'variations'));
+                }
+	}
+
+
+        /**
+         * View Card Wiki Info
+         * @author Dax
+         * @param type $id
+         */
+	public function view_card_wiki($id = null) {
+            $this->CardWikiInfo->id = $id;
+            if (!$this->CardWikiInfo->exists()) {
+                    throw new NotFoundException(__('Invalid card wiki info'));
+            }                
+
+            $this->request->data = $this->CardWikiInfo->find('first',
+                                                                array('conditions' => array('CardWikiInfo.card_wiki_info_id' => $id),
+                                                                      'recursive' => 3));
+
+            $card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariation']['card_variation_id']);
+
+            $card_variations = $this->CardVariation->Card->findByCardId($this->request->data['Card']['card_id']);                    
+
+            $variations = $this->CardVariation->Variation->find('list');
+
+            if (isset($card_variations['CardVariation'])) {
+                foreach( $card_variations['CardVariation'] as $key => $card_variation )
+                {
+                    $card_variation_image = $this->CardVariation->CardVariationImage->findByCardVariationId($card_variation['card_variation_id']);
+                    $card_variation[ 'images' ] = $card_variation_image;
+                    $this->request->data['CardVariation'][ $key ] = $card_variation;
+                }                                                                    
+            }
+
+            $this->set(compact('card_image', 'variations'));            
+	}
+        
+        public function view_set_wiki_info($id = null) {
+		$this->SetWikiInfo->id = $id;
+		if (!$this->SetWikiInfo->exists()) {
+			throw new NotFoundException(__('Invalid set wiki info'));
+		}
+
+                if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->SetWikiInfo->save($this->request->data)) {
+				$this->Session->setFlash(__('The set wiki info has been saved'), 'default', array( 'class' => 'alert alert-success' ));
+				$this->redirect(array('action' => 'view_set_wiki', $id));
+			} else {
+				$this->Session->setFlash(__('The set wiki info could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
+			}
+		} else {
+			$this->request->data = $this->SetWikiInfo->read(null, $id);
+
+                        //$card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariation']['card_variation_id']);
+                        
+                        //$this->set(compact('card_image', 'variations'));
+		}
+	}
+        
+        public function edit_set_wiki_info($id = null) {
+		$this->SetWikiInfo->id = $id;
+		if (!$this->SetWikiInfo->exists()) {
+			throw new NotFoundException(__('Invalid set wiki info'));
+		}
+
+                if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->SetWikiInfo->save($this->request->data)) {
+				$this->Session->setFlash(__('The set wiki info has been saved'), 'default', array( 'class' => 'alert alert-success' ));
+				$this->redirect(array('action' => 'view_set_wiki', $id));
+			} else {
+				$this->Session->setFlash(__('The set wiki info could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
+			}
+		} else {
+			$this->request->data = $this->SetWikiInfo->find('first',
+                                                                array('conditions' => array('SetWikiInfo.set_wiki_info_id' => $id),
+                                                                      'recursive' => 3));
+
+                        var_dump($this->request->data);die;
+                        //$card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariation']['card_variation_id']);
+                        
+                        //$this->set(compact('card_image', 'variations'));
+		}
+	}
+        
+        public function update_wiki_info() {
+            $this->layout = false;
+            $this->autoRender = false;
+            
+            $data = $this->request->data['wiki_data'];
+
+            echo htmlspecialchars_decode($data);
+        }
 }

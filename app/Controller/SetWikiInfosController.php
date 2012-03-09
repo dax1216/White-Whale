@@ -25,7 +25,7 @@ class SetWikiInfosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view_set_wiki($id = null) {
+	public function view_set_wiki_info($id = null) {
 		$this->SetWikiInfo->id = $id;
 		if (!$this->SetWikiInfo->exists()) {
 			throw new NotFoundException(__('Invalid set wiki info'));
@@ -33,32 +33,15 @@ class SetWikiInfosController extends AppController {
 
                 if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->SetWikiInfo->save($this->request->data)) {
-				$this->Session->setFlash(__('The set wiki info has been saved'));
+				$this->Session->setFlash(__('The set wiki info has been saved'), 'default', array( 'class' => 'alert alert-success' ));
 				$this->redirect(array('action' => 'view_set_wiki', $id));
 			} else {
-				$this->Session->setFlash(__('The set wiki info could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The set wiki info could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
 			}
 		} else {
 			$this->request->data = $this->SetWikiInfo->read(null, $id);
 
-                        $card_image = $this->CardVariationImage->findByCardVariationId($card['BaseCardVariationImage']['card_variation_id']);
-		}
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->SetWikiInfo->create();
-			if ($this->SetWikiInfo->save($this->request->data)) {
-				$this->Session->setFlash(__('The set wiki info has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The set wiki info could not be saved. Please, try again.'));
-			}
+                        $card_image = $this->CardVariationImage->findByCardVariationId($card['BaseCardVariation']['card_variation_id']);
 		}
 	}
 

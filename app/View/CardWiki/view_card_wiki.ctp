@@ -46,7 +46,7 @@
 	</header>
 	
         <div class="spacer_20"></div>
-        <div><a href="/CardWikiInfo/edit_card_wiki/<?=$this->request->data['CardWikiInfo']['card_wiki_info_id']?>" class="btn btn-success">Edit Page</a></div>
+        <div><a href="/CardWiki/edit_card_wiki/<?=$this->request->data['CardWikiInfo']['card_wiki_info_id']?>" class="btn btn-success">Edit Page</a></div>
         <div class="spacer_20"></div>
 	
         <section id="cardinfo" class="well">            

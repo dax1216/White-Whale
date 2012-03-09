@@ -9,7 +9,7 @@ class CardWikiInfosController extends AppController {
 
         public $helpers = array('Ckeditor');
 
-        public $uses = array('CardVariationImage', 'CardWikiInfo');
+        public $uses = array('CardVariationImage', 'CardWikiInfo', 'CardVariation');
 /**
  * index method
  *
@@ -26,7 +26,7 @@ class CardWikiInfosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function view_card_wiki($id = null) {
+	public function edit_card_wiki($id = null) {
 		$this->CardWikiInfo->id = $id;
 		if (!$this->CardWikiInfo->exists()) {
 			throw new NotFoundException(__('Invalid card wiki info'));
@@ -34,38 +34,33 @@ class CardWikiInfosController extends AppController {
 
                 if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->CardWikiInfo->save($this->request->data)) {
-				$this->Session->setFlash(__('The card wiki info has been saved'));
+				$this->Session->setFlash(__('The card wiki info has been saved'), 'default', array( 'class' => 'alert alert-success' ));
 				$this->redirect(array('action' => 'view_card_wiki', $id));
 			} else {
-				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
 			}
 		} else {
                     $this->request->data = $this->CardWikiInfo->find('first',
                                                                         array('conditions' => array('CardWikiInfo.card_wiki_info_id' => $id),
                                                                               'recursive' => 3));
-
-                   
-                    $card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariationImage']['card_variation_id']);
                     
-                    $this->set(compact('card_image'));
+                    $card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariation']['card_variation_id']);
+                    
+                    $card_variations = $this->CardVariation->Card->findByCardId($this->request->data['Card']['card_id']);                    
+                    
+                    $variations = $this->CardVariation->Variation->find('list');
+                    
+                    if (isset($card_variations['CardVariation'])) {
+                        foreach( $card_variations['CardVariation'] as $key => $card_variation )
+                        {
+                            $card_variation_image = $this->CardVariation->CardVariationImage->findByCardVariationId($card_variation['card_variation_id']);
+                            $card_variation[ 'images' ] = $card_variation_image;
+                            $this->request->data['CardVariation'][ $key ] = $card_variation;
+                        }                                                                    
+                    }
+                    
+                    $this->set(compact('card_image', 'variations'));
                 }
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->CardWikiInfo->create();
-			if ($this->CardWikiInfo->save($this->request->data)) {
-				$this->Session->setFlash(__('The card wiki info has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'));
-			}
-		}
 	}
 
 /**
@@ -74,21 +69,32 @@ class CardWikiInfosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function edit($id = null) {
-		$this->CardWikiInfo->id = $id;
-		if (!$this->CardWikiInfo->exists()) {
-			throw new NotFoundException(__('Invalid card wiki info'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->CardWikiInfo->save($this->request->data)) {
-				$this->Session->setFlash(__('The card wiki info has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The card wiki info could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->request->data = $this->CardWikiInfo->read(null, $id);                        
-		}
+	public function view_card_wiki($id = null) {
+            $this->CardWikiInfo->id = $id;
+            if (!$this->CardWikiInfo->exists()) {
+                    throw new NotFoundException(__('Invalid card wiki info'));
+            }                
+
+            $this->request->data = $this->CardWikiInfo->find('first',
+                                                                array('conditions' => array('CardWikiInfo.card_wiki_info_id' => $id),
+                                                                      'recursive' => 3));
+
+            $card_image = $this->CardVariationImage->findByCardVariationId($this->request->data['Card']['BaseCardVariation']['card_variation_id']);
+
+            $card_variations = $this->CardVariation->Card->findByCardId($this->request->data['Card']['card_id']);                    
+
+            $variations = $this->CardVariation->Variation->find('list');
+
+            if (isset($card_variations['CardVariation'])) {
+                foreach( $card_variations['CardVariation'] as $key => $card_variation )
+                {
+                    $card_variation_image = $this->CardVariation->CardVariationImage->findByCardVariationId($card_variation['card_variation_id']);
+                    $card_variation[ 'images' ] = $card_variation_image;
+                    $this->request->data['CardVariation'][ $key ] = $card_variation;
+                }                                                                    
+            }
+
+            $this->set(compact('card_image', 'variations'));            
 	}
 
 /**
@@ -119,6 +125,6 @@ class CardWikiInfosController extends AppController {
             
             $data = $this->request->data['wiki_data'];
 
-            echo $data;
+            echo htmlspecialchars_decode($data);
         }
 }

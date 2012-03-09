@@ -132,13 +132,20 @@ class Card extends AppModel {
    
    public $hasOne = array(
        
-        'BaseCardVariationImage' => array(
+        'BaseCardVariation' => array(
                 'className' => 'CardVariation',
                 'foreignKey' => 'card_id',
-                'conditions' => array('BaseCardVariationImage.is_base' => 1),
+                'conditions' => array('BaseCardVariation.is_base' => 1),
                 'fields' => '',
                 'order' => ''
-	)
+	),
+        'PrimaryCardPlayer' => array(
+                    'className' => 'CardPlayer',
+                    'foreignKey' => 'card_id',
+                    'conditions' => array('PrimaryCardPlayer.is_primary' => 1),
+                    'fields' => '',
+                    'order' => ''
+        )
    );
    
 }

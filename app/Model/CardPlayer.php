@@ -98,5 +98,5 @@ class CardPlayer extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
-	);
+	);            
 }

@@ -211,7 +211,7 @@
                 <div class="span12">
                     <strong>
                     <?php 
-                        echo __( $setInfos[ $card[ 'set_info_id' ] ] ); 
+                        echo $this->Html->link( __( $setInfos[ $card[ 'set_info_id' ] ] ), array( 'controller' => 'set_info', 'action' => 'view', $card[ 'set_info_id' ] ) ); 
                     ?>
                     </strong>
                 </div>
@@ -278,7 +278,7 @@
                                 <label>Franchise Group:</label>
                                 <strong>
                                 <?php 
-                                    echo __( $franchiseGroups[ $card[ 'franchise_group_id' ] ] ); 
+                                    echo $this->Html->link( __( $franchiseGroups[ $card[ 'franchise_group_id' ] ] ), array( 'controller' => 'franchise_group', 'action' => 'view', $card[ 'franchise_group_id' ] ) ); 
                                 ?>
                                 </strong>                            
                             </div>
@@ -325,16 +325,18 @@
                                             </div>
                                     </li>
                             </ul>
+                            <!--/
                             <p>
                                 <?php
                                     echo $this->Html->link( 'Add Card Variation', 
-                                                            array( 'controller' => 'cardvariations',
+                                                            array( 'controller' => 'card_variations',
                                                                    'action' => 'add',
                                                                    $card[ 'card_id' ],
                                                                    '#' => 'card_details' ), 
                                                             array( 'class' => 'btn btn-primary' ) );
                                 ?>
                             </p>
+                            //-->
                     </div>
             </div>
 	</section>
@@ -472,21 +474,29 @@
                         Card Variations
                         <small>Different faces of this Card.</small>
                 </h2>
-                <small>
-                    [<?php
+                <p>
+                    <?php
                         echo $this->Html->link( 'Add Card Variation', 
-                                                array( 'controller' => 'cardvariations',
-                                                       'action' => 'add',
+                                                array( 'controller' => 'card_wiki',
+                                                       'action' => 'add_variation',
                                                        $card[ 'card_id' ],
-                                                       '#' => 'card_details' ) );
-                    ?>]
-                </small>
+                                                       /*'#' => 'card_details'*/ ), 
+                                                array( 'class' => 'btn btn-primary' ) );
+                    ?>
+                </p>
             </div>
             
             <div class="row">
                 <div class="span12">
                     <?php
+                    if ( isset( $data[ 'CardVariation' ] ) && !empty( $data[ 'CardVariation' ] ) )
+                    {
                         echo $this->element( 'CardVariations/card_variation_list', array( 'data' => $data ) );
+                    } 
+                    else 
+                    {
+                        echo '<span>(No variations)</span>';
+                    }
                     ?>
                 </div>        
             </div>

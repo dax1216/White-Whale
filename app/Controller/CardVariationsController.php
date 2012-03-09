@@ -65,6 +65,7 @@ class CardVariationsController extends AppController
                                             . ' (' . $variations[ $this->request->data[ 'CardVariation' ][ 'variation_id' ] ] . ')';
                         // Assign name
                         $this->request->data[ 'CardVariation' ][ 'name' ] = $variationName;
+                        $this->request->data[ 'CardVariation' ][ 'is_base' ] = 0;
 
                         $dataSource = $this->CardVariation->getDataSource();
 
@@ -85,7 +86,7 @@ class CardVariationsController extends AppController
                             $filename = str_replace( array( '(', ')', '[', ']' ), '', $variationName );
                             $filename = str_replace( array( ' ', '-' ), '_', $filename );
 
-                            debug( $this->request->data );
+                            // debug( $this->request->data );
 
                             $params = array('front_img' => $this->request->data['CardVariationImage']['card_front_side'],
                                             'rear_img' => $this->request->data['CardVariationImage']['card_back_side'],
@@ -104,15 +105,6 @@ class CardVariationsController extends AppController
                                 if ( $this->CardVariation->CardVariationImage->save( $this->request->data ) )
                                 {
                                     $dataSource->commit();
-                                    
-                                    // New Card is Base Card
-                                    if ( $this->request->data[ 'CardVariation' ][ 'is_base' ] )
-                                    {
-                                        // Reset all, except for the new variation
-                                        $this->CardVariation->updateAll( array( 'CardVariation.is_base' => 0 ),
-                                                                         array( 'CardVariation.card_id =' => $this->request->data[ 'CardVariation' ][ 'card_id' ],
-                                                                                'CardVariation.card_variation_id <>' => $this->CardVariation->id ));
-                                    }
                                     
                                     $this->Session->setFlash(__('The card variation has been saved'), 'default', array( 'class' => 'alert alert-success' ));
                                     $card_id = $this->request->data[ 'CardVariation' ][ 'card_id' ];
@@ -135,14 +127,17 @@ class CardVariationsController extends AppController
                 if ( $card_id )
                 {
                     $card = $this->CardVariation->Card->findByCardId( $card_id );
-                    foreach( $card[ 'CardVariation' ] as $key => $cardVariation )
+                    if ( isset( $card[ 'CardVariation' ] ) )
                     {
-                        $cardVariationImage = $this->CardVariation->CardVariationImage->findByCardVariationId( $cardVariation[ 'card_variation_id' ] );
-                        $cardVariation[ 'images' ] = $cardVariationImage;
-                        $card[ 'CardVariation' ][ $key ] = $cardVariation;
-                    }                    
-                    $card[ 'Card' ][ 'card_id' ] = $card_id;
-                    $this->set( 'data', $card );
+                        foreach( $card[ 'CardVariation' ] as $key => $cardVariation )
+                        {
+                            $cardVariationImage = $this->CardVariation->CardVariationImage->findByCardVariationId( $cardVariation[ 'card_variation_id' ] );
+                            $cardVariation[ 'images' ] = $cardVariationImage;
+                            $card[ 'CardVariation' ][ $key ] = $cardVariation;
+                        }                    
+                        $card[ 'Card' ][ 'card_id' ] = $card_id;
+                        $this->set( 'data', $card );
+                    }
                 }
 	}
 
@@ -194,81 +189,4 @@ class CardVariationsController extends AppController
             $this->Session->setFlash(__('Card variation was not deleted.'), 'default', array( 'class' => 'alert alert-error' ));
             $this->redirect(array('action' => 'add', $data[ 'Card' ][ 'card_id' ], '#' => 'btn_delete_' . $id ) );
 	}
-
-        
-        public function set_as_base( $id )
-        {
-            $this->CardVariation->id = $id;
-            if (!$this->CardVariation->exists()) {
-                    throw new NotFoundException(__('Invalid card variation'));
-            }    
-            
-            $data = $this->CardVariation->read( null, $id );
-            
-            if ( $this->setAsBase( $id ) )
-            {
-                $this->Session->setFlash(__('A new Base Card is set.'), 'default', array( 'class' => 'alert alert-success' ));
-            }
-            else
-            {
-                $this->Session->setFlash(__('Base Card is not set. Please, try again.'), 'default', array( 'class' => 'alert alert-error' ));
-            }
-            
-            $this->redirect( array( 'action' => 'add', $data[ 'Card' ][ 'card_id' ], '#' => 'btn_set_as_base_' . $id ) );
-        }
-        
-        
-        // Helpers
-        
-        public function setAsBase( $id = null )
-        {
-		$this->CardVariation->id = $id;
-		if (!$this->CardVariation->exists()) {
-			throw new NotFoundException(__('Invalid card variation'));
-                        return false;
-		}
-                
-                $data = $this->CardVariation->read( null, $id );
-                
-                // Temporarily unbind model
-                $this->CardVariation->unbindModel( array( 'belongsTo' => array( 'Card', 'Variation' ) ) );
-                
-                // Begin transaction
-                $this->CardVariation->getDataSource()->begin();
-                
-                // Reset all variation of card
-                if ( $this->CardVariation->updateAll( array( 'CardVariation.is_base' => 0 ),
-                                                       array( 'CardVariation.card_id =' => $data[ 'Card' ][ 'card_id' ] ) ) )
-                {
-                    if ( $this->CardVariation->save( array( 'card_variation_id' => $data[ 'CardVariation' ][ 'card_variation_id' ], 
-                                                            'is_base' => 1 ) ) )
-                    {
-                        // End transaction
-                        $this->CardVariation->getDataSource()->commit();
-                        return true;
-                    }
-                }
-                
-                // Rollback transaction
-                $this->CardVariation->getDataSource()->rollback();
-                
-                return false;
-        }
-        
-        public function validateImage( array $image )
-        {
-            $result = array( 'status' => true, 
-                             'code' => -1,
-                             'message' => 'Image OK!' );
-
-            // TODO: Be verbose about file upload errors
-            if ( $image[ 'error' ] )
-            {
-                $result = array( 'status' => false, 
-                                 'code' => UPLOAD_ERR_INI_SIZE,
-                                 'message' => 'There is an error in file.' );
-            }
-            
-            return $result[ 'status' ];
-        }
 }

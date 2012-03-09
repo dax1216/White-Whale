@@ -123,7 +123,7 @@ class Card extends AppModel {
 	'CardVariation' => array(
             'className'     => 'CardVariation',
             'foreignKey'    => 'card_id',
-            'conditions'    => '',
+            'conditions'    => array( 'CardVariation.is_base' => 0 ),
             'order'         => '',
             'limit'         => '',
             'dependent'     => true
